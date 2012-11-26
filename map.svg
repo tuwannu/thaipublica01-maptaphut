@@ -1955,13 +1955,13 @@
 </g>
 
 <g id="2531-accident">
-	<image overflow="visible" width="19" news="1" height="16" xlink:href="images/ic-accident.png"  transform="matrix(0.9999 0 0 0.9999 378.1602 201.498)">
+	<image class="accident" overflow="visible" width="19" id="1" height="16" xlink:href="images/ic-accident.png"  transform="matrix(0.9999 0 0 0.9999 378.1602 201.498)">
 	</image>
 
-	<image overflow="visible" width="19" height="16" xlink:href="images/ic-accident.png"  transform="matrix(0.9999 0 0 0.9999 278.1602 201.498)">
+	<image class="accident" overflow="visible" width="19" id="2" height="16" xlink:href="images/ic-accident.png"  transform="matrix(0.9999 0 0 0.9999 278.1602 201.498)">
 	</image>
 
-	<image overflow="visible" width="19" height="16" xlink:href="images/ic-accident.png"  transform="matrix(0.9999 0 0 0.9999 178.1602 201.498)">
+	<image class="accident" overflow="visible" width="19" id="3" height="16" xlink:href="images/ic-accident.png"  transform="matrix(0.9999 0 0 0.9999 178.1602 201.498)">
 	</image>
 </g>
 </svg>

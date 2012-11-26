@@ -23,6 +23,15 @@ $(function() {
             $('body').prepend(elm);
         })
 
+        $('g .accident').click(function(){
+            $.colorbox({
+                html        :'<b>Accident No.' + $(this).attr('id') + '</b>', 
+                width       :"30%", 
+                opacity     :0, 
+                transition  :'none'
+            });
+        });
+
         // WORK AROUND NESTED GROUP
         $("g g").show()
 
@@ -33,5 +42,6 @@ $(function() {
     $('.chooseLayer').live('click', function(e) {
       e.stopPropagation()
       LayerManager.show(currentYear, getCurrentLayers())
-    })
+    });
+
 });

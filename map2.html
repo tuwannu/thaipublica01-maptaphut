@@ -7,11 +7,17 @@
     <script type="text/javascript" src="underscore.js"></script>
     <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
     <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.package/jquery.svg.js"></script>
+    <script type="text/javascript" src="js/colorbox/jquery.colorbox.js"></script>
+    
     <script type="text/javascript" src="my2.js"></script>
     <script type="text/javascript" src="common.js"></script>
-
-    <script type="text/javascript" src="js/jquery.svg.package/jquery.svg.js"></script>
-
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".accident").colorbox({inline:true, href: "#accident-info", opacity:0, transition:'none'});
+        });
+    </script>
+    <link rel="stylesheet" href="js/colorbox/colorbox.css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
     <style type="text/css" media="screen">
         #nsw, #vic, #wa, #sa, #nt, #qld, #tas {
@@ -54,6 +60,7 @@
 
             //Update #amount (first time)
             $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
+
         });
     </script>
 
@@ -70,6 +77,15 @@
             Move te mouse over the spots
        </div>
         <div id="svgload"></div>
+
+        <div style='display:none'>
+            <div id="accident-info">
+                <p>3 พฤศจิกายน 2549​</p>
+                <p>คำอธิบายอุบัติเหตุ</p>
+                <p>สถานที่: </p>
+                <p>ผลกระทบ: </p>
+            </div>
+        </div>
     </body>
 </html>
 
