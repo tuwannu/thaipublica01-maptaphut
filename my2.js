@@ -11,8 +11,8 @@ $(function() {
 
     // LOAD SVG
     svg.load('map.svg', 'get', function(sth) {
-
         var activeLayers1 = []
+
         window.gr = _.groupBy($('g'), function(i) {
             return i.id.split('_')[0] || 'other'
         })
@@ -84,6 +84,9 @@ $(function() {
             $('body').prepend(lbl)
             $('body').prepend(elm);
         })
+
+        // WORK AROUND NESTED GROUP
+        $("g g").show()
 
         LayerManager.show(2531, lays)
     }) // LOAD SVG
