@@ -6,23 +6,22 @@ window.getCurrentLayers = function() {
   return selected
 }
 
-
-
 $(function() {
     var svg = $('#svgload').svg({width: 300, height: 200})
 
     // LOAD SVG
     svg.load('map.svg', 'get', function(sth) {
 
+        var activeLayers1 = []
         window.gr = _.groupBy($('g'), function(i) {
             return i.id.split('_')[0] || 'other'
         })
 
-        // LAYER MANAGER
-        window.LayerManager = (function(group) {
+        // LAYER MANAGER CREATER`
+        window.CreateLayerManager = function(group, activeLayers) {
             var funcs = { }
             var manager = { funcs: funcs }
-            window.activeLayer = []
+            activeLayers = []
 
             // CREATE FUNCTION WITH CAPTURED-VARIABLE
             _.each(group, function(v, k) {
@@ -57,10 +56,10 @@ $(function() {
                 })
 
                 // HIDE ACTIVE LAYER
-                _.each(window.activeLayer, function(v) { v.hide() })
+                _.each(activeLayers, function(v) { v.hide() })
 
                 // SET NEW ACTIVE LAYER
-                window.activeLayer = items
+                activeLayers = items
 
                 _.each(items, function(item) { item.show(); })
             }
@@ -71,7 +70,10 @@ $(function() {
 
             return manager;
 
-        }(gr)) // LAYER MANAGER
+        } // LAYER MNGR CREATER
+
+        // CREATE LAYER MANAGER
+        window.LayerManager = CreateLayerManager(gr, activeLayers1) // LAYER MANAGER
 
         var lays = LayerManager.getAllLayers()
         _.each(lays, function(v, k){
