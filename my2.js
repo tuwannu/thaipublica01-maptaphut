@@ -29,9 +29,4 @@ $(function() {
         LayerManager.show(2531, lays)
     }) // LOAD SVG
 
-    // LAYER
-    $('.chooseLayer').live('click', function(e) {
-      e.stopPropagation()
-      LayerManager.show(currentYear, getCurrentLayers())
-    })
 });
