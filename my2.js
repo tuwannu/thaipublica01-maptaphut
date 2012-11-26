@@ -21,7 +21,7 @@ $(function() {
         // LAYER MANAGER
         window.LayerManager = (function(group) {
             var funcs = { }
-            var layerManager = { funcs: funcs }
+            var manager = { funcs: funcs }
             window.activeLayer = []
 
             // CREATE FUNCTION WITH CAPTURED-VARIABLE
@@ -42,13 +42,14 @@ $(function() {
                             data: function() {
                                 return captured_obj;
                             }
+                        }
                     ret.hide();
                     return ret
                 })()
                 _.extend(funcs, obj)
             })
 
-            layerManager.show = function(year, layerArr, callback) {
+            manager.show = function(year, layerArr, callback) {
                 layerArr = _.union(layerArr, ["road", "area"])
                 var yearArr = [(year).toString(), "other"]
                 var items = _.filter(funcs, function(item, k) {
@@ -64,11 +65,11 @@ $(function() {
                 _.each(items, function(item) { item.show(); })
             }
 
-            layerManager.getAllLayers = function() {
+            manager.getAllLayers = function() {
                 return _.clone(["พท-เกษตรกรรม", "อาศัย", "พท-อนุรักษ์", "อุตสาหกรรมคลังสินค้า", "ราชการ", "อุตสาหกรรมไม่ก่อมลพิษ", "พท-โล่งเพื่อนันทนาการ"]);
             }
 
-            return layerManager;
+            return manager;
 
         }(gr)) // LAYER MANAGER
 
