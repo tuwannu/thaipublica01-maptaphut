@@ -6,25 +6,14 @@
     <title>Map 02</title>
     <script type="text/javascript" src="underscore.js"></script>
     <script type="text/javascript" src="http://keith-wood.name/js/jquery-1.7.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
     <script type="text/javascript" src="my2.js"></script>
 
-    <script type="text/javascript" src="js/jquery.svg.package/jquery.tabs.js"></script>
-    <script type="text/javascript" src="js/jquery.svg.package/jquery.bookmark.js"></script>
-    <script type="text/javascript" src="js/jquery.svg.package/jquery.svg.js"></script>
-    <script type="text/javascript" src="js/jquery.svg.package/jquery.svganim.js"></script>
-    <script type="text/javascript" src="js/jquery.svg.package/jquery.svgdom.js"></script>
-    <script type="text/javascript" src="js/jquery.svg.package/jquery.svgfilter.js"></script>
-    <script type="text/javascript" src="js/jquery.svg.package/jquery.svggraph.js"></script>
-    <script type="text/javascript" src="js/jquery.svg.package/jquery.svgplot.js"></script>
     <script type="text/javascript" src="js/jquery.svg.package/jquery.svg.js"></script>
 
-    <link rel="stylesheet" href="demo.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="demo-print.css" type="text/css" media="print"></head>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css" />
     <style type="text/css" media="screen">
-           #nsw, #vic, #wa, #sa, #nt, #qld, #tas {
+        #nsw, #vic, #wa, #sa, #nt, #qld, #tas {
             display: none;
             height: 400px;
             overflow: auto;
@@ -38,37 +27,33 @@
         }
     </style>
     <script>
-    $(function() {
-      // Draw map.
-      var drawMap = function(svg) {
-        console.log(svg)
-      }
-    // $('#od_mapv_map').svg({onLoad: drawMap});
-    window.currentYear = "2531"
-    // $('#slider-range-max').slider('value', currentYear)
-        $( "#slider-range-max" ).slider({
-            range: "max",
-            min: 2531,
-            max: 2555,
-            value: 2531,
-            slide: function( event, ui ) {
-                var val = $( "#amount" ).val( ui.value );
-                // show(val)
-                try {
-                    var yearArr = [2531, 2534, 2546, 2555]
-                    if (_.contains(yearArr, ui.value)) {
-                        var lays = LayerManager.getAllLayers()
+        $(function() {
+            window.currentYear = "2531"
+            var yearArr = [2531, 2534, 2546, 2555];
+            var yearInvertArr = yearArr.reverse();
 
-                        LayerManager.show(ui.value, getCurrentLayers())
-                        window.currentYear = ui.value
-                    }
-                } catch( ex ) {
-                    console.log(ex)
+            $( "#slider-range-max" ).slider({
+                range: "max",
+                min: 2531,
+                max: 2555,
+                value: 2531,
+                slide: function( event, ui ) {
+                    window.currentYear = ui.value
+
+                    //For debug on screen
+                    var val = $( "#amount" ).val( ui.value );
+
+                    var current_map_year = _.find(yearInvertArr, function(year){
+                        return year <= ui.value;
+                    })
+                    
+                    LayerManager.show(current_map_year, getCurrentLayers());
                 }
-            }
+            });
+
+            //Update #amount (first time)
+            $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
         });
-        $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
-    });
     </script>
 
     <body style="margin:0px; padding:3px 0px 0px 0px;">
