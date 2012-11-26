@@ -60,3 +60,10 @@ window.CreateLayerManager = function(group, activeLayers) {
     return manager;
 
 } // LAYER MNGR CREATER
+
+
+// LAYER
+$('.chooseLayer').live('click', function(e) {
+	e.stopPropagation()
+	LayerManager.show(currentYear, getCurrentLayers())
+})
