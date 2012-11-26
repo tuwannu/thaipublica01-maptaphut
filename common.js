@@ -1,3 +1,11 @@
+
+window.getCurrentLayers = function() {
+  var selected = _.collect($('input.chooseLayer:checked'), function(el) {
+    return $(el).val()
+  })
+  return selected
+}
+
 // LAYER MANAGER CREATER`
 window.CreateLayerManager = function(group, activeLayers) {
     var funcs = { }

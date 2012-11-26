@@ -1,11 +1,3 @@
-
-window.getCurrentLayers = function() {
-  var selected = _.collect($('input.chooseLayer:checked'), function(el) {
-    return $(el).val()
-  })
-  return selected
-}
-
 $(function() {
     var svg = $('#svgload').svg({width: 300, height: 200})
 
