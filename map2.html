@@ -12,7 +12,9 @@
     <script type="text/javascript" src="js/jquery.svg.package/jquery.svg.js"></script>
     <script type="text/javascript" src="js/colorbox/jquery.colorbox.js"></script>
     <link rel="stylesheet" href="js/colorbox/colorbox.css" />
+    <link rel="stylesheet" href="css/custom.css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+
     <script type="text/javascript" src="graph.js"></script>
     <style type="text/css" media="screen">
         #nsw, #vic, #wa, #sa, #nt, #qld, #tas {
@@ -31,25 +33,20 @@
     <script>
         $(function() {
             window.currentYear = "2531"
-            var yearArr = [2531, 2534, 2546, 2555];
-            var yearInvertArr = yearArr.reverse();
+
 
             $( "#slider-range-max" ).slider({
-                range: "max",
-                min: 2531,
-                max: 2555,
-                value: 2531,
+            value:2520,
+            min: 2520,
+            max: 2555,
+            step: 1,
                 slide: function( event, ui ) {
                     window.currentYear = ui.value
 
                     //For debug on screen
                     var val = $( "#amount" ).val( ui.value );
 
-                    var current_map_year = _.find(yearInvertArr, function(year){
-                        return year <= ui.value;
-                    })
-
-                    LayerManager.show(current_map_year, getCurrentLayers());
+                    LayerManager.show(currentYear || 2531, getCurrentLayers());
                 }
             });
 
@@ -62,13 +59,14 @@
     <body style="margin:0px; padding:3px 0px 0px 0px;">
         <div id="svggraph"></div>
         <div class="year-haystack"></div>
+
+        <div style="width:860px; margin-left: 30px">
+            <div id="slider-range-max"></div>
+        </div>
         <p>
             <label for="amount">Year:</label>
             <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
         </p>
-        <div style="margin-left: 200px; width:800px">
-            <div id="slider-range-max"></div>
-        </div>
         <div id="map-layer"></div>
         <div id="svgload"></div>
     </body>

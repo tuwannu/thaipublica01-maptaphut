@@ -38,8 +38,15 @@ window.CreateLayerManager = function(group, activeLayers) {
     })
 
     manager.show = function(year, layerArr, callback) {
+        var yearArr = [2531, 2534, 2546, 2555];
+        var yearInvertArr = yearArr.reverse();
+        var current_map_year = _.find(yearInvertArr, function(y){
+            return y <= year;
+        })
+
         layerArr = _.union(layerArr, ["road", "area", "primeMinister"])
-        var yearArr = [(year).toString(), "other", "all"]
+        var yearArr = [(year).toString(), "other", "all", (current_map_year || 2531).toString()]
+        console.log(yearArr)
         var items = _.filter(funcs, function(item, k) {
             return _.contains(yearArr, item.year) && _.contains(layerArr, item.layer)
         })

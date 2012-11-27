@@ -1,0 +1,12 @@
+#slider-range-max {
+	background: url(../asset/timeline.png) no-repeat;
+	height: 38px;
+	border: none;
+}
+
+#slider-range-max a {
+	height: 18px;
+	width: 10px;
+	display: block;
+	margin: 13px 0 0 0;
+}
