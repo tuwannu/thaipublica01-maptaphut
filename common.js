@@ -38,8 +38,8 @@ window.CreateLayerManager = function(group, activeLayers) {
     })
 
     manager.show = function(year, layerArr, callback) {
-        layerArr = _.union(layerArr, ["road", "area"])
-        var yearArr = [(year).toString(), "other"]
+        layerArr = _.union(layerArr, ["road", "area", "primeMinister"])
+        var yearArr = [(year).toString(), "other", "all"]
         var items = _.filter(funcs, function(item, k) {
             return _.contains(yearArr, item.year) && _.contains(layerArr, item.layer)
         })

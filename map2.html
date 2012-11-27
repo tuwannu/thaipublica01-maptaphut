@@ -7,12 +7,11 @@
     <script type="text/javascript" src="underscore.js"></script>
     <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
     <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
-    <script type="text/javascript" src="my2.js"></script>
     <script type="text/javascript" src="common.js"></script>
-
+    <script type="text/javascript" src="my2.js"></script>
     <script type="text/javascript" src="js/jquery.svg.package/jquery.svg.js"></script>
-
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+    <script type="text/javascript" src="graph.js"></script>
     <style type="text/css" media="screen">
         #nsw, #vic, #wa, #sa, #nt, #qld, #tas {
             display: none;
@@ -58,6 +57,7 @@
     </script>
 
     <body style="margin:0px; padding:3px 0px 0px 0px;">
+        <div id="svggraph"></div>
         <div class="year-haystack"></div>
         <p>
             <label for="amount">Year:</label>
@@ -66,9 +66,7 @@
         <div style="margin-left: 200px; width:800px">
             <div id="slider-range-max"></div>
         </div>
-        <div style="width:860px">
-            Move te mouse over the spots
-       </div>
+        <div id="map-layer"></div>
         <div id="svgload"></div>
     </body>
 </html>

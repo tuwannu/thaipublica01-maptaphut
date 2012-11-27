@@ -2,10 +2,11 @@ $(function() {
     var svg = $('#svgload').svg({width: 300, height: 200})
 
     // LOAD SVG
-    svg.load('map.svg', 'get', function(sth) {
+    svg.load('map.svg', 'get', function(mapdata) {
         var activeLayers1 = []
 
-        window.gr = _.groupBy($('g'), function(i) {
+        var data = $('svg > g', $('#svgload'))
+        window.gr = _.groupBy(data, function(i) {
             return i.id.split('_')[0] || 'other'
         })
 
@@ -19,14 +20,18 @@ $(function() {
             window.elm = $('<input checked type="checkbox" name="myCheckbox" class="chooseLayer" value="'+ v +'" />'+v);
             var lbl = $('<label for="' + layerId +'">'+ v +'</label>')
             elm.attr({id: layerId })
-            $('body').prepend(lbl)
-            $('body').prepend(elm);
+            $('#map-layer').prepend(lbl)
+            $('#map-layer').prepend(elm);
         })
 
         // WORK AROUND NESTED GROUP
-        $("g g").show()
+        // $("g g").show()
 
         LayerManager.show(2531, lays)
     }) // LOAD SVG
+
+
+
+
 
 });
