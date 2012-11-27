@@ -20,16 +20,32 @@ $(document).ready(function() {
 
     function bindEvent(data, bubble) {
         var bindBubble = function(v, idx) {
-            $(v).hover(function(e) {
+            var t1;
+            $(v).mouseenter(function(e) {
+                t1 = new Date();
+                console.log('enter')
                 var $this = $(this);
                 bubble.hide()
                 e.stopPropagation()
                 bubble.eq(idx).show()
             })
+            .mouseleave(function(e){
+                var t2 = new Date();
+                var diff = t2 - t1;
+                console.log(diff)
+                if (diff>80) {
+                    bubble.eq(idx).fadeOut()
+                }
+                else {
+                   setTimeout(function() {
+                        bubble.eq(idx).fadeOut()
+                    }, 300)
+                }
+            })
         }
-        _.each($('line', data), function(v, idx) {
-                bindBubble(v, idx)
-        })
+        // _.each($('line', data), function(v, idx) {
+        //         bindBubble(v, idx)
+        // })
 
         _.each($('circle', data), function(v, idx) {
                 bindBubble(v, idx)
