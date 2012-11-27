@@ -119,7 +119,6 @@ $(document).ready(function() {
                 html        :buildPMInfo(pmId),
                 width       :"30%",
                 opacity     :0,
-                transition  :'none'
             });
             });
     })
