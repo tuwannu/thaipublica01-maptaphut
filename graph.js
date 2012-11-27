@@ -25,6 +25,7 @@ $(document).ready(function() {
                 t1 = new Date();
                 console.log('enter')
                 var $this = $(this);
+                $this.css({'opacity': 1.0, 'cursor': 'pointer'});
                 bubble.hide()
                 e.stopPropagation()
                 bubble.eq(idx).show()
