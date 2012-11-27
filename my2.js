@@ -63,7 +63,8 @@ $(function() {
             $('#map-layer').prepend(elm);
         })
 
-        $('image[id^="accident"]').click(function(){
+        $('image[id*="accident"]').click(function(){
+            console.log("CLICKED")
             var elmId = $(this).attr('id').split('accident')[1];
             var accId = parseInt(elmId) - 1;
             $.colorbox({

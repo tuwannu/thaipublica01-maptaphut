@@ -112,22 +112,21 @@ $(document).ready(function() {
         bindEvent(LayerManager2.funcs['graph-Factory'].data(), jQuery('[id$="factoryBubble"]'))
         bindEvent(LayerManager2.funcs['graph-GPP'].data(), jQuery('[id$="gppBubble"]'))
         bindEvent(LayerManager2.funcs['graph-Accident'].data(), jQuery('[id$="accidentBubble"]'))
-    })
         // ON PRIMINISTER CLICK
         $('image[id$="primeMinister"]').click(function(){
             var pmId = $(this).attr('id').split('-')[0];
             $.colorbox({
                 html        :buildPMInfo(pmId),
-                width       :"30%",
-                opacity     :0,
+                width       :"600px",
+                opacity     :0.5,
             });
-            });
-    })
+        });
 
+    })
     function buildPMInfo(year) {
         var pm = pmList[year];
         var events_html = "<ul>";
-        _.each(pm['events'], function(data) {
+        _.each(pm['events'], function(datsa) {
             events_html += '<li>' + data + '</li>';
         })
         events_html += "</ul>";
@@ -168,6 +167,4 @@ $(document).ready(function() {
                 bindBubble(v, idx)
         })
     }
-
-
 })
