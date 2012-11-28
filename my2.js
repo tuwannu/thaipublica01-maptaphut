@@ -142,9 +142,15 @@ $(function() {
             var accId = parseInt(elmId) - 1;
             $.colorbox({
                 html        :"<p class='acc_date'>" + accidentList[accId][0]  + "</p><p class='acc_desc'>" + accidentList[accId][1] + "</p><p class='acc_loc'><label>สถานที่: </label>" + accidentList[accId][2] + "</p><p class='acc_eff'><label>ผลกระทบ: </label>" + accidentList[accId][3] + "</p>",
-                width       :"30%",
-                opacity     :0,
+                width       :"580px",
+                opacity     :0.8,
+                transition  : 'fade',
+                width       : '500px',
+                height      : '75%'
+
+                // transition: 'fade'
             });
+            //$(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
         });
 
         // WORK AROUND NESTED GROUP

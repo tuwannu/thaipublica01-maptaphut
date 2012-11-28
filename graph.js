@@ -107,7 +107,7 @@ $(document).ready(function() {
                 $.colorbox({
                     html        :buildPMInfo(pmId),
                     width       :"600px",
-                    opacity     :0.5,
+                    opacity     :0.82,
                 });
             });
         })
@@ -148,28 +148,44 @@ $(document).ready(function() {
             $(v).mouseenter(function(e) {
                 t1 = new Date();
                 var $this = $(this);
-                $this.css({'opacity': 1.0, 'cursor': 'pointer'});
-                bubble.hide()
-                e.stopPropagation()
-                bubble.eq(idx).show()
+                var $parent = $this.parent();
+                if (_.isUndefined($parent.attr('id'))) {
+                    $this.css({'opacity': 1.0, 'cursor': 'pointer'});
+                }
+                bubble.hide();
+                e.stopPropagation();
+                bubble.eq(idx).fadeIn();
+            })
+            .click(function(e) {
+                $.colorbox({
+                    html        :"IDX:" + idx,
+                    width       :"600px",
+                    opacity     :0.82,
+                });
             })
             .mouseleave(function(e){
                 var t2 = new Date();
                 var diff = t2 - t1;
                 if (diff>80) {
-                    bubble.eq(idx).fadeOut()
+                    setTimeout(function() {
+                        bubble.eq(idx).fadeOut()
+                    }, 200)
+
                 }
                 else {
                    setTimeout(function() {
-                        bubble.eq(idx).fadeOut()
-                    }, 300)
+                        bubble.eq(idx).fadeOut();
+                    }, 300);
                 }
             })
         }
 
-        var circle = $('circle', data)
+        var circle = $('circle', data);
         _.each(circle, function(v, idx) {
-                bindBubble(v, idx)
+            bubble.eq(idx).click(function(e) {
+                console.log($(this));
+            })
+            bindBubble(v, idx);
         })
     }
 })
