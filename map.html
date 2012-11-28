@@ -10,6 +10,7 @@
     <script type="text/javascript" src="common.js"></script>
     <script type="text/javascript" src="my2.js"></script>
     <script type="text/javascript" src="js/jquery.svg.package/jquery.svg.js"></script>
+    <script type="text/javascript" src="js/jquery.qtip/jquery.qtip-1.0.0-rc3.js"></script>
     <script type="text/javascript" src="js/colorbox/jquery.colorbox.js"></script>
     <link rel="stylesheet" href="js/colorbox/colorbox.css" />
     <link rel="stylesheet" href="css/custom.css" />
@@ -46,6 +47,7 @@
                     //For debug on screen
                     var val = $( "#amount" ).val( ui.value );
 
+                    console.log("DO", getCurrentLayers())
                     LayerManager.show(currentYear || 2531, getCurrentLayers());
                 }
             });
@@ -69,6 +71,8 @@
         </p>
         <div id="map-layer"></div>
         <div id="svgload"></div>
+        <div id="map-control" style="width:200px">
+        </div>
     </body>
 </html>
 

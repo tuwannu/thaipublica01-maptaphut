@@ -52,19 +52,71 @@ $(function() {
         // CREATE LAYER MANAGER
         window.LayerManager = CreateLayerManager(gr, activeLayers1) // LAYER MANAGER
 
-        var lays = LayerManager.getAllLayers()
 
-        _.each(lays, function(v, k){
+        var map_control_labels = [{
+                    "key": "accident",
+                    "class": "accident",
+                }, {
+                    "key": "พท-เกษตรกรรม",
+                    "class": "agriculture",
+                    "text": "พื้นที่เกษตรกรรม"
+                }, {
+                    "key": "อาศัย",
+                    "class": "home"
+                }, {
+                    "key": "พท-อนุรักษ์",
+                    "class": "environment"
+                }, {
+                    "key": "อุตสาหกรรมคลังสินค้า",
+                    "class": "factory"
+                }, {
+                    "key": "ราชการ",
+                    "class": "government"
+                }, {
+                    "key": "อุตสาหกรรมไม่ก่อมลพิษ",
+                    "class": "green-factory"
+                }, {
+                    "key": "พท-โล่งเพื่อนันทนาการ",
+                    "class": "area"
+                }]
+        // CREATE MAP CONTROL
+        var lays = LayerManager.getAllLayers()
+        _.each(map_control_labels, function(item, k){
+            console.log(k, item.key)
             var layerId = 'layer'+k
-            window.elm = $('<input checked type="checkbox" name="myCheckbox" class="chooseLayer" value="'+ v +'" />'+v);
-            var lbl = $('<label for="' + layerId +'">'+ v +'</label>')
-            elm.attr({id: layerId })
-            $('#map-layer').prepend(lbl)
-            $('#map-layer').prepend(elm);
+            elm = $('<div></div>').
+                attr({ id: layerId, value: item.key, 'class': item['class'], 'selected': true }).
+                css({float: 'left', width: '76px', height: '36px'});
+
+            elm.addClass('selected')
+
+            elm.
+            mouseenter(function(e) {
+                $(this).css({'opacity': 1.0, 'cursor': 'pointer'});
+            }).
+            click(function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                var $attr = $this.attr('selected')
+                if ($attr) {
+                    $this.removeClass('selected')
+                }
+                else {
+                    $this.addClass('selected')
+                }
+                $(this).attr('selected', !$attr);
+                LayerManager.show(currentYear || 2531, getCurrentLayers());
+
+            })
+
+            $('#map-control').append(elm);
         })
 
-        $('image[id*="accident"]').click(function(){
-            console.log("CLICKED")
+        $('image[id*="accident"]').
+            mouseenter(function(e) {
+                $(this).css({cursor: 'pointer'})
+            }).
+            click(function(){
             var elmId = $(this).attr('id').split('accident')[1];
             var accId = parseInt(elmId) - 1;
             $.colorbox({

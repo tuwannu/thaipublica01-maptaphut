@@ -1,9 +1,6 @@
 
 window.getCurrentLayers = function() {
-  var selected = _.collect($('input.chooseLayer:checked'), function(el) {
-    return $(el).val()
-  })
-  return selected
+    return _.pluck($('#map-control div.selected'), 'value')
 }
 
 // LAYER MANAGER CREATER`
@@ -46,7 +43,6 @@ window.CreateLayerManager = function(group, activeLayers) {
 
         layerArr = _.union(layerArr, ["road", "area", "primeMinister"])
         var yearArr = [(year).toString(), "other", "all", (current_map_year || 2531).toString()]
-        console.log(yearArr)
         var items = _.filter(funcs, function(item, k) {
             return _.contains(yearArr, item.year) && _.contains(layerArr, item.layer)
         })

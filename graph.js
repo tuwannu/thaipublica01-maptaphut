@@ -113,7 +113,11 @@ $(document).ready(function() {
         bindEvent(LayerManager2.funcs['graph-GPP'].data(), jQuery('[id$="gppBubble"]'))
         bindEvent(LayerManager2.funcs['graph-Accident'].data(), jQuery('[id$="accidentBubble"]'))
         // ON PRIMINISTER CLICK
-        $('image[id$="primeMinister"]').click(function(){
+        $('image[id$="primeMinister"]').
+        mouseover(function(e) {
+            $(this).css({ cursor: 'pointer'})
+        }).
+        click(function(){
             var pmId = $(this).attr('id').split('-')[0];
             $.colorbox({
                 html        :buildPMInfo(pmId),
@@ -126,7 +130,7 @@ $(document).ready(function() {
     function buildPMInfo(year) {
         var pm = pmList[year];
         var events_html = "<ul>";
-        _.each(pm['events'], function(datsa) {
+        _.each(pm['events'], function(data) {
             events_html += '<li>' + data + '</li>';
         })
         events_html += "</ul>";
@@ -138,7 +142,6 @@ $(document).ready(function() {
             var t1;
             $(v).mouseenter(function(e) {
                 t1 = new Date();
-                console.log('enter')
                 var $this = $(this);
                 $this.css({'opacity': 1.0, 'cursor': 'pointer'});
                 bubble.hide()
