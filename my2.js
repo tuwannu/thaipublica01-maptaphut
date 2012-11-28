@@ -53,19 +53,19 @@ $(function() {
         window.LayerManager = CreateLayerManager(gr, activeLayers1) // LAYER MANAGER
 
         var graph_control_labels = [{
-            "key": "accident",
+            "key": "Accident",
             "class": "accident",
         },
         {
-            "key": "event",
+            "key": "Event",
             "class": "event"
         },
         {
-            "key": "gpp",
+            "key": "GPP",
             "class": "gpp"
         },
         {
-            "key": "อุตสาหกรรมคลังสินค้า",
+            "key": "Factory",
             "class": "factory"
         }
         ];
@@ -95,7 +95,7 @@ $(function() {
                 }]
 
         // CREATE MAP CONTROL
-        var lays = LayerManager.getAllLayers()
+        var lays = LayerManager.getAllLayers('#map-control')
         var createControlButton = function(data, $target, callback) {
             _.each(data, function(item, k){
                 console.log(k, item.key)
@@ -127,11 +127,11 @@ $(function() {
         }
 
         createControlButton(map_control_labels, $('#map-control'), function(){
-            LayerManager.show(currentYear || 2531, getCurrentLayers());
+            LayerManager.show(currentYear || 2531, getCurrentLayers('#map-control'));
         })
 
         createControlButton(graph_control_labels, $('#graph-control'), function(){
-            LayerManager.show(currentYear || 2531, getCurrentLayers());
+            LayerManager2.show('graph', getCurrentLayers('#graph-control'));
         })
 
         $('image[id*="accident"]').

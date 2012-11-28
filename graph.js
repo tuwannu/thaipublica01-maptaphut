@@ -112,6 +112,7 @@ $(document).ready(function() {
         bindEvent(LayerManager2.funcs['graph-Factory'].data(), jQuery('[id$="factoryBubble"]'))
         bindEvent(LayerManager2.funcs['graph-GPP'].data(), jQuery('[id$="gppBubble"]'))
         bindEvent(LayerManager2.funcs['graph-Accident'].data(), jQuery('[id$="accidentBubble"]'))
+        bindEvent(LayerManager2.funcs['graph-Event'].data(), jQuery('[id$="event"]'))
         // ON PRIMINISTER CLICK
         $('image[id$="primeMinister"]').
         mouseover(function(e) {
@@ -151,7 +152,6 @@ $(document).ready(function() {
             .mouseleave(function(e){
                 var t2 = new Date();
                 var diff = t2 - t1;
-                console.log(diff)
                 if (diff>80) {
                     bubble.eq(idx).fadeOut()
                 }
@@ -165,8 +165,9 @@ $(document).ready(function() {
         // _.each($('line', data), function(v, idx) {
         //         bindBubble(v, idx)
         // })
-
-        _.each($('circle', data), function(v, idx) {
+        var dd = $('circle', data)
+        console.log(dd.length, bubble.length)
+        _.each(dd, function(v, idx) {
                 bindBubble(v, idx)
         })
     }

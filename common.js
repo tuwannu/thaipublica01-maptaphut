@@ -1,6 +1,6 @@
 
-window.getCurrentLayers = function() {
-    return _.pluck($('#map-control div.selected'), 'value')
+window.getCurrentLayers = function(id) {
+    return _.pluck($(id+' div.selected'), 'value')
 }
 
 // LAYER MANAGER CREATER`
@@ -41,7 +41,7 @@ window.CreateLayerManager = function(group, activeLayers) {
             return y <= year;
         })
 
-        layerArr = _.union(layerArr, ["road", "area", "primeMinister"])
+        layerArr = _.union(layerArr, ["road", "area", "primeMinister", "accident"])
         var yearArr = [(year).toString(), "other", "all", (current_map_year || 2531).toString()]
         var items = _.filter(funcs, function(item, k) {
             return _.contains(yearArr, item.year) && _.contains(layerArr, item.layer)
@@ -63,10 +63,3 @@ window.CreateLayerManager = function(group, activeLayers) {
     return manager;
 
 } // LAYER MNGR CREATER
-
-
-// LAYER
-$('.chooseLayer').live('click', function(e) {
-	e.stopPropagation()
-	LayerManager.show(currentYear, getCurrentLayers())
-})
