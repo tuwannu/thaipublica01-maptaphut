@@ -1,9 +1,13 @@
+.debug {
+	clear: both;
+}
 #slider-wrapper {
 	clear: both;
 	background: url(../asset/timeline.png) no-repeat;
 	height: 39px;
 	border: none;
 	width: 858px;
+	margin-left: 42px;
 }
 
 #slider-range-max {
@@ -18,16 +22,28 @@
 	margin: 13px 0 0 0;
 }
 
-#graph-control div, #map-control div {
+#graph-control div{
 	height: 76px;
 	width: 36px;
+}
+
+#map-control div {
+	height: 76px;
+	width: 36px;
+	padding: 10px;
 }
 
 #svgload, #svggraph {
 	float: left;
 }
 
-#graph-control, #map-control {
+#graph-control {
+	float: left;
+	width: 76px;
+
+}
+
+#map-control {
 	float: left;
 }
 

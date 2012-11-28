@@ -98,7 +98,6 @@ $(function() {
         var lays = LayerManager.getAllLayers('#map-control')
         var createControlButton = function(data, $target, callback) {
             _.each(data, function(item, k){
-                console.log(k, item.key)
                 var layerId = 'layer'+k
                 elm = $('<div></div>').
                     attr({ id: layerId, value: item.key, 'class': item['class'], 'selected': true }).
