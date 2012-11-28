@@ -95,6 +95,11 @@ var pmList = {
 };
 
 $(document).ready(function() {
+    var svgprime = $('#svgprime').svg({width: 300, height: 200})
+        svgprime.load('PrimeMinister.svg?'+Math.random(), 'get', function (svg) {
+        })
+
+
     var svggraph = $('#svggraph').svg()
     svggraph.load('graph.svg?'+Math.random(), 'get', function (svg) {
         var data = $('svg > g', $('#svggraph'))
