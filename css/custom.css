@@ -1,13 +1,19 @@
-#slider-range-max {
+#slider-wrapper {
 	clear: both;
 	background: url(../asset/timeline.png) no-repeat;
-	height: 38px;
+	height: 39px;
 	border: none;
+	width: 858px;
 }
 
+#slider-range-max {
+	border: none;
+	background: none;
+	width: 837px;
+}
 #slider-range-max a {
 	height: 18px;
-	width: 10px;
+	width: 24px;
 	display: block;
 	margin: 13px 0 0 0;
 }
