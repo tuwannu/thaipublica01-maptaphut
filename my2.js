@@ -52,11 +52,25 @@ $(function() {
         // CREATE LAYER MANAGER
         window.LayerManager = CreateLayerManager(gr, activeLayers1) // LAYER MANAGER
 
+        var graph_control_labels = [{
+            "key": "accident",
+            "class": "accident",
+        },
+        {
+            "key": "event",
+            "class": "event"
+        },
+        {
+            "key": "gpp",
+            "class": "gpp"
+        },
+        {
+            "key": "อุตสาหกรรมคลังสินค้า",
+            "class": "factory"
+        }
+        ];
 
         var map_control_labels = [{
-                    "key": "accident",
-                    "class": "accident",
-                }, {
                     "key": "พท-เกษตรกรรม",
                     "class": "agriculture",
                     "text": "พื้นที่เกษตรกรรม"
@@ -79,37 +93,45 @@ $(function() {
                     "key": "พท-โล่งเพื่อนันทนาการ",
                     "class": "area"
                 }]
+
         // CREATE MAP CONTROL
         var lays = LayerManager.getAllLayers()
-        _.each(map_control_labels, function(item, k){
-            console.log(k, item.key)
-            var layerId = 'layer'+k
-            elm = $('<div></div>').
-                attr({ id: layerId, value: item.key, 'class': item['class'], 'selected': true }).
-                css({float: 'left', width: '76px', height: '36px'});
-
-            elm.addClass('selected')
-
-            elm.
-            mouseenter(function(e) {
-                $(this).css({'opacity': 1.0, 'cursor': 'pointer'});
-            }).
-            click(function(e) {
-                e.preventDefault();
-                var $this = $(this);
-                var $attr = $this.attr('selected')
-                if ($attr) {
-                    $this.removeClass('selected')
-                }
-                else {
-                    $this.addClass('selected')
-                }
-                $(this).attr('selected', !$attr);
-                LayerManager.show(currentYear || 2531, getCurrentLayers());
-
+        var createControlButton = function(data, $target, callback) {
+            _.each(data, function(item, k){
+                console.log(k, item.key)
+                var layerId = 'layer'+k
+                elm = $('<div></div>').
+                    attr({ id: layerId, value: item.key, 'class': item['class'], 'selected': true }).
+                    css({float: 'left', width: '76px', height: '36px'});
+                elm.addClass('selected');
+                elm.mouseenter(function(e) {
+                    $(this).css({'opacity': 1.0, 'cursor': 'pointer'});
+                })
+                elm.click(function(e) {
+                    e.preventDefault();
+                    var $this = $(this);
+                    var $attr = $this.attr('selected')
+                    if ($attr) {
+                        $this.removeClass('selected')
+                    }
+                    else {
+                        $this.addClass('selected')
+                    }
+                    $(this).attr('selected', !$attr);
+                    if (_.isFunction(callback)) {
+                        callback();
+                    }
+                })
+                $target.append(elm);
             })
+        }
 
-            $('#map-control').append(elm);
+        createControlButton(map_control_labels, $('#map-control'), function(){
+            LayerManager.show(currentYear || 2531, getCurrentLayers());
+        })
+
+        createControlButton(graph_control_labels, $('#graph-control'), function(){
+            LayerManager.show(currentYear || 2531, getCurrentLayers());
         })
 
         $('image[id*="accident"]').

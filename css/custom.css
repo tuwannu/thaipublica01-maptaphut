@@ -1,4 +1,5 @@
 #slider-range-max {
+	clear: both;
 	background: url(../asset/timeline.png) no-repeat;
 	height: 38px;
 	border: none;
@@ -11,16 +12,16 @@
 	margin: 13px 0 0 0;
 }
 
-#map-control div {
+#graph-control div, #map-control div {
 	height: 76px;
 	width: 36px;
 }
 
-#svgload {
+#svgload, #svggraph {
 	float: left;
 }
 
-#map-control {
+#graph-control, #map-control {
 	float: left;
 }
 
@@ -32,7 +33,7 @@
 	background: url(../asset/unselect-btn-home.png) no-repeat;
 }
 
-#map-control div.accident {
+#map-control div.accident, #graph-control div.accident {
 	background: url(../asset/unselect-btn-accident.png) no-repeat;
 }
 
@@ -45,11 +46,11 @@
 }
 
 
-#map-control div.event {
+#graph-control div.event {
 	background: url(../asset/unselect-btn-event.png) no-repeat;
 }
 
-#map-control div.factory {
+#graph-control div.factory, #map-control div.factory {
 	background: url(../asset/unselect-btn-factory.png) no-repeat;
 }
 
@@ -61,8 +62,6 @@
 	background: url(../asset/unselect-btn-government.png) no-repeat;
 }
 
-
-
 #map-control div.green-factory.selected {
 	background: url(../asset/select-btn-green_factory.png) no-repeat;
 }
@@ -71,7 +70,7 @@
 	background: url(../asset/select-btn-home.png) no-repeat;
 }
 
-#map-control div.accident.selected {
+#map-control div.accident.selected, #graph-control div.accident.selected {
 	background: url(../asset/select-btn-accident.png) no-repeat;
 }
 
@@ -84,11 +83,11 @@
 }
 
 
-#map-control div.event.selected {
+#graph-control div.event.selected {
 	background: url(../asset/select-btn-event.png) no-repeat;
 }
 
-#map-control div.factory.selected {
+#graph-control div.factory.selected, #map-control div.factory.selected {
 	background: url(../asset/select-btn-factory.png) no-repeat;
 }
 
@@ -98,4 +97,11 @@
 
 #map-control div.government.selected {
 	background: url(../asset/select-btn-government.png) no-repeat;
+}
+
+#graph-control div.gpp {
+	background: url(../asset/unselect-btn-gpp.png) no-repeat;
+}
+#graph-control div.gpp.selected {
+	background: url(../asset/select-btn-gpp.png) no-repeat;
 }
