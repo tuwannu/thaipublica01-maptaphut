@@ -144,7 +144,7 @@ $(function() {
                 html        :"<p class='acc_date'>" + accidentList[accId][0]  + "</p><p class='acc_desc'>" + accidentList[accId][1] + "</p><p class='acc_loc'><label>สถานที่: </label>" + accidentList[accId][2] + "</p><p class='acc_eff'><label>ผลกระทบ: </label>" + accidentList[accId][3] + "</p>",
                 width       :"580px",
                 opacity     :0.8,
-                transition  : 'fade',
+                // transition  : 'fade',
                 width       : '500px',
                 height      : '75%'
 
