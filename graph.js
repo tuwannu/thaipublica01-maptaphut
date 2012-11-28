@@ -95,10 +95,22 @@ var pmList = {
 };
 
 $(document).ready(function() {
-    var svgprime = $('#svgprime').svg({width: 300, height: 200})
+    var svgprime = $('#svgprime').svg()
         svgprime.load('PrimeMinister.svg?'+Math.random(), 'get', function (svg) {
+            // ON PRIMINISTER CLICK
+            $('image[id$="primeMinister"]').
+            mouseover(function(e) {
+                $(this).css({ cursor: 'pointer'})
+            }).
+            click(function(){
+                var pmId = $(this).attr('id').split('-')[0];
+                $.colorbox({
+                    html        :buildPMInfo(pmId),
+                    width       :"600px",
+                    opacity     :0.5,
+                });
+            });
         })
-
 
     var svggraph = $('#svggraph').svg()
     svggraph.load('graph.svg?'+Math.random(), 'get', function (svg) {
@@ -118,19 +130,6 @@ $(document).ready(function() {
         bindEvent(LayerManager2.funcs['graph-GPP'].data(), jQuery('[id$="gppBubble"]'))
         bindEvent(LayerManager2.funcs['graph-Accident'].data(), jQuery('[id$="accidentBubble"]'))
         bindEvent(LayerManager2.funcs['graph-Event'].data(), jQuery('[id$="event"]'))
-        // ON PRIMINISTER CLICK
-        $('image[id$="primeMinister"]').
-        mouseover(function(e) {
-            $(this).css({ cursor: 'pointer'})
-        }).
-        click(function(){
-            var pmId = $(this).attr('id').split('-')[0];
-            $.colorbox({
-                html        :buildPMInfo(pmId),
-                width       :"600px",
-                opacity     :0.5,
-            });
-        });
 
     })
     function buildPMInfo(year) {
@@ -167,12 +166,9 @@ $(document).ready(function() {
                 }
             })
         }
-        // _.each($('line', data), function(v, idx) {
-        //         bindBubble(v, idx)
-        // })
-        var dd = $('circle', data)
-        console.log(dd.length, bubble.length)
-        _.each(dd, function(v, idx) {
+
+        var circle = $('circle', data)
+        _.each(circle, function(v, idx) {
                 bindBubble(v, idx)
         })
     }
