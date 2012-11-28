@@ -134,7 +134,7 @@ $(document).ready(function() {
             events_html += '<li>' + data + '</li>';
         })
         events_html += "</ul>";
-        return "<div><p class='fullname'>" + pm['fullname'] + "</p><p class='holdyear'>" + pm['hold_years'] + "</p><p class='events'>" + events_html + "</p></div>";
+        return "<div class='primebox'><p class='fullname'><img src='asset/primeminister/" + year + "-primeMinister.png'/>" + pm['fullname'] + "</p><p class='holdyear'>" + pm['hold_years'] + "</p><p class='events'>" + events_html + "</p></div>";
     }
 
     function bindEvent(data, bubble) {
