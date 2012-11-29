@@ -153,9 +153,6 @@ $(function() {
             //$(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
         });
 
-        // WORK AROUND NESTED GROUP
-        // $("g g").show()
-
         LayerManager.show(2531, lays)
     }) // LOAD SVG
 
