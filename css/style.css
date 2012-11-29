@@ -22,20 +22,29 @@ body {
 .primebox img {
   float: left;
   margin-right: 15px; }
-.primebox .fullname, .primebox .holdyear {
+.primebox .fullname, .primebox .holdyear, .primebox .time {
   font-family: 'db_brandvoice_xbold';
   font-size: 28px;
   color: #7c7256;
   margin-top: 0; }
 .primebox .holdyear {
-  font-size: 21px;
-  /*
-  		background: url('/images/tl-point.png') no-repeat 15px 10px;
-  		padding-left: 30px;
-  		clear: both;
-  */ }
+  font-size: 21px; }
 .primebox ul {
-  clear: both; }
+  clear: both;
+  padding-left: 20px;
+  background: url("../images/timeline.png") repeat-y 22px 0;
+  padding-top: 20px; }
+  .primebox ul li {
+    margin-bottom: 20px;
+    list-style: none; }
+.primebox .timeline {
+  /* 		background: url('../images/timeline.png') repeat-y 0 0; */ }
+.primebox .time {
+  font-size: 21px;
+  background: url("../images/tl-point.png") no-repeat 0 10px;
+  padding-left: 15px; }
+.primebox .data-year {
+  padding-left: 15px; }
 
 #colorbox {
   opacity: 0.8; }

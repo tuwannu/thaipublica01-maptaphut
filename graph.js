@@ -131,7 +131,6 @@ $(document).ready(function() {
                 });
             }).
             tipsy({
-
             });
         })
 
@@ -158,10 +157,9 @@ $(document).ready(function() {
     function buildPMInfo(year) {
         var pm = pmList[year];
         var events_html = "<ul>";
-
-        var events_template = _.template("<li><div class='time'><%= date %></div> <%= incident %> </li>")
+        var events_template = _.template("<li><div class='time'><%= date %></div> <div class='data-year'><%= incident %></div> </li>")
         _.each(pm['events'], function(data) {
-            events_html += events_template(data)
+	        events_html += events_template(data)
         })
         events_html += "</ul>";
 

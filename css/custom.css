@@ -60,84 +60,84 @@ h1#title {
 }
 
 #map-control div.green-factory {
-	background: url(../asset/unselect-btn-green_factory.png) no-repeat;
+	background: url(../asset/unselect-btn-green_factory.png) no-repeat center center;
 }
 
 #map-control div.home {
-	background: url(../asset/unselect-btn-home.png) no-repeat;
+	background: url(../asset/unselect-btn-home.png) no-repeat center center;
 }
 
 #map-control div.accident, #graph-control div.accident {
-	background: url(../asset/unselect-btn-accident.png) no-repeat;
+	background: url(../asset/unselect-btn-accident.png) no-repeat center center;
 }
 
 #map-control div.agriculture {
-	background: url(../asset/unselect-btn-agriculture.png) no-repeat;
+	background: url(../asset/unselect-btn-agriculture.png) no-repeat center center;
 }
 
 #map-control div.environment {
-	background: url(../asset/unselect-btn-environment.png) no-repeat;
+	background: url(../asset/unselect-btn-environment.png) no-repeat center center;
 }
 
 
 #graph-control div.event {
-	background: url(../asset/unselect-btn-event.png) no-repeat;
+	background: url(../asset/unselect-btn-event.png) no-repeat center center;
 }
 
 #graph-control div.factory, #map-control div.factory {
-	background: url(../asset/unselect-btn-factory.png) no-repeat;
+	background: url(../asset/unselect-btn-factory.png) no-repeat center center;
 }
 
 #map-control div.green-factory {
-	background: url(../asset/unselect-btn-green_factory.png) no-repeat;
+	background: url(../asset/unselect-btn-green_factory.png) no-repeat center center;
 }
 
 #map-control div.government {
-	background: url(../asset/unselect-btn-government.png) no-repeat;
+	background: url(../asset/unselect-btn-government.png) no-repeat center center;
 }
 
 #map-control div.green-factory.selected {
-	background: url(../asset/select-btn-green_factory.png) no-repeat;
+	background: url(../asset/select-btn-green_factory.png) no-repeat center center;
 }
 
 #map-control div.home.selected {
-	background: url(../asset/select-btn-home.png) no-repeat;
+	background: url(../asset/select-btn-home.png) no-repeat center center;
 }
 
 #map-control div.accident.selected, #graph-control div.accident.selected {
-	background: url(../asset/select-btn-accident.png) no-repeat;
+	background: url(../asset/select-btn-accident.png) no-repeat center center;
 }
 
 #map-control div.agriculture.selected {
-	background: url(../asset/select-btn-agriculture.png) no-repeat;
+	background: url(../asset/select-btn-agriculture.png) no-repeat center center;
 }
 
 #map-control div.environment.selected {
-	background: url(../asset/select-btn-environment.png) no-repeat;
+	background: url(../asset/select-btn-environment.png) no-repeat center center;
 }
 
 
 #graph-control div.event.selected {
-	background: url(../asset/select-btn-event.png) no-repeat;
+	background: url(../asset/select-btn-event.png) no-repeat center center;
 }
 
 #graph-control div.factory.selected, #map-control div.factory.selected {
-	background: url(../asset/select-btn-factory.png) no-repeat;
+	background: url(../asset/select-btn-factory.png) no-repeat center center;
 }
 
 #map-control div.green-factory.selected {
-	background: url(../asset/select-btn-green_factory.png) no-repeat;
+	background: url(../asset/select-btn-green_factory.png) no-repeat center center;
 }
 
 #map-control div.government.selected {
-	background: url(../asset/select-btn-government.png) no-repeat;
+	background: url(../asset/select-btn-government.png) no-repeat center center;
 }
 
 #graph-control div.gpp {
-	background: url(../asset/unselect-btn-gpp.png) no-repeat;
+	background: url(../asset/unselect-btn-gpp.png) no-repeat center center;
 }
 #graph-control div.gpp.selected {
-	background: url(../asset/select-btn-gpp.png) no-repeat;
+	background: url(../asset/select-btn-gpp.png) no-repeat center center;
 }
 
 
