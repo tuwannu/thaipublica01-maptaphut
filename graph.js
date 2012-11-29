@@ -100,7 +100,10 @@ var pmList = {
 
 window.buildincidentHTML = function(idx, type) {
     console.log(idx, type)
-    var html = _.template("<div class='event-<%= type %>'><ul id='incident-<%= type %>'>")({type: type});
+    var splitterMap = { 'graph-Event' : ' ', 'graph-Accident': '/' };
+    var html = _.template("<div class='event-<%= type %>'>\
+        <div class='incident-year'> <%= incident_year %> </div>\
+        <ul id='incident-<%= type %>'>")
     var make_li = _.template(" <li>\
                                     <div class='time'><%= date %></div>\
                                     <div class='incident'> <%= incident %> </div>\
@@ -112,15 +115,18 @@ window.buildincidentHTML = function(idx, type) {
                                     </div>\
                                 </li>")
     var obj = window[type + 'List']
+    var html_bef;
+    var html_body = "";
 
     if (!_.isUndefined(obj)) {
         _.each(obj[idx], function(v, k) {
-            _.extend(v, {type: type})
-            html += make_li(v)
+            _.extend(v, {type: type, incident_year: _.last(v.date.split(splitterMap[type])) })
+            html_bef = html(v)
+            html_body += make_li(v)
         })
     }
 
-    html += "</ul></div>"
+    html = html_bef + html_body + "</ul></div>"
     return  html;
 }
 
