@@ -109,12 +109,14 @@ $(function() {
 
         // CREATE MAP CONTROL
         var lays = LayerManager.getAllLayers('#map-control')
-        var createControlButton = function(data, $target, callback) {
+        var createControlButton = function(data, $target, callback, prefixId) {
             _.each(data, function(item, k){
                 var layerId = 'layer'+k
+
+                prefixId = prefixId || '';
                 elm = $('<div></div>').
                     attr({
-                        id: 'area-filter-' + layerId.toString(),
+                        id: prefixId + layerId.toString(),
                         value: item.key,
                         'class': item['class'],
                         'selected': true,
@@ -151,11 +153,11 @@ $(function() {
 
         createControlButton(map_control_labels, $('#map-control'), function(){
             LayerManager.show(currentYear || 2531, getCurrentLayers('#map-control'));
-        })
+        }, 'area-filter-');
 
         createControlButton(graph_control_labels, $('#graph-control'), function(){
             LayerManager2.show('graph', getCurrentLayers('#graph-control'));
-        })
+        });
 
         $('image[id*="accident"]').
             mouseenter(function(e) {
