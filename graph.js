@@ -195,7 +195,7 @@ $(document).ready(function() {
                                         <p class='events'>  <%= events_html %> </p> \
                                     </div>");
         var data = { fullname: pm.fullname, hold_years: pm.hold_years,
-            year: year, events_html: events_html;
+            year: year, events_html: events_html
         };
         return  template(data);
     }
