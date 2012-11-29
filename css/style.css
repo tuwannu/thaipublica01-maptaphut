@@ -178,13 +178,10 @@ body {
   font-size: 13px;
   box-shadow: 1px 2px 3px 0px #333; }
 
-.tipsy-arrow {
-  margin-top: -13px;
-  /* 	border-bottom-width: 13px !important; */
-  right: -5px;
-  /* 	border: 13px !important; */
-  border: 14px;
-  /* 	top: 32% !important; */ }
+.tipsy-e .tipsy-arrow, .tipsy-e .tipsy-arrow-e {
+  margin-top: -10px;
+  right: -15px;
+  border: 11px dashed transparent; }
 
 .prime-minister-tipsy .tipsy-arrow-e {
   border-left-color: white !important; }
