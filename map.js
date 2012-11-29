@@ -36,7 +36,14 @@ var accidentList = [
     ['2 มีนาคม พศ.2552', 'มีการลักลอบนำขยะสารเคมีจากโรงงานผลิตเม็ดพลาสติกมาทิ้ง', 'พื้นที่รกร้างริมคลองน้ำหูคลองสาธารณะ เขตเทศบาลเมืองมาบตาพุด จ.ระยอง', 'กากขยะสารเคมีส่งกลิ่นเหม็นฉุนรุนแรงทั่วบริเวณ'],
     ['7 พฤษภาคม พศ.2552', 'ไฟไหม้บริเวณบ่อน้ำมันออแกไนซ์จำนวน 7 บ่อ ภายในโรงงานหลอมเหล็ก', 'บริษัท ไทยคูน เวิลด์ไวด์กรุ๊ป (ประเทศไทย) จำกัด 99 ม.1 นิคมอุตสาหกรรมระยอง อ.นิคมพัฒนา จ.ระยอง', 'ไม่มีรายงานความเสียหาย'],
     ['5 พฤษภาคม พศ.2555', 'เหตุเพลิงไหม้โรงงานของบริษัท บีเอสที อิลาสโตเมอร์ส จำกัด ในเครือบริษัท กรุงเทพ ซินธิติกส์ จำกัด', 'นิคมอุตสาหกรรมมาบตาพุด อ.เมือง จ.ระยอง', 'มีผู้เสียชีวิต 11 คนและบาดเจ็บ 181 คน'],
-]
+];
+
+var cityplan = [
+    {year: 2531, imageId: "2531-cityPlan"},
+    {year: 2534, imageId: "2534-cityPlan"},
+    {year: 2546, imageId: "2546-cityPlan"},
+    {year: 2555, imageId: "2555-cityPlan"}
+];
 
 $(function() {
     var svg = $('#svgload').svg({width: 300, height: 200})
@@ -116,13 +123,13 @@ $(function() {
             _.each(data, function(item, k){
                 var layerId = 'layer'+k;
 
-                prefixId = prefixId || '';
-                if (prefixId.length) {
-                    prefixId = prefixId + '-';
+                var _prefixId = prefixId || '';
+                if (_prefixId.length) {
+                    _prefixId = prefixId + '-';
                 }
                 elm = $('<div></div>').
                     attr({
-                        id: prefixId + layerId.toString(),
+                        id: _prefixId + layerId.toString(),
                         value: item.key,
                         'class': item['class'],
                         'selected': true,
@@ -151,7 +158,7 @@ $(function() {
 
                 // Initial tipsy.
                 elm.tipsy({
-                    className: prefixId + 'class',
+                    className: _prefixId + 'class ' + item['class'] + '-subclass',
                     gravity: item['tipsyGravity']
                 });
                 $target.append(elm);
