@@ -48,19 +48,19 @@
                     var val = $( "#amount" ).val( ui.value );
 
                     LayerManager.show(currentYear || 2555, getCurrentLayers('#map-control'));
-                    showGraphGuide(ui.value)
+                    showGraphGuide(ui.value);
                 }
             });
 
             //Update #amount (first time)
-            $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
-            setTimeout(function() { showGraphGuide(currentYear) }, 400)
+            $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ));
+            setTimeout(function() { showGraphGuide(currentYear) }, 400);
         });
 
         var showGraphGuide = function(currentYear) {
             var snapYear = function(val) {
               return _.find(["2520", "2523", "2529", "2531", "2534", "2535", "2538", "2539", "2540", "2543", "2544", "2539", "2551", "2553", "2549"].sort().reverse(), function(item) {
-                return item <= val
+                return item <= val;
               })
             }
             var snapped = snapYear(currentYear);
@@ -79,13 +79,13 @@
 	            <div id="svggraph"></div>
 	            <div id="graph-control"></div>
 	        </div>
-	
+
 	        <div id="slider-wrapper">
 	            <div id="slider-range-max"></div>
 	        </div>
-	
+
 	        <div id="svgprime"></div>
-	
+
 	        <div id="map-wrapper">
 	            <div id="svgload"></div>
 	            <div id="map-control" style="width:200px"> </div>
