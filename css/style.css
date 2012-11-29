@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'db_brandvoice_xbold';
+  src: url("db_brandvoice_x_bd.eot");
+  src: url("db_brandvoice_x_bd.eot?#iefix") format("embedded-opentype"), url("db_brandvoice_x_bd.woff") format("woff"), url("db_brandvoice_x_bd.ttf") format("truetype"), url("db_brandvoice_x_bd.svg#db_brandvoice_xbold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'db_brandvoice_x_lightlight';
+  src: url("db_brandvoice_x_li.eot");
+  src: url("db_brandvoice_x_li.eot?#iefix") format("embedded-opentype"), url("db_brandvoice_x_li.woff") format("woff"), url("db_brandvoice_x_li.ttf") format("truetype"), url("db_brandvoice_x_li.svg#db_brandvoice_x_lightlight") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+  font-family: Thonburi, Helvetica, Tahoma, sans-serif;
+  font-size: 13px; }
+
+/*-------------------------
+ 									PrimeBox 
+ --------------------------*/
+.primebox .fullname {
+  font-family: 'db_brandvoice_xbold';
+  font-size: 28px;
+  color: #7c7256; }
+  .primebox .fullname img {
+    border: 2px solid white; }
+
+#colorbox {
+  opacity: 0.8; }
+
+#cboxWrapper, #cboxMiddleLeft, #cboxContent, #cboxLoadedContent {
+  min-height: 400px; }
