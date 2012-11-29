@@ -36,8 +36,6 @@
     <script>
         $(function() {
             window.currentYear = "2555"
-
-
             $( "#slider-range-max" ).slider({
             value:2555,
             min: 2520,
@@ -50,13 +48,28 @@
                     var val = $( "#amount" ).val( ui.value );
 
                     LayerManager.show(currentYear || 2555, getCurrentLayers('#map-control'));
+                    showGraphGuide(ui.value)
                 }
             });
 
             //Update #amount (first time)
             $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
-
+            setTimeout(function() { showGraphGuide(currentYear) }, 400)
         });
+
+        var showGraphGuide = function(currentYear) {
+            var snapYear = function(val) {
+              return _.find(["2520", "2523", "2529", "2531", "2534", "2535", "2538", "2539", "2540", "2543", "2544", "2539", "2551", "2553", "2549"].sort().reverse(), function(item) {
+                return item <= val
+              })
+            }
+            var snapped = snapYear(currentYear);
+            var selector = '#graph-overlay g[id^="'+ snapped +'"]';
+
+            $('#graph-overlay').show();
+            $('#graph-overlay g').hide();
+            $(selector).show();
+        }
     </script>
 
     <body style="margin:0px; padding:3px 0px 0px 0px;">
