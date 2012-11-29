@@ -180,11 +180,11 @@ $(function() {
             click(function(){
             var elmId = $(this).attr('id').split('accident')[1];
             var accId = parseInt(elmId) - 1;
-            var template = _.template("<div>\
-                                        <p class='acc_date'> <%= date %> </p> \
-                                        <p class='acc_desc'> <%= desc %> </p> \
-                                        <p class='acc_loc'><label>สถานที่: </label> <%= location %> </p>\
-                                        <p class='acc_eff'><label>ผลกระทบ: </label> <%= effect %> </p>\
+            var template = _.template("<div class='accident-map'>\
+                                        <div class='acc_date'> <%= date %> </div> \
+                                        <div class='acc_desc'> <%= desc %> </div> \
+                                        <div class='acc_loc'><span>สถานที่: </span> <%= location %> </div>\
+                                        <div class='acc_eff'><span>ผลกระทบ: </span> <%= effect %> </div>\
                                        </div>");
 
             var data = {
