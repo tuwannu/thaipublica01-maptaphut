@@ -31,16 +31,27 @@ body {
  									PrimeBox 
  --------------------------*/
 .primebox {
+	img { 
+		float: left; 
+		margin-right: 15px;
+	}
 	.fullname, .holdyear {
 		font-family: 'db_brandvoice_xbold';
 		font-size: 28px;
 		color: #7c7256;
 		margin-top: 0;
+		
 	}
 	.holdyear { 
 		font-size: 21px;
+/*
 		background: url('/images/tl-point.png') no-repeat 15px 10px;
 		padding-left: 30px;
+		clear: both;
+*/
+	}
+	ul {
+		clear: both;
 	}
 }
 #colorbox {

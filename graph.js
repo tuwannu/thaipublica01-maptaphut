@@ -166,11 +166,11 @@ $(document).ready(function() {
         events_html += "</ul>";
 
         var template = _.template("<div class='primebox'> \
-                                        <p class='fullname'> \
-                                            <img src='asset/primeminister/<%= year %>-primeMinister.png'/> \
+																        <img src='asset/primeminister/<%= year %>-primeMinister.png'/> \
+                                        <div class='fullname'> \
                                             <%= fullname %> \
-                                        </p> \
-                                        <p class='holdyear'> <%= hold_years %> </p> \
+                                        </div> \
+                                        <div class='holdyear'> <%= hold_years %> </div> \
                                         <p class='events'>  <%= events_html %> </p> \
                                     </div>");
         var data = { fullname: pm.fullname, hold_years: pm.hold_years,
