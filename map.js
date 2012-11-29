@@ -87,7 +87,7 @@ $(function() {
                     "key": "อาศัย",
                     "class": "home",
                     "text": "พื้นที่ที่อยู่อาศัย",
-                    "tipsyGravity": "w"
+                    "tipsyGravity": "e"
                 }, {
                     "key": "พท-อนุรักษ์",
                     "class": "environment",
@@ -97,7 +97,7 @@ $(function() {
                     "key": "อุตสาหกรรมคลังสินค้า",
                     "class": "factory",
                     "text": "พื้นที่อุตสาหกรรมคลังสินค้า",
-                    "tipsyGravity": "w"
+                    "tipsyGravity": "e"
                 }, {
                     "key": "ราชการ",
                     "class": "government",
@@ -107,7 +107,7 @@ $(function() {
                     "key": "อุตสาหกรรมไม่ก่อมลพิษ",
                     "class": "green-factory",
                     "text": "พื้นที่อุตสาหกรรมที่ไม่ก่อมลพิษ",
-                    "tipsyGravity": "w"
+                    "tipsyGravity": "e"
                 }];
 
         // CREATE MAP CONTROL
