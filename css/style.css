@@ -17,6 +17,9 @@ body {
   font-size: 13px; }
 
 /*-------------------------
+ 									Variables
+ --------------------------*/
+/*-------------------------
  									PrimeBox 
  --------------------------*/
 .primebox img {
@@ -28,6 +31,7 @@ body {
   color: #7c7256;
   margin-top: 0; }
 .primebox .holdyear {
+  font-family: 'db_brandvoice_xbold';
   font-size: 21px; }
 .primebox ul {
   clear: both;
@@ -38,7 +42,6 @@ body {
     margin-bottom: 20px;
     list-style: none; }
 .primebox .time {
-  font-size: 21px;
   background: url("../images/tl-point.png") no-repeat 0 10px;
   padding-left: 15px; }
 .primebox .data-year {
@@ -48,5 +51,24 @@ body {
 #colorbox {
   opacity: 0.8; }
 
-#cboxWrapper, #cboxMiddleLeft, #cboxContent, #cboxLoadedContent {
+#cboxWrapper, #cboxMiddleLeft,
+#cboxContent, #cboxLoadedContent {
   min-height: 400px; }
+
+.event-graph-Event {
+  background: url("../images/window-event.png") no-repeat; }
+  .event-graph-Event ul {
+    padding-left: 65px;
+    background: url("../images/timeline-blue.png") repeat-y 67px 0; }
+    .event-graph-Event ul li {
+      margin-bottom: 20px;
+      list-style: none; }
+  .event-graph-Event .time {
+    font-family: 'db_brandvoice_xbold';
+    font-size: 21px;
+    color: #1b7c94;
+    background: url("../images/tl-point-blue.png") no-repeat 0 10px;
+    padding-left: 15px; }
+  .event-graph-Event .incident {
+    padding-left: 30px;
+    color: #333333; }

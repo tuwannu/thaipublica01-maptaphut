@@ -22,10 +22,21 @@
 
 }
 
+@mixin time-font {
+		font-family: 'db_brandvoice_xbold';
+		font-size: 21px;
+}
+
+
 body {
 	font-family: Thonburi, Helvetica, Tahoma, sans-serif;
 	font-size: 13px;
 }
+
+/*-------------------------
+ 									Variables
+ --------------------------*/
+ $incident-color: #333;
 
 /*-------------------------
  									PrimeBox 
@@ -43,7 +54,7 @@ body {
 		
 	}
 	.holdyear { 
-		font-size: 21px;
+		@include time-font;
 	}
 	ul {
 		clear: both;
@@ -56,7 +67,6 @@ body {
 		}
 	}
 	.time {
-		font-size: 21px;
 		background: url('../images/tl-point.png') no-repeat 0 10px;
 		padding-left: 15px;
 	}
@@ -68,6 +78,28 @@ body {
 #colorbox {
 	opacity: 0.8;
 }
-#cboxWrapper, #cboxMiddleLeft, #cboxContent, #cboxLoadedContent {
+#cboxWrapper, #cboxMiddleLeft, 
+#cboxContent, #cboxLoadedContent {
 	min-height: 400px;
+}
+.event-graph-Event {
+	background: url('../images/window-event.png') no-repeat;
+	ul {
+		padding-left: 65px;
+		background: url('../images/timeline-blue.png') repeat-y 67px 0;
+		li {
+			margin-bottom: 20px;
+			list-style: none;
+		}		
+	}
+	.time {
+		@include time-font;
+		color: #1b7c94;
+		background: url('../images/tl-point-blue.png') no-repeat 0 10px;
+		padding-left: 15px;
+	}
+	.incident { 
+		padding-left: 30px;
+		color: $incident-color;
+	}
 }

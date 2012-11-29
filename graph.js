@@ -100,7 +100,7 @@ var pmList = {
 
 window.buildincidentHTML = function(idx, type) {
     console.log(idx, type)
-    var html = _.template("<ul id='incident-<%= type %>'>")({type: type});
+    var html = _.template("<div class='event-<%= type %>'><ul id='incident-<%= type %>'>")({type: type});
     var make_li = _.template(" <li>\
                                     <div class='time'><%= date %></div>\
                                     <div class='incident'> <%= incident %> </div>\
@@ -120,7 +120,7 @@ window.buildincidentHTML = function(idx, type) {
         })
     }
 
-    html += "</ul>"
+    html += "</ul></div>"
     return  html;
 }
 
