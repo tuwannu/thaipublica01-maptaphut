@@ -37,14 +37,13 @@ body {
   .primebox ul li {
     margin-bottom: 20px;
     list-style: none; }
-.primebox .timeline {
-  /* 		background: url('../images/timeline.png') repeat-y 0 0; */ }
 .primebox .time {
   font-size: 21px;
   background: url("../images/tl-point.png") no-repeat 0 10px;
   padding-left: 15px; }
 .primebox .data-year {
-  padding-left: 15px; }
+  padding-left: 15px;
+  color: #333; }
 
 #colorbox {
   opacity: 0.8; }

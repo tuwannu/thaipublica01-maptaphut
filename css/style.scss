@@ -55,9 +55,6 @@ body {
 			list-style: none;
 		}
 	}
-	.timeline {
-/* 		background: url('../images/timeline.png') repeat-y 0 0; */
-	}
 	.time {
 		font-size: 21px;
 		background: url('../images/tl-point.png') no-repeat 0 10px;
@@ -65,6 +62,7 @@ body {
 	}
 	.data-year {
 		padding-left: 15px;
+		color: #333;
 	}
 }
 #colorbox {
