@@ -31,16 +31,40 @@ body {
  									PrimeBox 
  --------------------------*/
 .primebox {
-	.fullname, .holdyear {
+	img { 
+		float: left; 
+		margin-right: 15px;
+	}
+	.fullname, .holdyear, .time {
 		font-family: 'db_brandvoice_xbold';
 		font-size: 28px;
 		color: #7c7256;
 		margin-top: 0;
+		
 	}
 	.holdyear { 
 		font-size: 21px;
-		background: url('/images/tl-point.png') no-repeat 15px 10px;
-		padding-left: 30px;
+	}
+	ul {
+		clear: both;
+		padding-left: 20px;
+		background: url('../images/timeline.png') repeat-y 22px 0;
+		padding-top: 20px;
+		li {
+			margin-bottom: 20px;
+			list-style: none;
+		}
+	}
+	.timeline {
+/* 		background: url('../images/timeline.png') repeat-y 0 0; */
+	}
+	.time {
+		font-size: 21px;
+		background: url('../images/tl-point.png') no-repeat 0 10px;
+		padding-left: 15px;
+	}
+	.data-year {
+		padding-left: 15px;
 	}
 }
 #colorbox {
