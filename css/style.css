@@ -20,33 +20,53 @@ body {
  									Variables
  --------------------------*/
 /*-------------------------
+ 									Global
+ --------------------------*/
+.content {
+  width: 1044px;
+  margin: 0 auto; }
+
+/*-------------------------
+ 									Border-Box 
+ --------------------------*/
+#cboxTopLeft, #cboxTopCenter, #cboxTopRight,
+#cboxMiddleLeft, #cboxMiddleRight, #cboxBottomLeft,
+#cboxBottomCenter, #cboxBottomRight {
+  display: none; }
+
+#cboxContent {
+  border-radius: 15px; }
+
+/*-------------------------
  									PrimeBox 
  --------------------------*/
-.primebox img {
-  float: left;
-  margin-right: 15px; }
-.primebox .fullname, .primebox .holdyear, .primebox .time {
-  font-family: 'db_brandvoice_xbold';
-  font-size: 28px;
-  color: #7c7256;
-  margin-top: 0; }
-.primebox .holdyear {
-  font-family: 'db_brandvoice_xbold';
-  font-size: 21px; }
-.primebox ul {
-  clear: both;
-  padding-left: 20px;
-  background: url("../images/timeline.png") repeat-y 22px 0;
-  padding-top: 20px; }
-  .primebox ul li {
-    margin-bottom: 20px;
-    list-style: none; }
-.primebox .time {
-  background: url("../images/tl-point.png") no-repeat 0 10px;
-  padding-left: 15px; }
-.primebox .data-year {
-  padding-left: 15px;
-  color: #333; }
+.primebox {
+  margin: 20px; }
+  .primebox img {
+    float: left;
+    margin-right: 15px; }
+  .primebox .fullname, .primebox .holdyear, .primebox .time {
+    font-family: 'db_brandvoice_xbold';
+    font-size: 28px;
+    color: #7c7256;
+    margin-top: 0; }
+  .primebox .holdyear {
+    font-family: 'db_brandvoice_xbold';
+    font-size: 21px; }
+  .primebox ul {
+    clear: both;
+    padding-left: 20px;
+    background: url("../images/timeline.png") repeat-y 22px 0;
+    padding-top: 20px; }
+    .primebox ul li {
+      margin-bottom: 20px;
+      list-style: none; }
+  .primebox .time {
+    background: url("../images/tl-point.png") no-repeat 0 10px;
+    padding-left: 15px; }
+  .primebox .data-year {
+    padding-left: 15px;
+    color: #333; }
 
 #colorbox {
   opacity: 0.8; }
@@ -55,7 +75,14 @@ body {
 #cboxContent, #cboxLoadedContent {
   min-height: 400px; }
 
+#cboxClose {
+  padding: 10px 20px 0; }
+
+/*-------------------------
+ 									EventBox 
+ --------------------------*/
 .event-graph-Event {
+  margin: 20px;
   background: url("../images/window-event.png") no-repeat; }
   .event-graph-Event ul {
     padding-left: 65px;
@@ -72,3 +99,38 @@ body {
   .event-graph-Event .incident {
     padding-left: 30px;
     color: #333333; }
+
+#map-wrapper {
+  width: 710px;
+  margin: 0 auto; }
+
+/*-------------------------
+ 									AccidentBox 
+ --------------------------*/
+.event-graph-Accident {
+  margin: 20px;
+  background: url("../images/window-accident.png") no-repeat; }
+  .event-graph-Accident ul {
+    padding-left: 65px;
+    background: url("../images/timeline-red.png") repeat-y 67px 0; }
+    .event-graph-Accident ul li {
+      margin-bottom: 20px;
+      list-style: none; }
+  .event-graph-Accident .time {
+    font-family: 'db_brandvoice_xbold';
+    font-size: 21px;
+    color: #c23d4d;
+    background: url("../images/tl-point-red.png") no-repeat 0 10px;
+    padding-left: 15px; }
+  .event-graph-Accident .incident {
+    font-family: 'db_brandvoice_xbold';
+    font-size: 21px;
+    padding-left: 15px;
+    margin-bottom: 5px;
+    color: #333333;
+    font-size: 22px; }
+  .event-graph-Accident .detail {
+    padding-left: 15px;
+    font-size: 14px; }
+    .event-graph-Accident .detail span {
+      font-weight: bold; }

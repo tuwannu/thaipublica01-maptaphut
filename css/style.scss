@@ -37,11 +37,31 @@ body {
  									Variables
  --------------------------*/
  $incident-color: #333;
+ 
+/*-------------------------
+ 									Global
+ --------------------------*/
+ .content {
+	 width: 1044px;
+	 margin: 0 auto;
+ }
 
+/*-------------------------
+ 									Border-Box 
+ --------------------------*/
+ #cboxTopLeft, #cboxTopCenter, #cboxTopRight,
+ #cboxMiddleLeft, #cboxMiddleRight, #cboxBottomLeft,
+ #cboxBottomCenter, #cboxBottomRight{
+	 display: none;
+ }
+ #cboxContent {
+	 border-radius: 15px;
+ }
 /*-------------------------
  									PrimeBox 
  --------------------------*/
 .primebox {
+	margin: 20px;
 	img { 
 		float: left; 
 		margin-right: 15px;
@@ -82,7 +102,15 @@ body {
 #cboxContent, #cboxLoadedContent {
 	min-height: 400px;
 }
+#cboxClose {
+	padding: 10px 20px 0;
+}
+
+/*-------------------------
+ 									EventBox 
+ --------------------------*/
 .event-graph-Event {
+	margin: 20px;
 	background: url('../images/window-event.png') no-repeat;
 	ul {
 		padding-left: 65px;
@@ -102,4 +130,45 @@ body {
 		padding-left: 30px;
 		color: $incident-color;
 	}
+}
+
+#map-wrapper {
+	width: 710px;
+	margin: 0 auto;
+}
+
+/*-------------------------
+ 									AccidentBox 
+ --------------------------*/
+.event-graph-Accident {
+	margin: 20px;
+	background: url('../images/window-accident.png') no-repeat;
+	ul {
+		padding-left: 65px;
+		background: url('../images/timeline-red.png') repeat-y 67px 0;
+		li {
+			margin-bottom: 20px;
+			list-style: none;
+		}		
+	}
+	.time {
+		@include time-font;
+		color: #c23d4d;
+		background: url('../images/tl-point-red.png') no-repeat 0 10px;
+		padding-left: 15px;
+	}
+	.incident { 
+		@include time-font;
+		padding-left: 15px;
+		margin-bottom: 5px;
+		color: $incident-color;
+		font-size: 22px;
+	}
+	.detail {
+		padding-left: 15px;
+		font-size: 14px;
+		span { font-weight: bold; }
+	}
+
+
 }

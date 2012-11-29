@@ -104,10 +104,10 @@ window.buildincidentHTML = function(idx, type) {
     var make_li = _.template(" <li>\
                                     <div class='time'><%= date %></div>\
                                     <div class='incident'> <%= incident %> </div>\
-                                    <div clss='detail'>\
+                                    <div class='detail'>\
                                     <% if (type=='graph-Accident') { %> \
-                                        <span>สถานที่</span> <%= location %>\
-                                        <span>ผลกระทบ</span> <%= effect %>\
+                                        <span>สถานที่&nbsp;:&nbsp;</span> <%= location %><br />\
+                                        <span>ผลกระทบ&nbsp;:&nbsp;</span> <%= effect %>\
                                     <% } %>\
                                     </div>\
                                 </li>")
