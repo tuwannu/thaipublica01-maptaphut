@@ -161,7 +161,19 @@ $(document).ready(function() {
             events_html += '<li>' + data + '</li>';
         })
         events_html += "</ul>";
-        return "<div class='primebox'><p class='fullname'><img src='asset/primeminister/" + year + "-primeMinister.png'/>" + pm['fullname'] + "</p><p class='holdyear'>" + pm['hold_years'] + "</p><p class='events'>" + events_html + "</p></div>";
+
+        var template = _.template("<div class='primebox'> \
+                                        <p class='fullname'> \
+                                            <img src='asset/primeminister/<%= year %>-primeMinister.png'/> \
+                                            <%= fullname %> \
+                                        </p> \
+                                        <p class='holdyear'> <%= hold_years %> </p> \
+                                        <p class='events'>  <%= events_html %> </p> \
+                                    </div>");
+        var data = { fullname: pm.fullname, hold_years: pm.hold_years,
+            year: year, events_html: events_html
+        }
+        return  template(data);
     }
 
     function bindEvent(data, bubble) {
