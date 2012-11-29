@@ -67,7 +67,7 @@ $(function() {
         {
             "key": "GPP",
             "class": "gpp",
-            "text": "ผลิตภัณฑ์มวลรวมจังหวัด",
+            "text": "จีพีพี (ผลิตภัณฑ์มวลรวมจังหวัด)",
             "tipsyGravity": "e"
         },
         {
@@ -151,6 +151,7 @@ $(function() {
 
                 // Initial tipsy.
                 elm.tipsy({
+                    className: prefixId + 'class',
                     gravity: item['tipsyGravity']
                 });
                 $target.append(elm);
