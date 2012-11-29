@@ -101,12 +101,19 @@ var pmList = {
 window.buildincidentHTML = function(idx, type) {
     console.log(idx, type)
     var html = _.template("<ul id='incident-<%= type %>'>")({type: type});
-    var compiled = _.template("<li><div class='time'><%= date %></div> <%= incident %> </li>")
+    var make_li = _.template(" <li>\
+                                    <div class='time'><%= date %></div>\
+                                    <div class='incident'> <%= incident %> </div>\
+                                    <div clss='detail'>\
+                                        <span>สถานที่</span> <%= location %>\
+                                        <span>ผลกระทบ</span> EFFECTED\
+                                    </div>\
+                                </li>")
     var obj = window[type + 'List']
 
     if (!_.isUndefined(obj)) {
         _.each(obj[idx], function(v, k) {
-            html += compiled(v)
+            html += make_li(v)
         })
     }
 
