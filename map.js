@@ -108,11 +108,6 @@ $(function() {
                     "class": "green-factory",
                     "text": "พื้นที่อุตสาหกรรมที่ไม่ก่อมลพิษ",
                     "tipsyGravity": "w"
-                }, {
-                    "key": "พท-โล่งเพื่อนันทนาการ",
-                    "class": "area",
-                    "text": "พื้นที่โล่งเพื่อกิจกรรมนันทนาการ",
-                    "tipsyGravity": "e"
                 }];
 
         // CREATE MAP CONTROL
