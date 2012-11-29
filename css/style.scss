@@ -121,7 +121,7 @@ body {
 /*-------------------------
  									AccidentBox 
  --------------------------*/
-.event-graph-Accident, .event-graph-Event  {
+.event-graph-Accident, .event-graph-Event, .accident-map  {
 	margin: 20px;
 	background: url('../images/window-accident.png') no-repeat;
 	ul {
@@ -140,14 +140,14 @@ body {
 		background: url('../images/tl-point-red.png') no-repeat 0 10px;
 		padding-left: 25px;
 	}
-	.incident { 
+	.incident, .acc_desc { 
 		@include time-font;
 		padding-left: 25px;
 		margin-bottom: 5px;
 		color: $incident-color;
 		font-size: 22px;
 	}
-	.detail {
+	.detail, .acc_loc, .acc_eff {
 		padding-left: 25px;
 		font-size: 14px;
 		span { font-weight: bold; }
@@ -188,9 +188,22 @@ body {
 	position: absolute;
 	right: 40px;
 	top: 60px;
-	.selected {
+	div {
 		margin-bottom: 10px;
 	}
+}
+/*-------------------------
+							Accident From Map
+ --------------------------*/
+.accident-map {
+	.acc_date {
+		@include time-font;
+		color: #c23d4d;
+		margin-left: 60px;
+		margin-bottom: 5px;
+		font-size: 30px;
+	}
+	.acc_desc { margin-top: 10px; }
 }
 
 /*-------------------------
@@ -219,3 +232,6 @@ body {
 	}
 /* } */
 
+#svgprime {
+	margin-top: 25px;
+}

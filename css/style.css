@@ -90,36 +90,36 @@ body {
 /*-------------------------
  									AccidentBox 
  --------------------------*/
-.event-graph-Accident, .event-graph-Event {
+.event-graph-Accident, .event-graph-Event, .accident-map {
   margin: 20px;
   background: url("../images/window-accident.png") no-repeat; }
-  .event-graph-Accident ul, .event-graph-Event ul {
+  .event-graph-Accident ul, .event-graph-Event ul, .accident-map ul {
     padding-left: 18px;
     padding-top: 20px;
     margin-top: 0;
     background: url("../images/timeline-red.png") repeat-y 22px 0; }
-    .event-graph-Accident ul li, .event-graph-Event ul li {
+    .event-graph-Accident ul li, .event-graph-Event ul li, .accident-map ul li {
       margin-bottom: 20px;
       list-style: none; }
-  .event-graph-Accident .time, .event-graph-Event .time {
+  .event-graph-Accident .time, .event-graph-Event .time, .accident-map .time {
     font-family: 'db_brandvoice_xbold';
     font-size: 21px;
     color: #c23d4d;
     background: url("../images/tl-point-red.png") no-repeat 0 10px;
     padding-left: 25px; }
-  .event-graph-Accident .incident, .event-graph-Event .incident {
+  .event-graph-Accident .incident, .event-graph-Accident .acc_desc, .event-graph-Event .incident, .event-graph-Event .acc_desc, .accident-map .incident, .accident-map .acc_desc {
     font-family: 'db_brandvoice_xbold';
     font-size: 21px;
     padding-left: 25px;
     margin-bottom: 5px;
     color: #333333;
     font-size: 22px; }
-  .event-graph-Accident .detail, .event-graph-Event .detail {
+  .event-graph-Accident .detail, .event-graph-Accident .acc_loc, .event-graph-Accident .acc_eff, .event-graph-Event .detail, .event-graph-Event .acc_loc, .event-graph-Event .acc_eff, .accident-map .detail, .accident-map .acc_loc, .accident-map .acc_eff {
     padding-left: 25px;
     font-size: 14px; }
-    .event-graph-Accident .detail span, .event-graph-Event .detail span {
+    .event-graph-Accident .detail span, .event-graph-Accident .acc_loc span, .event-graph-Accident .acc_eff span, .event-graph-Event .detail span, .event-graph-Event .acc_loc span, .event-graph-Event .acc_eff span, .accident-map .detail span, .accident-map .acc_loc span, .accident-map .acc_eff span {
       font-weight: bold; }
-  .event-graph-Accident .incident-year, .event-graph-Event .incident-year {
+  .event-graph-Accident .incident-year, .event-graph-Event .incident-year, .accident-map .incident-year {
     font-family: 'db_brandvoice_xbold';
     font-size: 21px;
     margin-left: 60px;
@@ -151,8 +151,21 @@ body {
   position: absolute;
   right: 40px;
   top: 60px; }
-  #graph-control .selected {
+  #graph-control div {
     margin-bottom: 10px; }
+
+/*-------------------------
+							Accident From Map
+ --------------------------*/
+.accident-map .acc_date {
+  font-family: 'db_brandvoice_xbold';
+  font-size: 21px;
+  color: #c23d4d;
+  margin-left: 60px;
+  margin-bottom: 5px;
+  font-size: 30px; }
+.accident-map .acc_desc {
+  margin-top: 10px; }
 
 /*-------------------------
 	 									Tipsy 
@@ -178,3 +191,5 @@ body {
   border-left-color: #ff9900 !important; }
 
 /* } */
+#svgprime {
+  margin-top: 25px; }
