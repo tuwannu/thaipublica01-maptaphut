@@ -54,7 +54,15 @@
 
             //Update #amount (first time)
             $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ));
-            setTimeout(function() { showGraphGuide(currentYear) }, 400);
+            var counter = 0;
+            var inter = setInterval(function() {
+                ++counter;
+                console.log(counter)
+                if (counter>=3) {
+                    clearTimeout(inter)
+                }
+                showGraphGuide(currentYear)
+            }, 400);
         });
 
         var showGraphGuide = function(currentYear) {
