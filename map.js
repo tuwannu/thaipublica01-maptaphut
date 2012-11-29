@@ -73,26 +73,39 @@ $(function() {
         var map_control_labels = [{
                     "key": "พท-เกษตรกรรม",
                     "class": "agriculture",
-                    "text": "พื้นที่เกษตรกรรม"
+                    "text": "พื้นที่เกษตรกรรม",
+                    "tipsyGravity": "e"
                 }, {
                     "key": "อาศัย",
-                    "class": "home"
+                    "class": "home",
+                    "text": "พื้นที่ที่อยู่อาศัย",
+                    "tipsyGravity": "w"
                 }, {
                     "key": "พท-อนุรักษ์",
-                    "class": "environment"
+                    "class": "environment",
+                    "text": "พื้นที่อนุรักษ์",
+                    "tipsyGravity": "e"
                 }, {
                     "key": "อุตสาหกรรมคลังสินค้า",
-                    "class": "factory"
+                    "class": "factory",
+                    "text": "พื้นที่อุตสาหกรรมคลังสินค้า",
+                    "tipsyGravity": "w"
                 }, {
                     "key": "ราชการ",
-                    "class": "government"
+                    "class": "government",
+                    "text": "พื้นที่ราชการ",
+                    "tipsyGravity": "e"
                 }, {
                     "key": "อุตสาหกรรมไม่ก่อมลพิษ",
-                    "class": "green-factory"
+                    "class": "green-factory",
+                    "text": "พื้นที่อุตสาหกรรมที่ไม่ก่อมลพิษ",
+                    "tipsyGravity": "w"
                 }, {
                     "key": "พท-โล่งเพื่อนันทนาการ",
-                    "class": "area"
-                }]
+                    "class": "area",
+                    "text": "พื้นที่โล่งเพื่อกิจกรรมนันทนาการ",
+                    "tipsyGravity": "e"
+                }];
 
         // CREATE MAP CONTROL
         var lays = LayerManager.getAllLayers('#map-control')
@@ -100,7 +113,13 @@ $(function() {
             _.each(data, function(item, k){
                 var layerId = 'layer'+k
                 elm = $('<div></div>').
-                    attr({ id: layerId, value: item.key, 'class': item['class'], 'selected': true }).
+                    attr({
+                        id: 'area-filter-' + layerId.toString(),
+                        value: item.key,
+                        'class': item['class'],
+                        'selected': true,
+                        'title': item['text']
+                    }).
                     css({float: 'left', width: '76px', height: '36px'});
                 elm.addClass('selected');
                 elm.mouseenter(function(e) {
@@ -120,7 +139,12 @@ $(function() {
                     if (_.isFunction(callback)) {
                         callback();
                     }
-                })
+                });
+
+                // Initial tipsy.
+                elm.tipsy({
+                    gravity: item['tipsyGravity']
+                });
                 $target.append(elm);
             })
         }
