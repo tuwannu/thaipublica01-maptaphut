@@ -34,9 +34,14 @@
                 $tip.remove().css({top: 0, left: 0, visibility: 'hidden', display: 'block'}).prependTo(document.body);
                 
                 var pos = $.extend({}, this.$element.offset(), {
-                    width: this.$element[0].offsetWidth,
-                    height: this.$element[0].offsetHeight
+                    width: this.$element[0].offsetWidth || 0,
+                    height: this.$element[0].offsetHeight || 0
                 });
+
+                if (this.$element[0].tagName === 'image') {
+                    pos.width = parseFloat(this.$element.attr('width'));
+                    pos.height = parseFloat(this.$element.attr('height'));
+                }
                 
                 var actualWidth = $tip[0].offsetWidth,
                     actualHeight = $tip[0].offsetHeight,

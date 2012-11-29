@@ -67,7 +67,7 @@ $(function() {
         {
             "key": "GPP",
             "class": "gpp",
-            "text": "ผลิตภัณฑ์มวลรวมจังหวัด",
+            "text": "จีพีพี (ผลิตภัณฑ์มวลรวมจังหวัด)",
             "tipsyGravity": "e"
         },
         {
@@ -87,7 +87,7 @@ $(function() {
                     "key": "อาศัย",
                     "class": "home",
                     "text": "พื้นที่ที่อยู่อาศัย",
-                    "tipsyGravity": "w"
+                    "tipsyGravity": "e"
                 }, {
                     "key": "พท-อนุรักษ์",
                     "class": "environment",
@@ -97,7 +97,7 @@ $(function() {
                     "key": "อุตสาหกรรมคลังสินค้า",
                     "class": "factory",
                     "text": "พื้นที่อุตสาหกรรมคลังสินค้า",
-                    "tipsyGravity": "w"
+                    "tipsyGravity": "e"
                 }, {
                     "key": "ราชการ",
                     "class": "government",
@@ -107,11 +107,6 @@ $(function() {
                     "key": "อุตสาหกรรมไม่ก่อมลพิษ",
                     "class": "green-factory",
                     "text": "พื้นที่อุตสาหกรรมที่ไม่ก่อมลพิษ",
-                    "tipsyGravity": "w"
-                }, {
-                    "key": "พท-โล่งเพื่อนันทนาการ",
-                    "class": "area",
-                    "text": "พื้นที่โล่งเพื่อกิจกรรมนันทนาการ",
                     "tipsyGravity": "e"
                 }];
 
@@ -156,6 +151,7 @@ $(function() {
 
                 // Initial tipsy.
                 elm.tipsy({
+                    className: prefixId + 'class',
                     gravity: item['tipsyGravity']
                 });
                 $target.append(elm);

@@ -101,12 +101,19 @@ var pmList = {
 window.buildincidentHTML = function(idx, type) {
     console.log(idx, type)
     var html = _.template("<ul id='incident-<%= type %>'>")({type: type});
-    var compiled = _.template("<li><div class='time'><%= date %></div> <%= incident %> </li>")
+    var make_li = _.template(" <li>\
+                                    <div class='time'><%= date %></div>\
+                                    <div class='incident'> <%= incident %> </div>\
+                                    <div clss='detail'>\
+                                        <span>สถานที่</span> <%= location %>\
+                                        <span>ผลกระทบ</span> EFFECTED\
+                                    </div>\
+                                </li>")
     var obj = window[type + 'List']
 
     if (!_.isUndefined(obj)) {
         _.each(obj[idx], function(v, k) {
-            html += compiled(v)
+            html += make_li(v)
         })
     }
 
@@ -120,7 +127,17 @@ $(document).ready(function() {
             // ON PRIMINISTER CLICK
             $('image[id$="primeMinister"]').
             mouseover(function(e) {
-                $(this).css({ cursor: 'pointer'})
+                $(this).css({ cursor: 'pointer'});
+
+                var pmId = $(this).attr('id').split('-')[0],
+                    pmFullname = pmList[pmId] ? pmList[pmId]['fullname'] : ''
+                ;
+                $(this).tipsy({
+                    className: 'prime-minister-tipsy',
+                    gravity: 'n',
+                    fallback: pmFullname
+                })
+                .tipsy("show");
             }).
             click(function(){
                 var pmId = $(this).attr('id').split('-')[0];
@@ -129,8 +146,6 @@ $(document).ready(function() {
                     width       :"600px",
                     opacity     :0.82,
                 });
-            }).
-            tipsy({
             });
         })
 
