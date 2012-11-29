@@ -175,9 +175,28 @@ body {
 	 									Tipsy 
  --------------------------*/
 .tipsy-inner {
-  font-size: 13px; }
+  font-size: 13px;
+  box-shadow: 1px 2px 3px 0px #333; }
 
 .tipsy-arrow {
+  margin-top: -13px;
+  /* 	border-bottom-width: 13px !important; */
+  right: -5px;
+  /* 	border: 13px !important; */
+  border: 14px;
+  /* 	top: 32% !important; */ }
+
+.prime-minister-tipsy .tipsy-arrow-e {
+  border-left-color: white !important; }
+.prime-minister-tipsy .tipsy-inner {
+  font-size: 13px;
+  background-color: white !important;
+  color: #333;
+  box-shadow: 1px 2px 4px 1px #333; }
+.prime-minister-tipsy .tipsy-arrow-n {
+  border-bottom-color: white !important;
+  width: 3px; }
+.prime-minister-tipsy .tipsy-arrow {
   border-bottom-width: 6px !important;
   right: 1px !important; }
 
@@ -248,6 +267,8 @@ body {
   position: absolute;
   top: 50px;
   right: 25px; }
+  #map-control div {
+    padding: 5px 8px; }
 
 #map-wrapper {
   position: relative; }
