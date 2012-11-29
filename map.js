@@ -123,13 +123,13 @@ $(function() {
             _.each(data, function(item, k){
                 var layerId = 'layer'+k;
 
-                prefixId = prefixId || '';
-                if (prefixId.length) {
-                    prefixId = prefixId + '-';
+                var _prefixId = prefixId || '';
+                if (_prefixId.length) {
+                    _prefixId = prefixId + '-';
                 }
                 elm = $('<div></div>').
                     attr({
-                        id: prefixId + layerId.toString(),
+                        id: _prefixId + layerId.toString(),
                         value: item.key,
                         'class': item['class'],
                         'selected': true,
@@ -158,7 +158,7 @@ $(function() {
 
                 // Initial tipsy.
                 elm.tipsy({
-                    className: prefixId + 'class',
+                    className: _prefixId + 'class ' + item['class'] + '-subclass',
                     gravity: item['tipsyGravity']
                 });
                 $target.append(elm);
