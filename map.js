@@ -140,8 +140,20 @@ $(function() {
             click(function(){
             var elmId = $(this).attr('id').split('accident')[1];
             var accId = parseInt(elmId) - 1;
+            var template = _.template("<div>\
+                                        <p class='acc_date'> <%= date %> </p> \
+                                        <p class='acc_desc'> <%= desc %> </p> \
+                                        <p class='acc_loc'><label>สถานที่: </label> <%= location %> </p>\
+                                        <p class='acc_eff'><label>ผลกระทบ: </label> <%= effect %> </p>\
+                                       </div>");
+
+            var data = {
+                    date: accidentList[accId][0], desc: accidentList[accId][1],
+                    location: accidentList[accId][2], effect: accidentList[accId][3]
+                }
+
             $.colorbox({
-                html        :"<p class='acc_date'>" + accidentList[accId][0]  + "</p><p class='acc_desc'>" + accidentList[accId][1] + "</p><p class='acc_loc'><label>สถานที่: </label>" + accidentList[accId][2] + "</p><p class='acc_eff'><label>ผลกระทบ: </label>" + accidentList[accId][3] + "</p>",
+                html        : template(data),
                 width       :"580px",
                 opacity     :0.8,
                 // transition  : 'fade',
