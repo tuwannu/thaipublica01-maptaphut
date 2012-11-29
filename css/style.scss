@@ -105,18 +105,12 @@ body {
 }
 #cboxWrapper, #cboxMiddleLeft, 
 #cboxContent, #cboxLoadedContent {
-	min-height: 400px;
+/* 	min-height: 400px; */
 }
 #cboxClose {
 	padding: 10px 20px 0;
 }
 
-
-
-#map-wrapper {
-	width: 710px;
-	margin: 0 auto;
-}
 
 /*-------------------------
  									AccidentBox 
@@ -234,4 +228,16 @@ body {
 
 #svgprime {
 	margin-top: 25px;
+}
+
+/*-------------------------
+ 									Map Control
+ --------------------------*/
+#map-control {
+	position: absolute;
+	top: 50px;
+	right: 25px;
+}
+#map-wrapper {
+	position: relative;
 }

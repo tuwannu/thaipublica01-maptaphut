@@ -191,7 +191,7 @@ $(function() {
                 opacity     :0.8,
                 // transition  : 'fade',
                 width       : '500px',
-                height      : '75%'
+                height      : '400px'
 
                 // transition: 'fade'
             });
