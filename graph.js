@@ -219,6 +219,7 @@ $(document).ready(function() {
                         html        : buildincidentHTML(idx, type),
                         width       : "600px",
                         opacity     : 0.82,
+                        height      : "75%"
                     });
                 }
 
