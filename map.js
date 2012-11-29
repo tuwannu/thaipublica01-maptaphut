@@ -55,18 +55,26 @@ $(function() {
         var graph_control_labels = [{
             "key": "Accident",
             "class": "accident",
+            "text": "อุบัติเหตุ",
+            "tipsyGravity": "e"
         },
         {
             "key": "Event",
-            "class": "event"
+            "class": "event",
+            "text": "เหตุการณ์",
+            "tipsyGravity": "e"
         },
         {
             "key": "GPP",
-            "class": "gpp"
+            "class": "gpp",
+            "text": "ผลิตภัณฑ์มวลรวมจังหวัด",
+            "tipsyGravity": "e"
         },
         {
             "key": "Factory",
-            "class": "factory"
+            "class": "factory",
+            "text": "โรงงาน",
+            "tipsyGravity": "e"
         }
         ];
 
@@ -111,7 +119,7 @@ $(function() {
         var lays = LayerManager.getAllLayers('#map-control')
         var createControlButton = function(data, $target, callback, prefixId) {
             _.each(data, function(item, k){
-                var layerId = 'layer'+k
+                var layerId = 'layer'+k;
 
                 prefixId = prefixId || '';
                 elm = $('<div></div>').
@@ -157,7 +165,7 @@ $(function() {
 
         createControlButton(graph_control_labels, $('#graph-control'), function(){
             LayerManager2.show('graph', getCurrentLayers('#graph-control'));
-        });
+        }, 'graph-filter-');
 
         $('image[id*="accident"]').
             mouseenter(function(e) {
