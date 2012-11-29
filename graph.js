@@ -105,14 +105,17 @@ window.buildincidentHTML = function(idx, type) {
                                     <div class='time'><%= date %></div>\
                                     <div class='incident'> <%= incident %> </div>\
                                     <div clss='detail'>\
+                                    <% if (type=='graph-Accident') { %> \
                                         <span>สถานที่</span> <%= location %>\
                                         <span>ผลกระทบ</span> EFFECTED\
+                                    <% } %>\
                                     </div>\
                                 </li>")
     var obj = window[type + 'List']
 
     if (!_.isUndefined(obj)) {
         _.each(obj[idx], function(v, k) {
+            _.extend(v, {type: type})
             html += make_li(v)
         })
     }
