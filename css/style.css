@@ -19,12 +19,15 @@ body {
 /*-------------------------
  									PrimeBox 
  --------------------------*/
-.primebox .fullname {
+.primebox .fullname, .primebox .holdyear {
   font-family: 'db_brandvoice_xbold';
   font-size: 28px;
-  color: #7c7256; }
-  .primebox .fullname img {
-    border: 2px solid white; }
+  color: #7c7256;
+  margin-top: 0; }
+.primebox .holdyear {
+  font-size: 21px;
+  background: url("/images/tl-point.png") no-repeat 15px 10px;
+  padding-left: 30px; }
 
 #colorbox {
   opacity: 0.8; }
