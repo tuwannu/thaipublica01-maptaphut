@@ -131,6 +131,9 @@ $(document).ready(function() {
                     width       :"600px",
                     opacity     :0.82,
                 });
+            }).
+            tipsy({
+                
             });
         })
 

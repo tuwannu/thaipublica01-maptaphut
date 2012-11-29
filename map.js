@@ -122,6 +122,9 @@ $(function() {
                 var layerId = 'layer'+k;
 
                 prefixId = prefixId || '';
+                if (prefixId.length) {
+                    prefixId = prefixId + '-';
+                }
                 elm = $('<div></div>').
                     attr({
                         id: prefixId + layerId.toString(),
@@ -161,11 +164,11 @@ $(function() {
 
         createControlButton(map_control_labels, $('#map-control'), function(){
             LayerManager.show(currentYear || 2531, getCurrentLayers('#map-control'));
-        }, 'area-filter-');
+        }, 'area-filter');
 
         createControlButton(graph_control_labels, $('#graph-control'), function(){
             LayerManager2.show('graph', getCurrentLayers('#graph-control'));
-        }, 'graph-filter-');
+        }, 'graph-filter');
 
         $('image[id*="accident"]').
             mouseenter(function(e) {
