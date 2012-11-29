@@ -41,10 +41,15 @@ body {
 /*-------------------------
  									Global
  --------------------------*/
- .content {
-	 width: 1044px;
-	 margin: 0 auto;
- }
+.content {
+	width: 1044px;
+	margin: 0 auto;
+	position: relative;
+}
+#slider-wrapper {
+	position: absolute;
+	top: 310px;
+}
 
 /*-------------------------
  									Border-Box 
@@ -106,31 +111,7 @@ body {
 	padding: 10px 20px 0;
 }
 
-/*-------------------------
- 									EventBox 
- --------------------------*/
-.event-graph-Event {
-	margin: 20px;
-	background: url('../images/window-event.png') no-repeat;
-	ul {
-		padding-left: 65px;
-		background: url('../images/timeline-blue.png') repeat-y 67px 0;
-		li {
-			margin-bottom: 20px;
-			list-style: none;
-		}		
-	}
-	.time {
-		@include time-font;
-		color: #1b7c94;
-		background: url('../images/tl-point-blue.png') no-repeat 0 10px;
-		padding-left: 15px;
-	}
-	.incident { 
-		padding-left: 30px;
-		color: $incident-color;
-	}
-}
+
 
 #map-wrapper {
 	width: 710px;
@@ -140,12 +121,14 @@ body {
 /*-------------------------
  									AccidentBox 
  --------------------------*/
-.event-graph-Accident {
+.event-graph-Accident, .event-graph-Event  {
 	margin: 20px;
 	background: url('../images/window-accident.png') no-repeat;
 	ul {
-		padding-left: 65px;
-		background: url('../images/timeline-red.png') repeat-y 67px 0;
+		padding-left: 18px;
+		padding-top: 20px;
+		margin-top: 0;
+		background: url('../images/timeline-red.png') repeat-y 22px 0;
 		li {
 			margin-bottom: 20px;
 			list-style: none;
@@ -155,20 +138,84 @@ body {
 		@include time-font;
 		color: #c23d4d;
 		background: url('../images/tl-point-red.png') no-repeat 0 10px;
-		padding-left: 15px;
+		padding-left: 25px;
 	}
 	.incident { 
 		@include time-font;
-		padding-left: 15px;
+		padding-left: 25px;
 		margin-bottom: 5px;
 		color: $incident-color;
 		font-size: 22px;
 	}
 	.detail {
-		padding-left: 15px;
+		padding-left: 25px;
 		font-size: 14px;
 		span { font-weight: bold; }
 	}
-
-
+	.incident-year {
+		@include time-font;
+		margin-left: 60px;
+		font-size: 30px;
+		color: #c23d4d;
+	}
 }
+
+/*-------------------------
+ 									EventBox 
+ --------------------------*/
+.event-graph-Event {
+	margin: 20px;
+	background: url('../images/window-event.png') no-repeat;
+	ul {
+		background: url('../images/timeline-blue.png') repeat-y 25px 0;
+	}
+	.time {
+		@include time-font;
+		color: #1b7c94;
+		background: url('../images/tl-point-blue.png') no-repeat 4px 10px;
+	}
+	.incident-year {
+		color: #1b7c94;
+	}
+}
+
+#graph-wrapper {
+	width: 1044px;
+	overflow: hidden;
+	position: relative;
+}
+#graph-control {
+	position: absolute;
+	right: 40px;
+	top: 60px;
+	.selected {
+		margin-bottom: 10px;
+	}
+}
+
+/*-------------------------
+	 									Tipsy 
+ --------------------------*/
+/* #graph-control, #map-control { */
+	.tipsy-inner {
+		background-color: #ff6600 !important;
+		font-size: 13px;
+	}
+	.tipsy-arrow-e {
+		border-left-color: #ff6600 !important;
+		
+	}
+	.tipsy-arrow {
+		border-bottom-width: 6px !important;
+		right: 1px !important;
+	}
+/* } */
+/* #map-control { */
+	.tipsy-inner {
+		background-color: #ff9900 !important;
+	}
+	.tipsy-arrow-e {
+		border-left-color: #ff9900 !important;
+	}
+/* } */
+
