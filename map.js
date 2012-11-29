@@ -60,40 +60,53 @@ $(function() {
         window.LayerManager = CreateLayerManager(gr, activeLayers1) // LAYER MANAGER
 
         var graph_control_labels = [{
+
+            "key": "Factory",
+            "class": "factory",
+            "text": "โรงงาน",
+            "tipsyGravity": "e"
+        },
+        {
             "key": "Accident",
             "class": "accident",
             "text": "อุบัติเหตุ",
             "tipsyGravity": "e"
+            
         },
         {
             "key": "Event",
             "class": "event",
             "text": "เหตุการณ์",
             "tipsyGravity": "e"
+            
         },
         {
             "key": "GPP",
             "class": "gpp",
             "text": "จีพีพี (ผลิตภัณฑ์มวลรวมจังหวัด)",
             "tipsyGravity": "e"
-        },
-        {
-            "key": "Factory",
-            "class": "factory",
-            "text": "โรงงาน",
-            "tipsyGravity": "e"
         }
         ];
 
         var map_control_labels = [{
+                    "key": "อาศัย",
+                    "class": "home",
+                    "text": "พื้นที่ที่อยู่อาศัย",
+                    "tipsyGravity": "e"
+                }, {      
+                    "key": "อุตสาหกรรมคลังสินค้า",
+                    "class": "factory",
+                    "text": "พื้นที่อุตสาหกรรมคลังสินค้า",
+                    "tipsyGravity": "e"             
+                }, {
                     "key": "พท-เกษตรกรรม",
                     "class": "agriculture",
                     "text": "พื้นที่เกษตรกรรม",
                     "tipsyGravity": "e"
                 }, {
-                    "key": "อาศัย",
-                    "class": "home",
-                    "text": "พื้นที่ที่อยู่อาศัย",
+                    "key": "อุตสาหกรรมไม่ก่อมลพิษ",
+                    "class": "green-factory",
+                    "text": "พื้นที่อุตสาหกรรมที่ไม่ก่อมลพิษ",
                     "tipsyGravity": "e"
                 }, {
                     "key": "พท-อนุรักษ์",
@@ -101,19 +114,9 @@ $(function() {
                     "text": "พื้นที่อนุรักษ์",
                     "tipsyGravity": "e"
                 }, {
-                    "key": "อุตสาหกรรมคลังสินค้า",
-                    "class": "factory",
-                    "text": "พื้นที่อุตสาหกรรมคลังสินค้า",
-                    "tipsyGravity": "e"
-                }, {
                     "key": "ราชการ",
                     "class": "government",
                     "text": "พื้นที่ราชการ",
-                    "tipsyGravity": "e"
-                }, {
-                    "key": "อุตสาหกรรมไม่ก่อมลพิษ",
-                    "class": "green-factory",
-                    "text": "พื้นที่อุตสาหกรรมที่ไม่ก่อมลพิษ",
                     "tipsyGravity": "e"
                 }];
 
