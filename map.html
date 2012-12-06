@@ -37,16 +37,14 @@
         $(function() {
             window.currentYear = "2555"
             $( "#slider-range-max" ).slider({
-            value:2555,
-            min: 2520,
-            max: 2555,
-            step: 1,
+                value: 2555,
+                min: 2520,
+                max: 2555,
+                step: 1,
                 slide: function( event, ui ) {
-                    window.currentYear = ui.value
-
                     //For debug on screen
                     var val = $( "#amount" ).val( ui.value );
-
+                    window.currentYear = ui.value
                     LayerManager.show(currentYear || 2555, getCurrentLayers('#map-control'));
                     showGraphGuide(ui.value);
                 }
@@ -54,10 +52,10 @@
 
             //Update #amount (first time)
             $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ));
+
             var counter = 0;
             var inter = setInterval(function() {
                 ++counter;
-                console.log(counter)
                 if (counter>=3) {
                     clearTimeout(inter)
                 }
@@ -65,18 +63,23 @@
             }, 400);
         });
 
+        window.showGraphGuideFuncs = { }
+
+
+        var snapYear = function(val) {
+            return _.find(["2520", "2523", "2529", "2531", "2534", "2535",
+                        "2538", "2539", "2540", "2543", "2544", "2539",
+                        "2551", "2553", "2549"].sort().reverse(), function(item) {
+            return item <= val;
+        })
+
         var showGraphGuide = function(currentYear) {
-            var snapYear = function(val) {
-              return _.find(["2520", "2523", "2529", "2531", "2534", "2535", "2538", "2539", "2540", "2543", "2544", "2539", "2551", "2553", "2549"].sort().reverse(), function(item) {
-                return item <= val;
-              })
             }
             var snapped = snapYear(currentYear);
-            var selector = '#graph-overlay g[id^="'+ snapped +'"]';
+            var selected_overlay = '#graph-overlay g[id^="'+ snapped +'"]';
 
-            $('#graph-overlay').show();
             $('#graph-overlay g').hide();
-            $(selector).show();
+            $(selected_overlay).show();
 
             // Display plan description
             $('#other-cityPlan').show();
@@ -98,9 +101,6 @@
     <body style="margin:0px; padding:3px 0px 0px 0px;">
 	    <h1><span>30 ปี</span><br /> มาบตาพุด</h1>
 	    <div class="content">
-<!-- 					<div class="title"> -->
-						
-<!-- 					</div> -->
 	        <div id="graph-wrapper">
 	            <div id="svggraph"></div>
 	            <div id="graph-control"></div>
