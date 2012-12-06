@@ -68,13 +68,13 @@
 
         var snapYear = function(val) {
             return _.find(["2520", "2523", "2529", "2531", "2534", "2535",
-                        "2538", "2539", "2540", "2543", "2544", "2539",
-                        "2551", "2553", "2549"].sort().reverse(), function(item) {
-            return item <= val;
-        })
+                "2538", "2539", "2540", "2543", "2544", "2539",
+                "2551", "2553", "2549"].sort().reverse(), function(item) {
+                    return item <= val;
+                })
+        }
 
         var showGraphGuide = function(currentYear) {
-            }
             var snapped = snapYear(currentYear);
             var selected_overlay = '#graph-overlay g[id^="'+ snapped +'"]';
 
