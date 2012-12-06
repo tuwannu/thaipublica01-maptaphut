@@ -202,23 +202,28 @@ $(document).ready(function() {
 
     function bindEvent(data, bubble) {
         var bindBubble = function(v, idx) {
-            var t1;
-            var type;
+            var t1, type;
             $(v).mouseenter(function(e) {
+                var $this = $(this)
+                  , $parent = $this.parent();
+
                 t1 = new Date();
-                var $this = $(this);
-                var $parent = $this.parent();
+                e.stopPropagation();
+
                 if (_.isUndefined($parent.attr('id'))) {
                     $this.css({'opacity': 1.0, 'cursor': 'pointer'});
                     type = $this.parent().parent().parent().attr('id');
                 }
+
                 bubble.hide();
-                e.stopPropagation();
                 bubble.eq(idx).fadeIn();
+
             })
             .click(function(e) {
-                $parent = $(this).parent();
-                if (_.isUndefined($parent.attr('id'))) {
+                var $parent = $(this).parent()
+                  , id = $parent.attr('id');
+
+                if (_.isUndefined(id)) {
                     $.colorbox({
                         html        : buildincidentHTML(idx, type),
                         width       : "600px",
@@ -226,20 +231,18 @@ $(document).ready(function() {
                         height      : "75%"
                     });
                 }
+
             })
             .mouseleave(function(e){
-                var t2 = new Date();
-                var diff = t2 - t1;
+                var t2 = new Date()
+                  , diff = t2 - t1;
+
                 if (diff>80) {
-                    setTimeout(function() {
-                        bubble.eq(idx).fadeOut()
-                    }, 200)
+                    setTimeout(function delayFadeOut() { bubble.eq(idx).fadeOut() }, 200)
 
                 }
                 else {
-                   setTimeout(function() {
-                        bubble.eq(idx).fadeOut();
-                    }, 300);
+                   setTimeout(function muchDelayFadeOut() { bubble.eq(idx).fadeOut(); }, 300);
                 }
             })
         }

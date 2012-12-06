@@ -63,24 +63,26 @@
             }, 400);
         });
 
-        window.showGraphGuideFuncs = { }
-
-
         var snapYear = function(val) {
-            return _.find(["2520", "2523", "2529", "2531", "2534", "2535",
-                "2538", "2539", "2540", "2543", "2544", "2539",
-                "2551", "2553", "2549"].sort().reverse(), function(item) {
-                    return item <= val;
-                })
+          return _.find(["2520", "2523", "2529", "2531", "2534", "2535",
+                        "2538", "2539", "2540", "2543", "2544", "2539",
+                        "2551", "2553", "2549"].sort().reverse(), function(item) {
+            return item <= val;
+          })
         }
 
         var showGraphGuide = function(currentYear) {
             var snapped = snapYear(currentYear);
             var selected_overlay = '#graph-overlay g[id^="'+ snapped +'"]';
 
+            $('#graph-overlay').show();
             $('#graph-overlay g').hide();
-            $(selected_overlay).show();
 
+            $(selected_overlay).show();
+            showCityPlan(cityplan)
+        }
+
+        var showCityPlan = function(cityplan) {
             // Display plan description
             $('#other-cityPlan').show();
             var found = false;
@@ -96,6 +98,7 @@
                 $('#other-cityPlan image').hide();
             }
         }
+
     </script>
 
     <body style="margin:0px; padding:3px 0px 0px 0px;">
