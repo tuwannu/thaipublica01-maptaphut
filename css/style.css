@@ -40,7 +40,7 @@ body {
   top: 250px; }
 
 /*-------------------------
- 									Border-Box 
+ 									Border-Box
  --------------------------*/
 #cboxTopLeft, #cboxTopCenter, #cboxTopRight,
 #cboxMiddleLeft, #cboxMiddleRight, #cboxBottomLeft,
@@ -51,7 +51,7 @@ body {
   border-radius: 15px; }
 
 /*-------------------------
- 									PrimeBox 
+ 									PrimeBox
  --------------------------*/
 .primebox {
   margin: 20px; }
@@ -92,7 +92,7 @@ body {
   padding: 10px 20px 0; }
 
 /*-------------------------
- 									AccidentBox 
+ 									AccidentBox
  --------------------------*/
 .event-graph-Accident, .event-graph-Event, .accident-map {
   margin: 20px;
@@ -131,7 +131,7 @@ body {
     color: #c23d4d; }
 
 /*-------------------------
- 									EventBox 
+ 									EventBox
  --------------------------*/
 .event-graph-Event {
   margin: 20px;
@@ -172,7 +172,7 @@ body {
   margin-top: 10px; }
 
 /*-------------------------
-	 									Tipsy 
+	 									Tipsy
  --------------------------*/
 .tipsy-inner {
   font-size: 13px;
@@ -275,9 +275,10 @@ body {
  --------------------------*/
 #slider-range-max a {
   background: url("../images/btn-timeline.png") no-repeat;
-  height: 24px;
+  height: 75px;
   border: none;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-left: -26px; }
 
 /* Title */
 h1 {

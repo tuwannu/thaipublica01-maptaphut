@@ -16,20 +16,20 @@ h1#title {
 #slider-wrapper {
 	clear: both;
 	background: url(../asset/timeline.png) no-repeat;
-	height: 39px;
+	height: 80px;
 	border: none;
 	width: 858px;
 	margin-left: 42px;
 }
 
 #slider-range-max {
+	position: relative;
 	border: none;
 	background: none;
 	width: 837px;
 }
 #slider-range-max a {
-	height: 18px;
-	width: 24px;
+	width: 50px;
 	display: block;
 	margin: 13px 0 0 0;
 }
@@ -59,7 +59,7 @@ h1#title {
 	float: left;
 }
 
-#map-control div.green-factory {
+#map-contr	ol div.green-factory {
 	background: url(../asset/unselect-btn-green_factory.png) no-repeat center center;
 }
 
@@ -136,9 +136,27 @@ h1#title {
 #graph-control div.gpp {
 	background: url(../asset/unselect-btn-gpp.png) no-repeat center center;
 }
+
 #graph-control div.gpp.selected {
 	background: url(../asset/select-btn-gpp.png) no-repeat center center;
 }
+
+#graph-control div.people.selected {
+	background: url(../asset/select-btn-people.png) no-repeat center center;
+}
+
+#graph-control div.peopleHide.selected {
+	background: url(../asset/select-btn-peopleHide.png) no-repeat center center;
+}
+
+#graph-control div.people {
+	background: url(../asset/unselect-btn-people.png) no-repeat center center;
+}
+
+#graph-control div.peopleHide {
+	background: url(../asset/unselect-btn-peopleHide.png) no-repeat center center;
+}
+
 
 
 #overlay {

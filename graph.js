@@ -155,17 +155,17 @@ window.buildincidentHTML = function(idx, type) {
                                         <span>ผลกระทบ&nbsp;:&nbsp;</span> <%= effect %>\
                                     <% } %>\
                                     </div>\
-                                </li>")
+                                </li>");
     var obj = window[type + 'List'];
     var html_bef;
     var html_body = "";
 
     if (!_.isUndefined(obj)) {
         _.each(obj[idx], function(v, k) {
-            _.extend(v, {type: type, incident_year: _.last(v.date.split(splitterMap[type])) })
+            _.extend(v, {type: type, incident_year: _.last(v.date.split(splitterMap[type])) });
             html_bef = html(v);
             html_body += make_li(v);
-        })
+        });
     }
 
     html = html_bef + html_body + "</ul></div>";
@@ -173,33 +173,56 @@ window.buildincidentHTML = function(idx, type) {
 }
 
 $(document).ready(function() {
-    var svgprime = $('#svgprime').svg();
-        svgprime.load('PrimeMinister.svg?'+Math.random(), 'get', function (svg) {
-            // ON PRIMINISTER CLICK
-            $('image[id$="primeMinister"]').
-            mouseover(function(e) {
-                $(this).css({ cursor: 'pointer'});
+    !function construct_pm_box() {
+        var common_css = { 'z-index': 500, opacity: 0, width: '32', height: '32', background: 'red', position: 'absolute', top: '23px', float: 'left' };
+        var e = {
+            "2523-primeMinister": { left: '147px' },
+            "2531-primeMinister": { left: '305px' },
+            "2534-primeMinister": { left: '350px' },
+            "2535-primeMinister": { left: '400px' },
+            "2538-primeMinister": { left: '445px' },
+            "2551-primeMinister": { left: '773px' },
+            "2539-primeMinister": { left: '475px' },
+            "2540-primeMinister": { left: '520px' },
+            "2544-primeMinister": { left: '640px' },
+            "2549-primeMinister": { left: '723px' },
+            "2554-primeMinister": { left: '822px' }
+        };
 
-                var pmId = $(this).attr('id').split('-')[0],
-                    pmFullname = pmList[pmId] ? pmList[pmId]['fullname'] : ''
-                ;
-                $(this).tipsy({
-                    className: 'prime-minister-tipsy',
-                    gravity: 'n',
-                    fallback: pmFullname
-                })
-                .tipsy("show");
-            }).
-            click(function(){
-                var pmId = $(this).attr('id').split('-')[0];
-                $.colorbox({
-                    html        :buildPMInfo(pmId),
-                    width       :"600px",
-                    opacity     :0.82,
-                    height      : "75%"
-                });
-            });
+        _.each(e, function(i, k) {
+          $('#slider-range-max > div').append($('<div>').attr({id: k}).css(common_css).css(i));
         });
+    }();
+            // ON PRIMINISTER CLICK
+            $('div[id$="primeMinister"]').
+                mouseover(function(e) {
+                    $(this).css({ cursor: 'pointer'});
+
+                    var pmId = $(this).attr('id').split('-')[0],
+                        pmFullname = pmList[pmId] ? pmList[pmId]['fullname'] : ''
+                    ;
+                    $(this).tipsy({
+                        className: 'prime-minister-tipsy',
+                        gravity: 'n',
+                        fallback: 'รัฐบาล ' + pmFullname
+                    })
+                    .tipsy("show");
+                }).
+                mousedown(function(e){
+                    e.stopPropagation();
+                    var pmId = $(this).attr('id').split('-')[0];
+                    $.colorbox({
+                        html        :buildPMInfo(pmId),
+                        width       :"600px",
+                        opacity     :0.82,
+                        height      : "75%"
+                    });
+                });
+
+
+    // var svgprime = $('#svgprime').svg();
+    //     svgprime.load('PrimeMinister.svg?'+Math.random(), 'get', function (svg) {
+    //     });
 
     var svggraph = $('#svggraph').svg();
     svggraph.load('graph.svg?'+Math.random(), 'get', function (svg) {
@@ -212,13 +235,15 @@ $(document).ready(function() {
 
         // CREATE LAYER MANAGER
         window.LayerManager2 = CreateLayerManager(gr2, activeLayers2); // LAYER MANAGER
-        LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP']);
+        LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP', 'people', 'peopleHide']);
 
         // BIND EVENT
         bindEvent(LayerManager2.funcs['graph-Factory'].data(), jQuery('[id$="factoryBubble"]'));
         bindEvent(LayerManager2.funcs['graph-GPP'].data(), jQuery('[id$="gppBubble"]'));
         bindEvent(LayerManager2.funcs['graph-Accident'].data(), jQuery('[id$="accidentBubble"]'));
         bindEvent(LayerManager2.funcs['graph-Event'].data(), jQuery('[id$="event"]'));
+        bindEvent(LayerManager2.funcs['graph-people'].data(), jQuery('[id$="people-bubble"]'));
+        bindEvent(LayerManager2.funcs['graph-peopleHide'].data(), jQuery('[id$="peopleHide-bubble"]'));
     });
     function buildPMInfo(year) {
         var pm = pmList[year];
@@ -234,7 +259,7 @@ $(document).ready(function() {
                                         <div class='fullname'> \
                                             <%= fullname %> \
                                         </div> \
-                                        <div class='holdyear'> <%= hold_years %> </div> \
+                                        <div class='-bubbleldyear'> <%= hold_years %> </div> \
                                         <p class='events'>  <%= events_html %> </p> \
                                     </div>");
         var data = { fullname: pm.fullname, hold_years: pm.hold_years,
@@ -245,7 +270,7 @@ $(document).ready(function() {
 
     function bindEvent(data, bubble) {
         var bindBubble = function(v, idx) {
-            var t1, type;
+            var t1, type, $opa;
             $(v).mouseenter(function(e) {
                 var $this = $(this)
                   , $parent = $this.parent();
@@ -253,12 +278,22 @@ $(document).ready(function() {
                 t1 = new Date();
                 e.stopPropagation();
 
+                window.nat = $this
                 if (_.isUndefined($parent.attr('id'))) {
                     $this.css({'opacity': 1.0, 'cursor': 'pointer'});
                     type = $this.parent().parent().parent().attr('id');
+                    console.log(type)
+                    $opa = $this.parent().parent();
+                    $opa.animate({opacity: 1.0}, 0)
+                }
+                else {
+                    console.log("UNDEFINED ID", $this)
+                    $opa = undefined;
                 }
 
                 bubble.hide();
+                // console.log($opa, $opa.attr('id'))
+
                 bubble.eq(idx).fadeIn();
 
             })
@@ -279,20 +314,33 @@ $(document).ready(function() {
             .mouseleave(function(e){
                 var t2 = new Date()
                   , diff = t2 - t1;
+                var $this = $(this);
 
+                // $this.attr({opacity: 0.5})
+                // $this.parent().attr({opacity: 0.5})
+                // $this.parent().parent().attr({opacity: 0.5})
                 if (diff>80) {
-                    setTimeout(function delayFadeOut() { bubble.eq(idx).fadeOut() }, 200)
-
+                    setTimeout(function delayFadeOut() {
+                        if ($opa) {
+                            $opa.animate({opacity: 0.5});
+                        }
+                        bubble.eq(idx).fadeOut();
+                    }, 200);
                 }
                 else {
-                   setTimeout(function muchDelayFadeOut() { bubble.eq(idx).fadeOut(); }, 300);
+                    setTimeout(function muchDelayFadeOut() {
+                        if ($opa) {
+                            $opa.animate({opacity: 0.5});
+                        }
+                        bubble.eq(idx).fadeOut();
+                    }, 300);
                 }
-            })
-        }
+            });
+        };
 
         var circle = $('circle', data);
         _.each(circle, function(v, idx) {
             bindBubble(v, idx);
-        })
+        });
     }
 })
