@@ -199,16 +199,16 @@ $(document).ready(function() {
                     height      : "75%"
                 });
             });
-        })
+        });
 
-    var svggraph = $('#svggraph').svg()
+    var svggraph = $('#svggraph').svg();
     svggraph.load('graph.svg?'+Math.random(), 'get', function (svg) {
         var data = $('svg > g', $('#svggraph'));
         window.activeLayers2 = [];
 
         window.gr2 = _.groupBy(data, function(i) {
             return i.id.split('_')[0] || 'other';
-        })
+        });
 
         // CREATE LAYER MANAGER
         window.LayerManager2 = CreateLayerManager(gr2, activeLayers2); // LAYER MANAGER
@@ -225,12 +225,12 @@ $(document).ready(function() {
         var events_html = "<ul>";
         var events_template = _.template("<li><div class='time'><%= date %></div> <div class='data-year'><%= incident %></div> </li>");
         _.each(pm['events'], function(data) {
-	        events_html += events_template(data);
+            events_html += events_template(data);
         })
         events_html += "</ul>";
 
         var template = _.template("<div class='primebox'> \
-								        <img src='asset/primeminister/<%= year %>-primeMinister.png'/> \
+                                        <img src='asset/primeminister/<%= year %>-primeMinister.png'/> \
                                         <div class='fullname'> \
                                             <%= fullname %> \
                                         </div> \
@@ -277,7 +277,7 @@ $(document).ready(function() {
 
             })
             .mouseleave(function(e){
-                var t2 = new Date(),
+                var t2 = new Date()
                   , diff = t2 - t1;
 
                 if (diff>80) {
