@@ -186,7 +186,7 @@ $(document).ready(function() {
             "2540-primeMinister": { left: '520px' },
             "2544-primeMinister": { left: '640px' },
             "2549-primeMinister": { left: '723px' },
-            "2554-primeMinister": { left: '822px' }
+            "2553-primeMinister": { left: '822px' }
         };
 
         _.each(e, function(i, k) {
