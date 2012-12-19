@@ -278,16 +278,13 @@ $(document).ready(function() {
                 t1 = new Date();
                 e.stopPropagation();
 
-                window.nat = $this
                 if (_.isUndefined($parent.attr('id'))) {
                     $this.css({'opacity': 1.0, 'cursor': 'pointer'});
                     type = $this.parent().parent().parent().attr('id');
-                    console.log(type)
                     $opa = $this.parent().parent();
-                    $opa.animate({opacity: 1.0}, 0)
+                    $opa.animate({opacity: 1.0}, 0);
                 }
                 else {
-                    console.log("UNDEFINED ID", $this)
                     $opa = undefined;
                 }
 
