@@ -58,6 +58,7 @@ body {
  									Global
  --------------------------*/
 .content {
+	z-index: 2;
 	width: 1044px;
 	margin: 0 auto;
 	position: relative;
@@ -192,12 +193,12 @@ body {
 
 #graph-wrapper {
 	width: 1044px;
-	overflow: hidden;
+	// overflow: hidden;
 	position: relative;
 }
 #graph-control {
 	position: absolute;
-	right: 40px;
+	right: 26px;
 	top: 60px;
 	div {
 		margin-bottom: 10px;
@@ -341,6 +342,26 @@ body {
 }
 
 
+.people-subclass {
+	opacity: 1 !important;
+	.tipsy-arrow-e {
+		border-left-color: #296412 !important;
+	}
+	.tipsy-inner {
+		background-color: #296412 !important;
+	}
+}
+
+.peopleHide-subclass {
+	opacity: 1 !important;
+	.tipsy-arrow-e {
+		border-left-color: #86a653 !important;
+	}
+	.tipsy-inner {
+		background-color: #86a653 !important;
+	}
+}
+
 #svgprime {
 	margin-top: 25px;
 }
@@ -387,7 +408,7 @@ h1 {
 	top: -15px;
 	font-size: 46px;
 	line-height: 40px;
-	z-index: 99;
+	z-index: 1;
 	span {
 		font-size: 60px;
 		color: #7a7057;

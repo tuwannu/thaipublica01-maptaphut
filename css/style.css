@@ -30,6 +30,7 @@ body {
  									Global
  --------------------------*/
 .content {
+  z-index: 2;
   width: 1044px;
   margin: 0 auto;
   position: relative;
@@ -148,12 +149,11 @@ body {
 
 #graph-wrapper {
   width: 1044px;
-  overflow: hidden;
   position: relative; }
 
 #graph-control {
   position: absolute;
-  right: 40px;
+  right: 26px;
   top: 60px; }
   #graph-control div {
     margin-bottom: 10px; }
@@ -254,6 +254,20 @@ body {
   .accident-subclass .tipsy-inner {
     background-color: #d63b3e !important; }
 
+.people-subclass {
+  opacity: 1 !important; }
+  .people-subclass .tipsy-arrow-e {
+    border-left-color: #296412 !important; }
+  .people-subclass .tipsy-inner {
+    background-color: #296412 !important; }
+
+.peopleHide-subclass {
+  opacity: 1 !important; }
+  .peopleHide-subclass .tipsy-arrow-e {
+    border-left-color: #86a653 !important; }
+  .peopleHide-subclass .tipsy-inner {
+    background-color: #86a653 !important; }
+
 #svgprime {
   margin-top: 25px; }
 
@@ -298,7 +312,7 @@ h1 {
   top: -15px;
   font-size: 46px;
   line-height: 40px;
-  z-index: 99; }
+  z-index: 1; }
   h1 span {
     font-size: 60px;
     color: #7a7057; }

@@ -18,7 +18,7 @@ h1#title {
 	background: url(../asset/timeline.png) no-repeat;
 	height: 80px;
 	border: none;
-	width: 858px;
+	width: 882px;
 	margin-left: 42px;
 }
 
@@ -26,7 +26,7 @@ h1#title {
 	position: relative;
 	border: none;
 	background: none;
-	width: 837px;
+	width: 861px;
 }
 #slider-range-max a {
 	width: 50px;
@@ -52,7 +52,7 @@ h1#title {
 #graph-control {
 	float: left;
 	width: 76px;
-
+	z-index: 999;
 }
 
 #map-control {
@@ -168,4 +168,13 @@ h1#title {
     background: #000;
     opacity: 0.5;
     filter: alpha(opacity=50);
+}
+
+#graph-wrapper {
+	width: 1024px;
+	height: 270px;
+}
+
+#map-wrapper {
+	top: 17px;
 }
