@@ -54,30 +54,27 @@
 	</g>
 </pattern>
 
-<g id="cityPlan">
+<g id="2531-cityPlan">
 
-		<image display="none" overflow="visible" width="722" height="230" id="2531-highlight" xlink:href="../asset/2531-highlight.png"  transform="matrix(1 0 0 1 32.3975 0)">
+		<image overflow="visible" width="722" height="230" id="2531-highlight" xlink:href="../asset/2531-highlight.png"  transform="matrix(1 0 0 1 32.3975 0)"> </image> 
+		<image overflow="visible" enable-background="new    " width="298" height="85" id="2531-cityPlan" xlink:href="../asset/cityplan-2531.png"  transform="matrix(1 0 0 1 -6.5088 31.2656)"> </image>
+</g>
+
+<g id="2534-cityPlan"> 
+		<image overflow="visible" width="692" height="232" id="2534-highlight" xlink:href="../asset/2534-highlight.png"  transform="matrix(1 0 0 1 112.4912 0)"> </image> 
+        <image overflow="visible" enable-background="new    " width="298" height="85" id="2534-cityPlan" xlink:href="../asset/cityplan-2534.png"  transform="matrix(1 0 0 1 -6.5088 31.2656)"> </image>
+</g>
+
+<g id="2546-cityPlan"> 
+		<image overflow="visible" width="742" height="232" id="2546-highlight" xlink:href="../asset/2546-highlight.png"  transform="matrix(1 0 0 1 161.4844 0.0049)"> </image> 
+		<image overflow="visible" enable-background="new    " width="298" height="85" id="2546-cityPlan" xlink:href="../asset/cityplan-2546.png"  transform="matrix(1 0 0 1 -6.5088 31.2656)"> </image> 
+</g>
+
+<g id="2555-cityPlan"> 
+		<image overflow="visible" width="804" height="235" id="2550-highlight" xlink:href="../asset/2555-highlight.png"  transform="matrix(1 0 0 1 168.9502 0.5703)">
 	</image>
 
-		<image overflow="visible" enable-background="new    " width="298" height="85" id="2531-cityPlan" xlink:href="../asset/cityplan-2531.png"  transform="matrix(1 0 0 1 -6.5088 31.2656)">
-	</image>
-
-		<image display="none" overflow="visible" width="692" height="232" id="2534-highlight" xlink:href="../asset/2534-highlight.png"  transform="matrix(1 0 0 1 112.4912 0)">
-	</image>
-
-		<image display="none" overflow="visible" enable-background="new    " width="298" height="85" id="2534-cityPlan" xlink:href="../asset/cityplan-2534.png"  transform="matrix(1 0 0 1 -6.5088 31.2656)">
-	</image>
-
-		<image display="none" overflow="visible" width="742" height="232" id="2546-highlight" xlink:href="../asset/2546-highlight.png"  transform="matrix(1 0 0 1 161.4844 0.0049)">
-	</image>
-
-		<image display="none" overflow="visible" enable-background="new    " width="298" height="85" id="2546-cityPlan" xlink:href="../asset/cityplan-2546.png"  transform="matrix(1 0 0 1 -6.5088 31.2656)">
-	</image>
-
-		<image display="none" overflow="visible" width="804" height="235" id="2550-highlight" xlink:href="../asset/2555-highlight.png"  transform="matrix(1 0 0 1 168.9502 0.5703)">
-	</image>
-
-		<image display="none" overflow="visible" enable-background="new    " width="298" height="85" id="2555-cityPlan" xlink:href="../asset/cityplan-2555.png"  transform="matrix(1 0 0 1 -6.5088 31.2656)">
+		<image overflow="visible" enable-background="new    " width="298" height="85" id="2555-cityPlan" xlink:href="../asset/cityplan-2555.png"  transform="matrix(1 0 0 1 -6.5088 31.2656)">
 	</image>
 </g>
 <g id="other-white-map">
