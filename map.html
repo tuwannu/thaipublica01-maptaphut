@@ -20,59 +20,7 @@
     <link rel="stylesheet" href="css/jquery-ui.css" />
 
     <script type="text/javascript" src="graph.js"></script>
-    <style type="text/css" media="screen">
-        #nsw, #vic, #wa, #sa, #nt, #qld, #tas {
-            display: none;
-            height: 400px;
-            overflow: auto;
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 300px;
-        }
-        h2 {
-            text-align: center;
-        }
-    </style>
-    <script>
 
-        var snapYear = function(val) {
-          return _.find(["2520", "2523", "2529", "2531", "2534", "2535",
-                        "2538", "2539", "2540", "2543", "2544", "2539",
-                        "2551", "2553", "2549"].sort().reverse(), function(item) {
-            return item <= val;
-          })
-        }
-
-        var showGraphGuide = function(currentYear) {
-            var snapped = snapYear(currentYear);
-            var selected_overlay = '#graph-overlay g[id^="'+ snapped +'"]';
-
-            $('#graph-overlay').show();
-            $('#graph-overlay g').hide();
-
-            $(selected_overlay).show();
-            // showCityPlan(citypla)
-        }
-
-        var showCityPlan = function(cityplan) {
-            // Display plan description
-            $('#other-cityPlan').show();
-            var found = false;
-            _.each(cityplan, function (data) {
-                var year = parseInt(data.year);
-                if (year <= currentYear) {
-                    found = true;
-                    $('#other-cityPlan image').hide();
-                    $('image#' + data.imageId).show();
-                }
-            });
-            if (found === false) {
-                $('#other-cityPlan image').hide();
-            }
-        }
-
-    </script>
 
     <body style="margin:0px; padding:3px 0px 0px 0px;">
         <h1><span>30 ปี</span><br /> มาบตาพุด</h1>
@@ -96,10 +44,10 @@
                 <div id="svgload"></div>
                 <div id="map-control" style="width:200px"> </div>
             </div>
-<!--             <p class="debug">
+            <p class="debug">
                 <label for="amount">Year:</label>
                 <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
-            </p> -->
+            </p>
         </div>
     </body>
 </html>

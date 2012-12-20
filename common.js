@@ -66,3 +66,42 @@ window.CreateLayerManager = function(group, activeLayers) {
     return manager;
 
 }; // LAYER MNGR CREATER
+
+
+// Utility
+
+var snapYear = function(val) {
+  return _.find(["2520", "2523", "2529", "2531", "2534", "2535",
+                "2538", "2539", "2540", "2543", "2544", "2539",
+                "2551", "2553", "2549"].sort().reverse(), function(item) {
+    return item <= val;
+  })
+}
+
+var showGraphGuide = function(currentYear) {
+    var snapped = snapYear(currentYear);
+    var selected_overlay = '#graph-overlay g[id^="'+ snapped +'"]';
+
+    $('#graph-overlay').show();
+    $('#graph-overlay g').hide();
+
+    $(selected_overlay).show();
+    // showCityPlan(citypla)
+}
+
+var showCityPlan = function(cityplan) {
+    // Display plan description
+    $('#other-cityPlan').show();
+    var found = false;
+    _.each(cityplan, function (data) {
+        var year = parseInt(data.year);
+        if (year <= currentYear) {
+            found = true;
+            $('#other-cityPlan image').hide();
+            $('image#' + data.imageId).show();
+        }
+    });
+    if (found === false) {
+        $('#other-cityPlan image').hide();
+    }
+}
