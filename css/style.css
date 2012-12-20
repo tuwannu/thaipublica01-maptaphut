@@ -312,7 +312,7 @@ h1 {
   top: -15px;
   font-size: 46px;
   line-height: 40px;
-  z-index: 1; }
+  z-index: 10000; }
   h1 span {
     font-size: 60px;
     color: #7a7057; }
