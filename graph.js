@@ -26,6 +26,20 @@ window.buildincidentHTML = function(idx, type) {
     }
 
     html = html_bef + html_body + "</ul></div>";
+    var year = obj[idx].year;
+    var image_template = _.template("<div class='info-item'> \
+                                        <img class='info-image' src='images/info_image/<%= filename %>'>\
+                                        <p class='info-text'><%= info %></p> \
+                                    </div>");
+
+    if (type === 'graph-Event') {
+        html+= "<div class='info-wrapper'>";
+        _.each(graph_bubble_info[year], function(oo) {
+            html+= image_template(oo);
+        });
+        html+= "</div>";
+    }
+
     return  html;
 }
 
@@ -76,11 +90,6 @@ $(document).ready(function() {
                     });
                 });
 
-
-    // var svgprime = $('#svgprime').svg();
-    //     svgprime.load('PrimeMinister.svg?'+Math.random(), 'get', function (svg) {
-    //     });
-
     var svggraph = $('#svggraph').svg();
     svggraph.load('graph.svg?'+Math.random(), 'get', function (svg) {
         var data = $('svg > g', $('#svggraph'));
@@ -108,7 +117,7 @@ $(document).ready(function() {
         var events_template = _.template("<li><div class='time'><%= date %></div> <div class='data-year'><%= incident %></div> </li>");
         _.each(pm['events'], function(data) {
             events_html += events_template(data);
-        })
+        });
         events_html += "</ul>";
 
         var template = _.template("<div class='primebox'> \
@@ -122,12 +131,15 @@ $(document).ready(function() {
         var data = { fullname: pm.fullname, hold_years: pm.hold_years,
             year: year, events_html: events_html
         };
+
         return  template(data);
     }
 
     function bindEvent(data, bubble) {
         var bindBubble = function(v, idx) {
             var t1, type, $opa;
+
+
             $(v).mouseenter(function(e) {
                 var $this = $(this)
                   , $parent = $this.parent();
@@ -152,6 +164,8 @@ $(document).ready(function() {
 
             })
             .click(function(e) {
+                var obj = window[type + 'List'];
+
                 var $parent = $(this).parent()
                   , id = $parent.attr('id');
 
