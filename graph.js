@@ -59,15 +59,15 @@ $(document).ready(function() {
     !function construct_pm_box() {
         var common_css = { 'z-index': 500, opacity: 0, width: '32', height: '32', background: 'red', position: 'absolute', top: '23px', float: 'left' };
         var e = {
-            "2523-primeMinister": { left: '147px' },
-            "2531-primeMinister": { left: '305px' },
-            "2534-primeMinister": { left: '350px' },
-            "2535-primeMinister": { left: '400px' },
-            "2538-primeMinister": { left: '445px' },
-            "2551-primeMinister": { left: '773px' },
-            "2539-primeMinister": { left: '475px' },
-            "2540-primeMinister": { left: '520px' },
-            "2544-primeMinister": { left: '640px' },
+            "2523-primeMinister": { left: '100px' },
+            "2531-primeMinister": { left: '295px' },
+            "2534-primeMinister": { left: '340px' },
+            "2535-primeMinister": { left: '390px' },
+            "2538-primeMinister": { left: '435px' },
+            "2539-primeMinister": { left: '465px' },
+            "2540-primeMinister": { left: '510px' },
+            "2544-primeMinister": { left: '605px' },
+            "2551-primeMinister": { left: '775px' },
             "2549-primeMinister": { left: '723px' },
             "2553-primeMinister": { left: '822px' }
         };
