@@ -1,3 +1,21 @@
+window.build_with_image = function (type, year) {
+	var html = "";
+	var image_template = _.template("<div class='info-item'> \
+                                        <img class='info-image' src='images/info_image/<%= filename %>'>\
+                                        <p class='info-text'><%= info %></p> \
+                                    </div>");
+
+    if (type === 'graph-Event') {
+        html+= "<div class='info-wrapper'>";
+        _.each(graph_bubble_info[year], function(oo) {
+            html+= image_template(oo);
+        });
+        html+= "</div>";
+    }
+
+    return html
+}
+
 window.buildincidentHTML = function(idx, type) {
     var splitterMap = { 'graph-Event' : ' ', 'graph-Accident': '/' };
     var html = _.template("<div class='event-<%= type %>'>\
@@ -16,29 +34,24 @@ window.buildincidentHTML = function(idx, type) {
     var obj = window[type + 'List'];
     var html_bef;
     var html_body = "";
+    var year = obj[idx].year;
 
     if (!_.isUndefined(obj)) {
         _.each(obj[idx], function(v, k) {
             _.extend(v, {type: type, incident_year: _.last(v.date.split(splitterMap[type])) });
             html_bef = html(v);
+            var outcome = _.find(graph_bubble_info[year], function(oo) {
+            	return oo['date'] == v['date']
+            })
+            console.log(v['date'], outcome);
             html_body += make_li(v);
         });
     }
 
-    html = html_bef + html_body + "</ul></div>";
-    var year = obj[idx].year;
-    var image_template = _.template("<div class='info-item'> \
-                                        <img class='info-image' src='images/info_image/<%= filename %>'>\
-                                        <p class='info-text'><%= info %></p> \
-                                    </div>");
+    var html = html_bef + html_body + "</ul></div>";
 
-    if (type === 'graph-Event') {
-        html+= "<div class='info-wrapper'>";
-        _.each(graph_bubble_info[year], function(oo) {
-            html+= image_template(oo);
-        });
-        html+= "</div>";
-    }
+    console.log(graph_bubble_info[year])
+	html+= build_with_image(type, year);
 
     return  html;
 }
