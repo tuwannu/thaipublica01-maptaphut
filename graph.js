@@ -1,26 +1,30 @@
-window.build_with_image = function (type, year) {
-	var html = "";
-	var image_template = _.template("<div class='info-item'> \
+window.build_with_image = function (type, year, date) {
+    var html = "";
+    var image_template = _.template("<div class='info-item'> \
                                         <img class='info-image' src='images/info_image/<%= filename %>'>\
                                         <p class='info-text'><%= info %></p> \
                                     </div>");
 
-    if (type === 'graph-Event') {
-        html+= "<div class='info-wrapper'>";
-        _.each(graph_bubble_info[year], function(oo) {
-            html+= image_template(oo);
-        });
-        html+= "</div>";
-    }
+    var outcome = _.find(graph_bubble_info[year], function(oo) {
+        return oo['date'] == date;
+    })
 
-    return html
+    if (outcome && type === 'graph-Event') {
+        html+= "<div class='info-wrapper'>";
+        html+= image_template(outcome);
+        html+= "</div>";
+        return html;
+    }
+    else {
+        return '';
+    }
 }
 
 window.buildincidentHTML = function(idx, type) {
     var splitterMap = { 'graph-Event' : ' ', 'graph-Accident': '/' };
     var html = _.template("<div class='event-<%= type %>'>\
         <div class='incident-year'> <%= incident_year %> </div>\
-        <ul id='incident-<%= type %>'>")
+        <ul id='incident-<%= type %>'>");
     var make_li = _.template(" <li>\
                                     <div class='time'><%= date %></div>\
                                     <div class='incident'> <%= incedent %> </div>\
@@ -35,23 +39,21 @@ window.buildincidentHTML = function(idx, type) {
     var html_bef;
     var html_body = "";
     var year = obj[idx].year;
+    var html_image = "";
 
     if (!_.isUndefined(obj)) {
         _.each(obj[idx], function(v, k) {
-            _.extend(v, {type: type, incident_year: _.last(v.date.split(splitterMap[type])) });
+            _.extend(v, {type: type, incident_year: year });
             html_bef = html(v);
-            var outcome = _.find(graph_bubble_info[year], function(oo) {
-            	return oo['date'] == v['date']
-            })
-            console.log(v['date'], outcome);
             html_body += make_li(v);
+            html_body += build_with_image(type, year, v['date']);
         });
     }
-
-    var html = html_bef + html_body + "</ul></div>";
+    console.log(html_image)
+    html = html_bef + html_body + "</ul></div>";
 
     console.log(graph_bubble_info[year])
-	html+= build_with_image(type, year);
+    // html+= build_with_image(type, year);
 
     return  html;
 }

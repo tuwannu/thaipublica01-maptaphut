@@ -182,7 +182,7 @@ h1#title {
 
 .info-wrapper{
 	width: 440px;
-	padding: 0 0 0 60px;
+	padding: 0 0 0 20px;
 }
 
 .info-wrapper.accident {
@@ -192,7 +192,7 @@ h1#title {
 .info-text {
 	margin-bottom: 5px;
 	color: #333;
-	font-size: 20px!important;
+	font-size: 16px!important;
 	line-height: 22px;
 	font-family: 'db_brandvoice_xbold';
 }
