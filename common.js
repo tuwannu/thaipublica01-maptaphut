@@ -86,22 +86,4 @@ var showGraphGuide = function(currentYear) {
     $('#graph-overlay g').hide();
 
     $(selected_overlay).show();
-    // showCityPlan(citypla)
-}
-
-var showCityPlan = function(cityplan) {
-    // Display plan description
-    $('#other-cityPlan').show();
-    var found = false;
-    _.each(cityplan, function (data) {
-        var year = parseInt(data.year);
-        if (year <= currentYear) {
-            found = true;
-            $('#other-cityPlan image').hide();
-            $('image#' + data.imageId).show();
-        }
-    });
-    if (found === false) {
-        $('#other-cityPlan image').hide();
-    }
 }
