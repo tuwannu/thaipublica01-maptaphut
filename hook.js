@@ -233,7 +233,6 @@ hook.startup = function () {
                 var layer_to_show = getCurrentLayers('#map-control');
                 LayerManager.show(currentYear || 2555, layer_to_show);
                 showGraphGuide(ui.value, ['graphOverlay']);
-
             }
         });
 
@@ -247,10 +246,12 @@ hook.startup = function () {
                 clearTimeout(inter)
             }
             var layer_to_show = getCurrentLayers('#map-control');
-            LayerManager.show(2555, layer_to_show);
-            LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP', 'people', 'peopleHide']);
-            guideManager.show(currentYear, ['graphOverlay']);
-            // showGraphGuide(currentYear)
+            if (LayerManager && LayerManager2) {
+                LayerManager.show(2555, layer_to_show);
+                LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP', 'people', 'peopleHide']);
+                // guideManager.show(currentYear, ['graphOverlay']);
+                showGraphGuide(currentYear)
+            }
         }, 400);
     });
 
