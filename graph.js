@@ -49,11 +49,8 @@ window.buildincidentHTML = function(idx, type) {
             html_body += build_with_image(type, year, v['date']);
         });
     }
-    console.log(html_image)
-    html = html_bef + html_body + "</ul></div>";
 
-    console.log(graph_bubble_info[year])
-    // html+= build_with_image(type, year);
+    html = html_bef + html_body + "</ul></div>";
 
     return  html;
 }

@@ -98,7 +98,7 @@ hook.startup = function () {
                 $(this).css({'opacity': 1.0, 'cursor': 'pointer'});
             });
             elm.click(function(e) {
-                e.preventDefault();
+                // e.preventDefault();
                 var $this = $(this);
                 var $attr = $this.attr('selected');
                 if ($attr) {
@@ -143,7 +143,7 @@ hook.startup = function () {
             var accId = parseInt(elmId, 10) - 1;
             var template = _.template("<div class='accident-map'> \
                                             <div class='acc_date'> <%= date %> </div> \
-                                            <div class='acc_desc'> <%= desc %> </div> \
+                                            <div class='acc_desc'> <%= incedent %> </div> \
                                             <div class='acc_loc'><span>สถานที่: </span> <%= location %> </div>\
                                             <div class='acc_eff'><span>ผลกระทบ: </span> <%= effect %> </div>\
                                        </div>");
@@ -162,37 +162,51 @@ hook.startup = function () {
                 }]
             };
 
-            console.log(accId, elmId);
-            var data = {
-                    date: accidentList[accId][0],
-                    desc: accidentList[accId][1],
-                    location: accidentList[accId][2],
-                    effect: accidentList[accId][3]
-                };
-
-
-
+            $nat = $this;
             var year = _.first($this.parent().attr('id').split('-'));
+            var siblings = $('image[id*="accident"]', $this.parent());
+            var ids = _.filter(_.collect(siblings, function(o) { return o.id }), function(oo) {
+                return oo.indexOf("Img") === -1;
+            });
+
+            var myid = $this.attr('id').replace("Img-", "");
+            var my_position = _.indexOf(ids, myid)
+            console.log("MY POSITION = ", my_position, myid, ids);
+            // a = accident_on_graph[year];
+            // b = ids;
+            // _.each(a, function(i, k) {
+            //   var obj = { }
+            //   obj[b[k]] = i; console.log(obj)
+            //   _.extend(v, obj)
+            // })
+            // console.log(accident_on_graph[year], ids);
+
+            // var data = {
+            //         date: accidentList[accId][0],
+            //         desc: accidentList[accId][1],
+            //         location: accidentList[accId][2],
+            //         effect: accidentList[accId][3]
+            //     };
+
+
+            data = accident_on_graph[year][my_position];
+
+
             var html = template(data);
 
-            console.log('year', year)
-            console.log(accident_on_graph[year])
-            window.$nat = $(this);
             var image_template = _.template("<div class='info-item'> \
                                             <img class='info-image' src='images/info_image/<%= filename %>'>\
                                             <p class='info-text'><%= info %></p> \
                                         </div>");
 
+
             if (acc_image[year]) {
                 html+= "<div class='info-wrapper accident'>";
-                _.each(acc_image[year], function(oo) {
-                    html+= image_template(oo);
-                });
+                    _.each(acc_image[year], function(oo) { html+= image_template(oo); });
                 html+= "</div>";
             }
             $.colorbox({
                 html        : html,
-                // width       :"580px",
                 opacity     :0.8,
                 // transition  : 'fade',
                 width       : '560px',
@@ -222,9 +236,6 @@ hook.startup = function () {
             }
         });
 
-        $('.ui-slider-handle').on('click', function(e) {
-            $('.ui-slider-handle').removeClass("ui-state-focus ui-state-hover");
-        })
         //Update #amount (first time)
         $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ));
 
