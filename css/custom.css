@@ -20,14 +20,16 @@ h1#title {
 	border: none;
 	width: 882px;
 	margin-left: 42px;
-	left: -14px;
+	left: -8px;
 }
 
 #slider-range-max {
 	position: relative;
 	border: none;
 	background: none;
-	width: 861px;
+	width: 842px;
+	left: -5px;
+	top: 4px;
 }
 #slider-range-max a {
 	width: 50px;
@@ -178,6 +180,7 @@ h1#title {
 
 #map-wrapper {
 	top: 17px;
+	left: 2px;
 }
 
 .info-wrapper{
