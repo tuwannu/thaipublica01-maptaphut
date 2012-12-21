@@ -90,7 +90,14 @@ body {
   /* 	min-height: 400px; */ }
 
 #cboxClose {
-  padding: 10px 20px 0; }
+  position: absolute;
+  background: url("../asset/close.png") no-repeat;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 24px;
+  height: 24px;
+  top: 11px;
+  right: 11px; }
 
 /*-------------------------
  									AccidentBox
