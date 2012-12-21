@@ -20,6 +20,7 @@ h1#title {
 	border: none;
 	width: 882px;
 	margin-left: 42px;
+	left: -14px;
 }
 
 #slider-range-max {
@@ -177,4 +178,30 @@ h1#title {
 
 #map-wrapper {
 	top: 17px;
+}
+
+.info-wrapper{
+	width: 440px;
+	padding: 0 0 0 60px;
+}
+
+.info-wrapper.accident {
+	padding: 0 0 0 45px;
+}
+
+.info-text {
+	margin-bottom: 5px;
+	color: #333;
+	font-size: 20px!important;
+	line-height: 22px;
+	font-family: 'db_brandvoice_xbold';
+}
+
+.info-image {
+	width: 430px;
+}
+
+
+#graph-control {
+	right: 7px;
 }
