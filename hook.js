@@ -171,7 +171,6 @@ hook.startup = function () {
 
             var myid = $this.attr('id').replace("Img-", "");
             var my_position = _.indexOf(ids, myid)
-            console.log("MY POSITION = ", my_position, myid, ids);
             // a = accident_on_graph[year];
             // b = ids;
             // _.each(a, function(i, k) {
