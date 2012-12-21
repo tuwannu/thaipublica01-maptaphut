@@ -98,7 +98,7 @@ $(document).ready(function() {
                         html        :buildPMInfo(pmId),
                         width       :"600px",
                         opacity     :0.82,
-                        height      : "75%"
+                        height      : "550px"
                     });
                 });
 
@@ -122,6 +122,12 @@ $(document).ready(function() {
         bindEvent(LayerManager2.funcs['graph-Event'].data(), jQuery('[id$="event"]'));
         bindEvent(LayerManager2.funcs['graph-people'].data(), jQuery('[id$="people-bubble"]'));
         bindEvent(LayerManager2.funcs['graph-peopleHide'].data(), jQuery('[id$="peopleHide-bubble"]'));
+
+        window.guideManager;
+
+        var act_guide = [];
+        var __gr2__ = _.groupBy($('#graph-overlay g'), function(i) {    return i.id.split('_')[0] || 'other';});
+        guideManager = CreateLayerManager(__gr2__, act_guide);
     });
     function buildPMInfo(year) {
         var pm = pmList[year];
@@ -223,4 +229,5 @@ $(document).ready(function() {
             bindBubble(v, idx);
         });
     }
-})
+
+});

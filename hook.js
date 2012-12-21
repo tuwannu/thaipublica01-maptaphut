@@ -232,7 +232,8 @@ hook.startup = function () {
                 window.currentYear = ui.value
                 var layer_to_show = getCurrentLayers('#map-control');
                 LayerManager.show(currentYear || 2555, layer_to_show);
-                showGraphGuide(ui.value);
+                showGraphGuide(ui.value, ['graphOverlay']);
+
             }
         });
 
@@ -248,7 +249,8 @@ hook.startup = function () {
             var layer_to_show = getCurrentLayers('#map-control');
             LayerManager.show(2555, layer_to_show);
             LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP', 'people', 'peopleHide']);
-            showGraphGuide(currentYear)
+            guideManager.show(currentYear, ['graphOverlay']);
+            // showGraphGuide(currentYear)
         }, 400);
     });
 
