@@ -3,44 +3,43 @@ window.hook = { };
 hook.startup = function () {
 
     var graph_control_labels = [{
+            "key": "Factory",
+            "class": "factory",
+            "text": "โรงงาน",
+            "tipsyGravity": "e"
+        },
+        {
+            "key": "Accident",
+            "class": "accident",
+            "text": "อุบัติเหตุ",
+            "tipsyGravity": "e"
 
-        "key": "Factory",
-        "class": "factory",
-        "text": "โรงงาน",
-        "tipsyGravity": "e"
-    },
-    {
-        "key": "Accident",
-        "class": "accident",
-        "text": "อุบัติเหตุ",
-        "tipsyGravity": "e"
+        },
+        {
+            "key": "Event",
+            "class": "event",
+            "text": "เหตุการณ์",
+            "tipsyGravity": "e"
 
-    },
-    {
-        "key": "Event",
-        "class": "event",
-        "text": "เหตุการณ์",
-        "tipsyGravity": "e"
-
-    },
-    {
-        "key": "GPP",
-        "class": "gpp",
-        "text": "จีพีพี (ผลิตภัณฑ์มวลรวมจังหวัด)",
-        "tipsyGravity": "e"
-    },
-    {
-        "key": "people",
-        "class": "people",
-        "text": "ประชากรท้องถิ่น",
-        "tipsyGravity": "e"
-    },
-    {
-        "key": "peopleHide",
-        "class": "peopleHide",
-        "text": "ประชากรแฝง",
-        "tipsyGravity": "e"
-    }
+        },
+        {
+            "key": "GPP",
+            "class": "gpp",
+            "text": "จีพีพี (ผลิตภัณฑ์มวลรวมจังหวัด)",
+            "tipsyGravity": "e"
+        },
+        {
+            "key": "people",
+            "class": "people",
+            "text": "ประชากรท้องถิ่น",
+            "tipsyGravity": "e"
+        },
+        {
+            "key": "peopleHide",
+            "class": "peopleHide",
+            "text": "ประชากรแฝง",
+            "tipsyGravity": "e"
+        }
     ];
 
     var map_control_labels = [{
@@ -139,33 +138,70 @@ hook.startup = function () {
             $(this).css({cursor: 'pointer'});
         }).
         click(function(){
-        var elmId = $(this).attr('id').split('accident')[1];
-        var accId = parseInt(elmId, 10) - 1;
-        var template = _.template("<div class='accident-map'> \
-                                        <div class='acc_date'> <%= date %> </div> \
-                                        <div class='acc_desc'> <%= desc %> </div> \
-                                        <div class='acc_loc'><span>สถานที่: </span> <%= location %> </div>\
-                                        <div class='acc_eff'><span>ผลกระทบ: </span> <%= effect %> </div>\
-                                   </div>");
-
-        var data = {
-                date: accidentList[accId][0],
-                desc: accidentList[accId][1],
-                location: accidentList[accId][2],
-                effect: accidentList[accId][3]
+            var $this = $(this);
+            var elmId = $this.attr('id').split('accident')[1];
+            var accId = parseInt(elmId, 10) - 1;
+            var template = _.template("<div class='accident-map'> \
+                                            <div class='acc_date'> <%= date %> </div> \
+                                            <div class='acc_desc'> <%= desc %> </div> \
+                                            <div class='acc_loc'><span>สถานที่: </span> <%= location %> </div>\
+                                            <div class='acc_eff'><span>ผลกระทบ: </span> <%= effect %> </div>\
+                                       </div>");
+            var acc_image = {
+                "2540": [{
+                    "filename": "2540-01juneAccident.png",
+                    "info": "วันที่ 23 มิย. 40 เกิดปัญหามลพิษทางอากาศ นักเรียนรร.มาบตาพุดพันพิทยาคารนับร้อยถูกหามส่งรพ."
+                }],
+                "2547": [{
+                    "filename": "2547-02decAccident.png",
+                    "info": "วันที่ 3 ธค. 47 เพลิงไหม้โกดังเก็บวัตถุดิบสำหรับผลิตพีวีซีหรือพลาสติกแผ่นแข็ง โรงงานซีพีเจริญโภคภัณฑ์ปิโตรเคมี จำกัด กิงอำเภอนิคมพัฒนา จ. ระยอง"
+                }],
+                "2555": [{
+                    "filename": "2555-03decAccident.png",
+                    "info": "วันที่ 5 ธค. 55 เหตุเพลิงไหม้โรงงานบ.บีเอสที อิลาสโตเมอร์ส จำกัด"
+                }]
             };
 
-        $.colorbox({
-            html        : template(data),
-            // width       :"580px",
-            opacity     :0.8,
-            // transition  : 'fade',
-            width       : '500px',
-            height      : '400px'
+            console.log(accId, elmId);
+            var data = {
+                    date: accidentList[accId][0],
+                    desc: accidentList[accId][1],
+                    location: accidentList[accId][2],
+                    effect: accidentList[accId][3]
+                };
 
-            // transition: 'fade'
-        });
-        //$(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
+
+
+            var year = _.first($this.parent().attr('id').split('-'));
+            var html = template(data);
+
+            console.log('year', year)
+            console.log(accident_on_graph[year])
+            window.$nat = $(this);
+            var image_template = _.template("<div class='info-item'> \
+                                            <img class='info-image' src='images/info_image/<%= filename %>'>\
+                                            <p class='info-text'><%= info %></p> \
+                                        </div>");
+
+            if (acc_image[year]) {
+                html+= "<div class='info-wrapper accident'>";
+                _.each(acc_image[year], function(oo) {
+                    html+= image_template(oo);
+                });
+                html+= "</div>";
+            }
+            $.colorbox({
+                html        : html,
+                // width       :"580px",
+                opacity     :0.8,
+                // transition  : 'fade',
+                width       : '560px',
+                height      : '600px'
+
+                // transition: 'fade'
+            });
+
+            //$(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
     });
 
     $('document').ready(function() {
@@ -186,6 +222,9 @@ hook.startup = function () {
             }
         });
 
+        $('.ui-slider-handle').on('click', function(e) {
+            $('.ui-slider-handle').removeClass("ui-state-focus ui-state-hover");
+        })
         //Update #amount (first time)
         $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ));
 
