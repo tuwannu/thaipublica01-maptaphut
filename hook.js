@@ -1,7 +1,6 @@
 window.hook = { };
 
 hook.startup = function () {
-
     var graph_control_labels = [{
             "key": "Factory",
             "class": "factory",
@@ -79,11 +78,12 @@ hook.startup = function () {
     var createControlButton = function(data, $target, callback, prefixId) {
         _.each(data, function(item, k){
             var layerId = 'layer'+k;
-
             var _prefixId = prefixId || '';
+
             if (_prefixId.length) {
                 _prefixId = prefixId + '-';
             }
+
             elm = $('<div></div>').
                 attr({
                     id: _prefixId + layerId.toString(),
@@ -170,23 +170,7 @@ hook.startup = function () {
             });
 
             var myid = $this.attr('id').replace("Img-", "");
-            var my_position = _.indexOf(ids, myid)
-            // a = accident_on_graph[year];
-            // b = ids;
-            // _.each(a, function(i, k) {
-            //   var obj = { }
-            //   obj[b[k]] = i; console.log(obj)
-            //   _.extend(v, obj)
-            // })
-            // console.log(accident_on_graph[year], ids);
-
-            // var data = {
-            //         date: accidentList[accId][0],
-            //         desc: accidentList[accId][1],
-            //         location: accidentList[accId][2],
-            //         effect: accidentList[accId][3]
-            //     };
-
+            var my_position = _.indexOf(ids, myid);
 
             data = accident_on_graph[year][my_position];
 
@@ -218,7 +202,8 @@ hook.startup = function () {
     });
 
     $('document').ready(function() {
-        window.currentYear = "2553"
+        window.currentYear = "2553";
+        window.active_bubble = [];
         $( "#slider-range-max" ).slider({
             value: 2555,
             min: 2520,
@@ -228,10 +213,22 @@ hook.startup = function () {
             slide: function( event, ui ) {
                 //For debug on screen
                 var val = $( "#amount" ).val( ui.value );
-                window.currentYear = ui.value
+                window.currentYear = ui.value;
                 var layer_to_show = getCurrentLayers('#map-control');
                 LayerManager.show(currentYear || 2555, layer_to_show);
                 showGraphGuide(ui.value, ['graphOverlay']);
+                !(function(year) {
+                    $.each(active_bubble, function(k, v) {
+                      v.css({ 'opacity': '0.5'});
+                    });
+
+                    active_bubble = [];
+                    var acc =  $('#'+year+'-accident', LayerManager2.funcs['graph-Accident'].data()).eq(0);
+                    var evt =  $('#'+year+'-event_', LayerManager2.funcs['graph-Event'].data()).eq(0);
+                    acc.css('opacity', 1.0);
+                    evt.css('opacity', 1.0);
+                    active_bubble.push(acc, evt);
+                }) (ui.value);
             }
         });
 
@@ -242,14 +239,14 @@ hook.startup = function () {
         var inter = setInterval(function() {
             ++counter;
             if (counter>=3) {
-                clearTimeout(inter)
+                clearTimeout(inter);
             }
             var layer_to_show = getCurrentLayers('#map-control');
             if (LayerManager && LayerManager2) {
                 LayerManager.show(2555, layer_to_show);
                 LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP', 'people', 'peopleHide']);
                 // guideManager.show(currentYear, ['graphOverlay']);
-                showGraphGuide(currentYear)
+                showGraphGuide(currentYear);
             }
         }, 400);
     });
