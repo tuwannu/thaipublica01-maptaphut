@@ -572,3 +572,18 @@ var pmList = {
         }]
     }
 };
+
+
+var pm_face_position = {
+    "2523-primeMinister": { left: '80px' },
+    "2531-primeMinister": { left: '275px' },
+    "2534-primeMinister": { left: '340px' },
+    "2535-primeMinister": { left: '370px' },
+    "2538-primeMinister": { left: '435px' },
+    "2539-primeMinister": { left: '465px' },
+    "2540-primeMinister": { left: '490px' },
+    "2544-primeMinister": { left: '585px' },
+    "2549-primeMinister": { left: '703px' },
+    "2551-primeMinister": { left: '755px' },
+    "2553-primeMinister": { left: '802px' }
+};
