@@ -91,7 +91,7 @@ body {
 	}
 	.fullname, .holdyear, .time {
 		font-family: 'db_brandvoice_xbold';
-		font-size: 28px;
+		font-size: 30px;
 		color: #7c7256;
 		margin-top: 0;
 
@@ -111,6 +111,7 @@ body {
 	}
 	.time {
 		background: url('../images/tl-point.png') no-repeat 0 10px;
+		font-size: 23px;
 		padding-left: 15px;
 	}
 	.data-year {

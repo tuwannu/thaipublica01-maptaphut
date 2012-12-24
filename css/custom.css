@@ -208,3 +208,8 @@ h1#title {
 #graph-control {
 	right: 7px;
 }
+
+#incident-graph-Event .incident {
+	font-family: 'Thonburi';
+	font-size: 14px;
+}
