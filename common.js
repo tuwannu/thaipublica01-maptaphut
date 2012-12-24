@@ -227,3 +227,78 @@ function bind_bubbleEvent(data, bubble) {
         bindBubble(v, idx);
     });
 }
+
+
+
+function buildPMInfo(year) {
+    var pm = pmList[year];
+    var events_html = "<ul>";
+    var events_template = _.template("<li><div class='time'><%= date %></div> <div class='data-year'><%= incident %></div> </li>");
+    _.each(pm['events'], function(data) {
+        events_html += events_template(data);
+    });
+    events_html += "</ul>";
+
+    var template = _.template("<div class='primebox'> \
+                                    <img src='asset/primeminister/<%= year %>-primeMinister.png'/> \
+                                    <div class='fullname'> \
+                                        <%= fullname %> \
+                                    </div> \
+                                    <div class='-bubbleldyear'> <%= hold_years %> </div> \
+                                    <p class='events'>  <%= events_html %> </p> \
+                                </div>");
+    var data = { fullname: pm.fullname, hold_years: pm.hold_years,
+        year: year, events_html: events_html
+    };
+
+    return  template(data);
+}
+
+
+var createControlButton = function(data, $target, callback, prefixId) {
+    _.each(data, function(item, k){
+        var layerId = 'layer'+k;
+        var _prefixId = prefixId || '';
+
+        if (_prefixId.length) {
+            _prefixId = prefixId + '-';
+        }
+
+        elm = $('<div></div>').
+            attr({
+                id: _prefixId + layerId.toString(),
+                value: item.key,
+                'class': item['class'],
+                'selected': true,
+                'title': item['text']
+            }).
+            css({float: 'left', width: '76px', height: '36px'});
+        elm.addClass('selected');
+        elm.mouseenter(function(e) {
+            $(this).css({'opacity': 1.0, 'cursor': 'pointer'});
+        });
+        elm.click(function(e) {
+            // e.preventDefault();
+            var $this = $(this);
+            var $attr = $this.attr('selected');
+            if ($attr) {
+                $this.removeClass('selected');
+            }
+            else {
+                $this.addClass('selected');
+            }
+            $(this).attr('selected', !$attr);
+            if (_.isFunction(callback)) {
+                callback();
+            }
+        });
+
+        // Initial tipsy.
+        elm.tipsy({
+            className: _prefixId + 'class ' + item['class'] + '-subclass',
+            gravity: item['tipsyGravity']
+        });
+
+        $target.append(elm);
+    });
+};
