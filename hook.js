@@ -183,17 +183,19 @@ hook.startup = function () {
                                         </div>");
 
 
+            var factor = 0;
             if (acc_image[year]) {
                 html+= "<div class='info-wrapper accident'>";
                     _.each(acc_image[year], function(oo) { html+= image_template(oo); });
                 html+= "</div>";
+                factor+= 310;
             }
             $.colorbox({
                 html        : html,
                 opacity     :0.8,
                 // transition  : 'fade',
                 width       : '560px',
-                height      : '600px'
+                height      : ((300+factor)).toString() +'px'
 
                 // transition: 'fade'
             });
@@ -248,7 +250,7 @@ hook.startup = function () {
                 // guideManager.show(currentYear, ['graphOverlay']);
                 showGraphGuide(currentYear);
             }
-        }, 400);
+        }, 600);
     });
 
 }
