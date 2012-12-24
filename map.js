@@ -271,7 +271,53 @@ $(function() {
                         });
                 });
 
-                cb(null, 'done')
+                cb(null, 'done');
+            },
+            bind_event_to_slider: function(cb) {
+                window.currentYear = "2553";
+                var active_bubble = [];
+                $( "#slider-range-max" ).slider({
+                    value: 2555,
+                    min: 2520,
+                    max: 2555,
+                    step: 1,
+                    animate: false,
+                    slide: function( event, ui ) {
+                        //For debug on screen
+                        var val = $( "#amount" ).val( ui.value );
+                        window.currentYear = ui.value;
+                        var layer_to_show = getCurrentLayers('#map-control');
+                        var year = ui.value;
+                        LayerManager.show(currentYear || 2555, layer_to_show);
+                        showGraphGuide(ui.value, ['graphOverlay']);
+                        $.each(active_bubble, function(k, v) {
+                          v.css({ 'opacity': '0.5'});
+                        });
+
+                        active_bubble = [];
+                        var acc =  $('#'+year+'-accident', LayerManager2.funcs['graph-Accident'].data()).eq(0);
+                        var evt =  $('#'+year+'-event_', LayerManager2.funcs['graph-Event'].data()).eq(0);
+                        acc.css('opacity', 1.0);
+                        evt.css('opacity', 1.0);
+                        active_bubble.push(acc, evt);
+                    }
+                });
+
+                //Update #amount (first time)
+                $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ));
+
+                cb(null, 'ok');
+            },
+            bind_show_layer: function(cb) {
+                var counter = 0;
+                var layer_to_show = getCurrentLayers('#map-control');
+
+                LayerManager.show(2555, layer_to_show);
+                LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP', 'people', 'peopleHide']);
+                showGraphGuide(currentYear);
+                // guideManager.show(currentYear, ['graphOverlay']);
+
+                cb(null, 'ok');
             }
         };
 
