@@ -5,14 +5,36 @@ window.getCurrentLayers = function(id) {
 
 // LAYER MANAGER CREATER`
 window.CreateLayerManager = function(group, activeLayers) {
-    var funcs = { };
-    var manager = { funcs: funcs };
-    activeLayers = [];
+    var funcs = { },
+        manager = { funcs: funcs },
+        base_layer = [],
+        base_prefix = [],
+        fallback_prefix_fn = function(prefix, comparator) {
+            var current_map_year = _.find(prefix.reverse(), function(y){
+                return y <= comparator;
+            });
+
+            return (current_map_year || 2531).toString();
+        };
+
+    manager.set_baseLayer = function(layers) {
+        base_layer = layers;
+        return manager;
+    };
+
+    manager.set_basePrefix = function(prefixes) {
+        base_prefix = prefixes;
+        return manager;
+    };
+
+    manager.set_fallbackPrefix = function(fn) {
+        fallback_prefix_fn = fn;
+    }
 
     // CREATE FUNCTION WITH CAPTURED-VARIABLE
     _.each(group, function(v, k) {
-        var year = k.split('-')[0];
-        var obj = {};
+        var year = k.split('-')[0],
+            obj = {};
         obj[k] = (function() {
             var captured_obj = v,
                 ret = {
@@ -36,16 +58,14 @@ window.CreateLayerManager = function(group, activeLayers) {
     });
 
     manager.show = function(year, layerArr, callback) {
-        var yearArr = [2531, 2534, 2546, 2555];
-        var yearInvertArr = yearArr.reverse();
-        var current_map_year = _.find(yearInvertArr, function(y){
-            return y <= year;
-        });
+        var prefix = base_prefix;
 
-        layerArr = _.union(layerArr, ["road", "area", "primeMinister", "accident", "cityPlan"]);
-        yearArr = [(year).toString(), "other", "all", (current_map_year || 2531).toString()];
+        var layer_to_show = _.union(base_layer, layerArr);
+        prefix = _.union(base_prefix, (year).toString(), fallback_prefix_fn(prefix, year));
+
+        // prefix = [(year).toString(), "other", "all", (current_map_year || 2531).toString()];
         var items = _.filter(funcs, function(item, k) {
-            return _.contains(yearArr, item.year) && _.contains(layerArr, item.layer);
+            return _.contains(prefix, item.year) && _.contains(layer_to_show, item.layer);
         });
 
         // HIDE ACTIVE LAYER
@@ -57,6 +77,8 @@ window.CreateLayerManager = function(group, activeLayers) {
         activeLayers = items;
 
         _.each(items, function(item) { item.show(); });
+
+        return manager;
     };
 
     manager.getAllLayers = function() {
@@ -171,7 +193,6 @@ function bind_bubbleEvent(data, bubble) {
             }
 
             bubble.hide();
-            // console.log($opa, $opa.attr('id'))
 
             bubble.eq(idx).fadeIn();
 

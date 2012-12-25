@@ -10,9 +10,11 @@ $(function() {
             });
 
             // CREATE LAYER MANAGER
-            var LayerManager = CreateLayerManager(gr, activeLayers1); // LAYER MANAGER
+            var LayerManager = CreateLayerManager(gr, activeLayers1)
+                .set_baseLayer(["road", "area", "primeMinister", "accident", "cityPlan", "other", "all"])
+                .set_basePrefix([2531, 2534, 2546, 2555]);
+
             callback(null, LayerManager);
-            // window.hook['startup']();
         }); // LOAD SVG
     };
 
@@ -29,28 +31,34 @@ $(function() {
             // CREATE LAYER MANAGER
             var LayerManager2 = CreateLayerManager(gr2, activeLayers2); // LAYER MANAGER
 
-            // BIND EVENT
+            LayerManager2.set_fallbackPrefix(function() {
+                return '';
+            });
 
-            setTimeout(function() {
-            }, 1);
 
             callback(null, LayerManager2);
         });
     };
 
+
     var create_guide_manager = function(callback) {
-        var guideManager;
         var act_guide = [];
-        var __gr2__ = _.groupBy($('#graph-overlay g'), function(i) { return i.id.split('_')[0] || 'other'; });
-        guideManager = CreateLayerManager(__gr2__, act_guide);
-        callback(null, guideManager);
+        var __gr2__ = _.groupBy($('#graph-overlay g'), function(i) {
+            return i.id.split('_')[0] || 'other';
+        });
+
+        var guideManager = CreateLayerManager(__gr2__, act_guide);
+            guideManager.set_fallbackPrefix(function() {
+                return '';
+            });
+        return guideManager;
     };
 
     // LOAD SVG PARALLELY.
     async.parallel([load_map, load_graph], function (err, results) {
         // Construct operatons object
         var operations = {
-            make_global_variable: function(cb) {
+            globalize: function(cb) {
                 window.LayerManager  = results[0];
                 window.LayerManager2 = results[1];
 
@@ -58,10 +66,7 @@ $(function() {
             },
             hook_startup: function(cb) {
                 // var results = hook.startup();
-
-                console.log("DOING hook_startup");
                 cb(null, 'first');
-
                 // cb(null, results);
             },
             bind_bubbleEvents: function(cb) {
@@ -291,6 +296,7 @@ $(function() {
                         var year = ui.value;
                         LayerManager.show(currentYear || 2555, layer_to_show);
                         // showGraphGuide(ui.value, ['graphOverlay']);
+                        guideManager.show(ui.value, ['graphOverlay']);
                         $.each(active_bubble, function(k, v) {
                           v.css({ 'opacity': '0.5'});
                         });
@@ -309,19 +315,19 @@ $(function() {
 
                 cb(null, 'ok');
             },
-            remove_indicator: function(cb) {
+            remove_indicator_and_show_slider: function(cb) {
                 $('div.preloader').remove();
                 $('div#slider-wrapper').show();
                 cb(null, 'ok');
             },
             show_graph_and_map: function(cb) {
-                var counter = 0;
                 var layer_to_show = getCurrentLayers('#map-control');
 
                 LayerManager.show(2555, layer_to_show);
                 LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP', 'people', 'peopleHide']);
                 // showGraphGuide(currentYear);
-                // guideManager.show(currentYear, ['graphOverlay']);
+                $('#graph-overlay').show();
+                guideManager.show(currentYear, ['graphOverlay']);
 
                 cb(null, 'ok');
             }
@@ -329,6 +335,7 @@ $(function() {
 
         // Do it serially
         if (!err) {
+            window.guideManager = create_guide_manager();
             async.series(operations, function series_callback(err, results) {
                 console.log('results in series', results);
             });
