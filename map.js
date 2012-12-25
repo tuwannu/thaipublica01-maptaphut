@@ -14,7 +14,7 @@ $(function() {
             callback(null, LayerManager);
             // window.hook['startup']();
         }); // LOAD SVG
-    }
+    };
 
     var load_graph = function(callback) {
         var svggraph = $('#svggraph').svg();
@@ -28,7 +28,6 @@ $(function() {
 
             // CREATE LAYER MANAGER
             var LayerManager2 = CreateLayerManager(gr2, activeLayers2); // LAYER MANAGER
-            LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP', 'people', 'peopleHide']);
 
             // BIND EVENT
 
@@ -49,7 +48,6 @@ $(function() {
 
     // LOAD SVG PARALLELY.
     async.parallel([load_map, load_graph], function (err, results) {
-
         // Construct operatons object
         var operations = {
             make_global_variable: function(cb) {
@@ -59,11 +57,12 @@ $(function() {
                 cb(null, 'done');
             },
             hook_startup: function(cb) {
-                var results = hook['startup']();
+                // var results = hook.startup();
 
                 console.log("DOING hook_startup");
+                cb(null, 'first');
 
-                cb(null, results);
+                // cb(null, results);
             },
             bind_bubbleEvents: function(cb) {
                 bind_bubbleEvent(LayerManager2.funcs['graph-Factory'].data(), jQuery('[id$="factoryBubble"]'));
@@ -99,9 +98,11 @@ $(function() {
                     mousedown(function(e){
                         e.stopPropagation();
 
-                        var pmId = $(this).attr('id').split('-')[0];
-                        var information = buildPMInfo(pmId);
-                        var height = (information.length)/2;
+                        var pmId = $(this).attr('id').split('-')[0],
+                            information = buildPMInfo(pmId),
+                            height = (information.length)/2;
+
+                        height -= 55 * (Math.log(height) - 5);
 
                         $.colorbox({
                             html        : information,
@@ -289,7 +290,7 @@ $(function() {
                         var layer_to_show = getCurrentLayers('#map-control');
                         var year = ui.value;
                         LayerManager.show(currentYear || 2555, layer_to_show);
-                        showGraphGuide(ui.value, ['graphOverlay']);
+                        // showGraphGuide(ui.value, ['graphOverlay']);
                         $.each(active_bubble, function(k, v) {
                           v.css({ 'opacity': '0.5'});
                         });
@@ -308,13 +309,18 @@ $(function() {
 
                 cb(null, 'ok');
             },
-            bind_show_layer: function(cb) {
+            remove_indicator: function(cb) {
+                $('div.preloader').remove();
+                $('div#slider-wrapper').show();
+                cb(null, 'ok');
+            },
+            show_graph_and_map: function(cb) {
                 var counter = 0;
                 var layer_to_show = getCurrentLayers('#map-control');
 
                 LayerManager.show(2555, layer_to_show);
                 LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP', 'people', 'peopleHide']);
-                showGraphGuide(currentYear);
+                // showGraphGuide(currentYear);
                 // guideManager.show(currentYear, ['graphOverlay']);
 
                 cb(null, 'ok');
@@ -328,4 +334,6 @@ $(function() {
             });
         }
     });
+
+
 });

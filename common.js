@@ -14,8 +14,8 @@ window.CreateLayerManager = function(group, activeLayers) {
         var year = k.split('-')[0];
         var obj = {};
         obj[k] = (function() {
-            var captured_obj = v
-              , ret = {
+            var captured_obj = v,
+                ret = {
                     layer: k.split('-').slice(1).join('-') || 'no',
                     year: year,
                     hide: function() {
@@ -75,8 +75,8 @@ var snapYear = function(val) {
                 "2538", "2539", "2540", "2543", "2544", "2539",
                 "2551", "2553", "2549"].sort().reverse(), function(item) {
     return item <= val;
-  })
-}
+  });
+};
 
 var showGraphGuide = function(currentYear) {
     var snapped = snapYear(currentYear);
@@ -86,7 +86,7 @@ var showGraphGuide = function(currentYear) {
     $('#graph-overlay g').hide();
 
     $(selected_overlay).show();
-}
+};
 
 window.buildincidentHTML = function(idx, type) {
     var splitterMap = { 'graph-Event' : ' ', 'graph-Accident': '/' };
@@ -121,7 +121,7 @@ window.buildincidentHTML = function(idx, type) {
     html = html_bef + html_body + "</ul></div>";
 
     return  html;
-}
+};
 
 
 window.build_with_image = function (type, year, date) {
@@ -144,7 +144,7 @@ window.build_with_image = function (type, year, date) {
     else {
         return '';
     }
-}
+};
 
 
 
