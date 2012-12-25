@@ -11,8 +11,8 @@ $(function() {
 
             // CREATE LAYER MANAGER
             var LayerManager = CreateLayerManager(gr, activeLayers1)
-                .set_baseLayer(["road", "area", "primeMinister", "accident", "cityPlan", "other", "all"])
-                .set_basePrefix([2531, 2534, 2546, 2555]);
+                .set_baseLayer(["road", "area", "accident", "cityPlan"])
+                .set_basePrefix(["other", "all"]);
 
             callback(null, LayerManager);
         }); // LOAD SVG
@@ -34,8 +34,6 @@ $(function() {
             LayerManager2.set_fallbackPrefix(function() {
                 return '';
             });
-
-
             callback(null, LayerManager2);
         });
     };
@@ -59,9 +57,6 @@ $(function() {
         // Construct operatons object
         var operations = {
             globalize: function(cb) {
-                window.LayerManager  = results[0];
-                window.LayerManager2 = results[1];
-
                 cb(null, 'done');
             },
             hook_startup: function(cb) {
@@ -198,7 +193,7 @@ $(function() {
 
                 // TOGGLE
                 createControlButton(map_control_labels, $('#map-control'), function(){
-                    LayerManager.show(currentYear || 2531, getCurrentLayers('#map-control'));
+                    LayerManager.show(window.currentYear || 2531, getCurrentLayers('#map-control'));
                 }, 'area-filter');
 
                 createControlButton(graph_control_labels, $('#graph-control'), function(){
@@ -238,41 +233,37 @@ $(function() {
                             }]
                         };
 
-                        $nat = $this;
                         var year = _.first($this.parent().attr('id').split('-'));
                         var siblings = $('image[id*="accident"]', $this.parent());
                         var ids = _.filter(_.collect(siblings, function(o) { return o.id }), function(oo) {
                             return oo.indexOf("Img") === -1;
                         });
-
                         var myid = $this.attr('id').replace("Img-", "");
                         var my_position = _.indexOf(ids, myid);
-
-                        data = accident_on_graph[year][my_position];
-
-
+                        var data = accident_on_graph[year][my_position];
                         var html = template(data);
 
                         var image_template = _.template("<div class='info-item'> \
                                                         <img class='info-image' src='images/info_image/<%= filename %>'>\
                                                         <p class='info-text'><%= info %></p> \
                                                     </div>");
-
-
                         var factor = 0;
+
+                        // add image if it exists
                         if (acc_image[year]) {
                             html+= "<div class='info-wrapper accident'>";
                                 _.each(acc_image[year], function(oo) { html+= image_template(oo); });
                             html+= "</div>";
                             factor+= 310;
                         }
+
+                        // bind popup-event
                         $.colorbox({
                             html        : html,
                             opacity     :0.8,
                             // transition  : 'fade',
                             width       : '560px',
                             height      : ((300+factor)).toString() +'px'
-
                             // transition: 'fade'
                         });
                 });
@@ -280,10 +271,9 @@ $(function() {
                 cb(null, 'done');
             },
             bind_event_to_slider: function(cb) {
-                window.currentYear = "2553";
                 var active_bubble = [];
                 $( "#slider-range-max" ).slider({
-                    value: 2555,
+                    value: window.currentYear,
                     min: 2520,
                     max: 2555,
                     step: 1,
@@ -294,16 +284,18 @@ $(function() {
                         window.currentYear = ui.value;
                         var layer_to_show = getCurrentLayers('#map-control');
                         var year = ui.value;
-                        LayerManager.show(currentYear || 2555, layer_to_show);
-                        // showGraphGuide(ui.value, ['graphOverlay']);
-                        guideManager.show(ui.value, ['graphOverlay']);
+
+
+                        var acc =  $('#'+year+'-accident', LayerManager2.funcs['graph-Accident'].data()).eq(0);
+                        var evt =  $('#'+year+'-event_', LayerManager2.funcs['graph-Event'].data()).eq(0);
+
+                        LayerManager.show(window.currentYear, layer_to_show);
+                        guideManager.show(currentYear, ['graphOverlay']);
+
                         $.each(active_bubble, function(k, v) {
                           v.css({ 'opacity': '0.5'});
                         });
 
-                        active_bubble = [];
-                        var acc =  $('#'+year+'-accident', LayerManager2.funcs['graph-Accident'].data()).eq(0);
-                        var evt =  $('#'+year+'-event_', LayerManager2.funcs['graph-Event'].data()).eq(0);
                         acc.css('opacity', 1.0);
                         evt.css('opacity', 1.0);
                         active_bubble.push(acc, evt);
@@ -323,21 +315,26 @@ $(function() {
             show_graph_and_map: function(cb) {
                 var layer_to_show = getCurrentLayers('#map-control');
 
-                LayerManager.show(2555, layer_to_show);
+                LayerManager.show(currentYear, layer_to_show);
                 LayerManager2.show('graph', ['Factory', 'Accident', 'Event', 'GPP', 'people', 'peopleHide']);
-                // showGraphGuide(currentYear);
+
                 $('#graph-overlay').show();
+
                 guideManager.show(currentYear, ['graphOverlay']);
 
                 cb(null, 'ok');
             }
         };
 
-        // Do it serially
+        // Do each operations serially
         if (!err) {
+            window.currentYear = 2553;
+            window.LayerManager  = results[0];
+            window.LayerManager2 = results[1];
             window.guideManager = create_guide_manager();
+
             async.series(operations, function series_callback(err, results) {
-                console.log('results in series', results);
+                // console.log('results in series', results);
             });
         }
     });

@@ -10,8 +10,11 @@ window.CreateLayerManager = function(group, activeLayers) {
         base_layer = [],
         base_prefix = [],
         fallback_prefix_fn = function(prefix, comparator) {
-            var current_map_year = _.find(prefix.reverse(), function(y){
-                return y <= comparator;
+
+            prefix = ['2531', '2534', '2546', '2555'].sort().reverse();
+
+            var current_map_year = _.find(prefix, function(y){
+                return parseInt(y, 10) <= parseInt(comparator, 10);
             });
 
             return (current_map_year || 2531).toString();
@@ -29,12 +32,13 @@ window.CreateLayerManager = function(group, activeLayers) {
 
     manager.set_fallbackPrefix = function(fn) {
         fallback_prefix_fn = fn;
-    }
+    };
 
     // CREATE FUNCTION WITH CAPTURED-VARIABLE
     _.each(group, function(v, k) {
         var year = k.split('-')[0],
             obj = {};
+
         obj[k] = (function() {
             var captured_obj = v,
                 ret = {
@@ -54,19 +58,23 @@ window.CreateLayerManager = function(group, activeLayers) {
             return ret;
         })();
 
+
         _.extend(funcs, obj);
     });
 
     manager.show = function(year, layerArr, callback) {
-        var prefix = base_prefix;
-
+        var prefix_to_show = base_prefix;
         var layer_to_show = _.union(base_layer, layerArr);
-        prefix = _.union(base_prefix, (year).toString(), fallback_prefix_fn(prefix, year));
+
+        // YEAR FOR ACCIDENT & SNAPPED YEAR FOR MAP-LAYOUT
+        prefix_to_show = _.union(base_prefix, (year).toString(), fallback_prefix_fn([], year));
 
         // prefix = [(year).toString(), "other", "all", (current_map_year || 2531).toString()];
-        var items = _.filter(funcs, function(item, k) {
-            return _.contains(prefix, item.year) && _.contains(layer_to_show, item.layer);
+
+        var items_to_show = _.filter(funcs, function(item, k) {
+            return _(prefix_to_show).contains(item.year) && _.contains(layer_to_show, item.layer);
         });
+
 
         // HIDE ACTIVE LAYER
         _.each(activeLayers, function(v) {
@@ -74,11 +82,17 @@ window.CreateLayerManager = function(group, activeLayers) {
         });
 
         // SET NEW ACTIVE LAYER
-        activeLayers = items;
+        activeLayers = items_to_show;
 
-        _.each(items, function(item) { item.show(); });
+        _.each(items_to_show, function(item) { item.show(); });
 
         return manager;
+    };
+
+    manager.hide = function() {
+        _.each(activeLayers, function(o) {
+            o.hide();
+        });
     };
 
     manager.getAllLayers = function() {
@@ -100,15 +114,15 @@ var snapYear = function(val) {
   });
 };
 
-var showGraphGuide = function(currentYear) {
-    var snapped = snapYear(currentYear);
-    var selected_overlay = '#graph-overlay g[id^="'+ snapped +'"]';
+// var showGraphGuide = function(currentYear) {
+//     var snapped = snapYear(currentYear);
+//     var selected_overlay = '#graph-overlay g[id^="'+ snapped +'"]';
 
-    $('#graph-overlay').show();
-    $('#graph-overlay g').hide();
+//     $('#graph-overlay').show();
+//     $('#graph-overlay g').hide();
 
-    $(selected_overlay).show();
-};
+//     $(selected_overlay).show();
+// };
 
 window.buildincidentHTML = function(idx, type) {
     var splitterMap = { 'graph-Event' : ' ', 'graph-Accident': '/' };
