@@ -266,7 +266,32 @@ $(function() {
                             height      : ((300+factor)).toString() +'px'
                             // transition: 'fade'
                         });
+
+
                 });
+
+                var text = '<div class="howtouse">\
+                                <h3> วิธีการใช้: </h3> \
+                                <ol>\
+                                    <li>เลื่อนกรอบเวลาสีฟ้าในแกน X เพื่อดูผังเมืองและจุดเกิดอุบัติภัยในปีต่างๆ</li>\
+                                    <li>คลิกสัญลักษณ์ต่างๆ ทางด้านขวามือ เพื่อ toggle ปิดหรือเปิดชุดข้อมูล</li>\
+                                    <li>วางเมาส์และคลิกจุดต่างๆ ในกราฟและผังเมือง เพื่อดูรายละเอียดของเหตุการณ์</li>\
+                                </ol>\
+                            </div>';
+
+
+                $('.information').
+                mouseover(function(e){
+                    $(this).css({ cursor: 'pointer'});
+                }).
+                mousedown(function(e) {
+                                        $.colorbox({
+                                            html        : text,
+                                            width       :"600px",
+                                            opacity     : 0.82,
+                                            height      :  '300px'
+                                        });
+                })
 
                 cb(null, 'done');
             },
