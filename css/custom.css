@@ -226,3 +226,21 @@ div.preloader {
 div#slider-wrapper {
 	display: none;
 }
+
+.ui-focus, .ui-btn:focus {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none ;
+}
+
+
+body .information {
+	background: url('../asset/unselect-btn-infomation.png') no-repeat 0 -3px;
+	left: 850px;
+	height: 28px;
+	text-indent: -9999px;
+	width: 35px;
+	position: absolute;
+	top: 0px;
+
+}
