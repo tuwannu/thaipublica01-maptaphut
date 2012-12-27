@@ -93,7 +93,6 @@ body {
   /* 	min-height: 400px; */ }
   #cboxWrapper .howtouse ol, #cboxMiddleLeft .howtouse ol,
   #cboxContent .howtouse ol, #cboxLoadedContent .howtouse ol {
-    margin: 0;
     margin-top: -25px; }
   #cboxWrapper .howtouse h3, #cboxMiddleLeft .howtouse h3,
   #cboxContent .howtouse h3, #cboxLoadedContent .howtouse h3 {
@@ -119,7 +118,7 @@ body {
   margin: 20px;
   background: url("../images/window-accident.png") no-repeat; }
   .event-graph-Accident ul, .event-graph-Event ul, .accident-map ul {
-    padding-left: 18px;
+    padding-left: 20px;
     padding-top: 20px;
     margin-top: 0;
     background: url("../images/timeline-red.png") repeat-y 22px 0; }
