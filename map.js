@@ -52,8 +52,30 @@ $(function() {
         return guideManager;
     };
 
+    var show_teaser = function(cb) {
+        var text = '<div class="teaser">\
+            <span>กำเนิดของนิคมอุตสาหกรรมมาบตาพุดนับเป็นก้าวสำคัญของการพัฒนาอุตสาหกรรมไทย</span>\
+            แต่ตลอดระยะเวลาสามสิบปีที่ผ่านมา\
+            การพัฒนานิคมแห่งนี้ถูกตั้งคำถามจากผู้มีส่วนได้เสีย โดยเฉพาะชุมชนโดยรอบ\
+            มากขึ้นเรื่อยๆ จนกลายเป็นคดีประวัติศาสตร์ว่า\
+            ภาคธุรกิจและรัฐแสดงความรับผิดชอบต่อปัญหาด้านความปลอดภัย มลพิษ\
+            และปัญหาสังคมในบริเวณอย่างไร ไทยพับลิก้าชวนทุกท่านร่วมกันประเมินอดีต\
+            ปัจจุบัน เพื่อครุ่นคิดถึงอนาคตของมาบตาพุด ในอินเทอร์แอคทีฟ <strong>"30 ปี มาบตาพุด"</strong>    \
+        </div>';
+
+
+         $.colorbox({
+            html        : text,
+            width       :"800px",
+            opacity     : 0.82,
+            height      :  '340px'
+        });
+
+     cb(null, 'done');
+};
+
     // LOAD SVG PARALLELY.
-    async.parallel([load_map, load_graph], function (err, results) {
+    async.parallel([load_map, load_graph, show_teaser], function (err, results) {
         // Construct operatons object
         var operations = {
             globalize: function(cb) {
