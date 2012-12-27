@@ -137,6 +137,21 @@ body {
 			padding-bottom: 10px;
 		}
 	}
+	.teaser {
+		span {
+			font-size: 24px;
+			line-height: 36px;
+			display: block;
+			margin-bottom: 8px;
+		}
+		padding: 0;
+		font-size: 16px;
+		line-height: 28px;
+		border-left: 6px solid #CCC;
+		margin-left: 40px;
+		margin-top: 40px;
+		padding: 0 60px 0 20px;
+	}
 /* 	min-height: 400px; */
 }
 #cboxClose {
