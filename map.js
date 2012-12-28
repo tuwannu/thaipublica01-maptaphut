@@ -236,7 +236,7 @@ $(function() {
                         var accId = parseInt(elmId, 10) - 1;
                         var template = _.template("<div class='accident-map'> \
                                                         <div class='acc_date'> <%= date %> </div> \
-                                                        <div class='acc_desc'> <%= incedent %> </div> \
+                                                        <div class='acc_desc'> <%= incident %> </div> \
                                                         <div class='acc_loc'><span>สถานที่: </span> <%= location %> </div>\
                                                         <div class='acc_eff'><span>ผลกระทบ: </span> <%= effect %> </div>\
                                                    </div>");
