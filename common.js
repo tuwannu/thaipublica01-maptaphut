@@ -307,7 +307,7 @@ var createControlButton = function(data, $target, callback, prefixId) {
                 'selected': true,
                 'title': item['text']
             }).
-            css({float: 'left', width: '76px', height: '36px'});
+            css({'float': 'left', width: '76px', height: '36px'});
         elm.addClass('selected');
         elm.mouseenter(function(e) {
             $(this).css({'opacity': 1.0, 'cursor': 'pointer'});

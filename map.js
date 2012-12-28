@@ -97,7 +97,7 @@ $(function() {
                 cb(null, 'done');
             },
             bind_graphEvents: function(cb) {
-                var common_css = { 'z-index': 500, opacity: 0.0, width: '32', height: '32', background: 'red', position: 'absolute', top: '21px', float: 'left' };
+                var common_css = { 'z-index': 500, opacity: 0.0, width: '32', height: '32', background: 'red', position: 'absolute', top: '21px', 'float': 'left' };
 
                 _.each(pm_face_position, function(i, k) {
                   $('#slider-range-max > div').append($('<div>').attr({id: k}).css(common_css).css(i));
