@@ -93,7 +93,9 @@ body {
   /* 	min-height: 400px; */ }
   #cboxWrapper .howtouse ol, #cboxMiddleLeft .howtouse ol,
   #cboxContent .howtouse ol, #cboxLoadedContent .howtouse ol {
-    margin-top: -25px; }
+    margin-top: -25px;
+    padding-left: 40px;
+    list-style-type: decimal; }
   #cboxWrapper .howtouse h3, #cboxMiddleLeft .howtouse h3,
   #cboxContent .howtouse h3, #cboxLoadedContent .howtouse h3 {
     padding: 20px; }
@@ -163,7 +165,8 @@ body {
     font-size: 21px;
     margin-left: 60px;
     font-size: 30px;
-    color: #c23d4d; }
+    color: #c23d4d;
+    height: 37px; }
 
 /*-------------------------
  									EventBox
@@ -362,3 +365,8 @@ h1 {
   width: 1044px;
   margin: 0 auto;
   position: relative; }
+
+#interactivity {
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0; }

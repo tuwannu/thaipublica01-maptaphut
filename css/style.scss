@@ -129,6 +129,8 @@ body {
 	.howtouse {
 		ol {
 			margin-top: -25px;
+			padding-left: 40px;
+			list-style-type: decimal;
 		}
 		h3 {
 			padding: 20px;
@@ -206,6 +208,7 @@ body {
 		margin-left: 60px;
 		font-size: 30px;
 		color: #c23d4d;
+		height: 37px;
 	}
 }
 
@@ -262,6 +265,7 @@ body {
 	font-size: 13px;
 	box-shadow: 1px 2px 3px 0px #333;
 }
+/*
 
 // .tipsy-e {
 // 	.tipsy-arrow, .tipsy-arrow-e {
@@ -270,6 +274,7 @@ body {
 // 		border: 11px dashed transparent;
 // 	}
 // }
+*/
 
 
 .tipsy-e {
@@ -476,21 +481,8 @@ h1 {
 	position: relative;
 }
 
-// h1 {
-//     background: none repeat scroll 0 0 #FBFAF8;
-//     border-radius: 0 0 15px 15px;
-//     box-shadow: 1px 2px 2px 0 #999999;
-//     color: #8F8467;
-//     display: block;
-//     font-family: 'db_metta_x_mediummedium';
-//     font-size: 28px;
-//     font-weight: normal;
-//     line-height: 24px;
-//     margin: 0 auto;
-//     padding: 30px 10px 8px;
-//     position: relative;
-//     text-align: center;
-//     top: -20px;
-//     width: 150px;
-//     z-index: 500;
-// }
+#interactivity {
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0;
+}
