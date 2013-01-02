@@ -31,14 +31,14 @@ body {
 /*-------------------------
  									Global
  --------------------------*/
-.content {
+#thaipublica01 .content {
   z-index: 2;
   width: 1044px;
   margin: 0 auto;
   position: relative;
   margin-top: -70px; }
 
-#slider-wrapper {
+#thaipublica01 #slider-wrapper {
   position: absolute;
   top: 250px; }
 
@@ -56,32 +56,32 @@ body {
 /*-------------------------
  									PrimeBox
  --------------------------*/
-.primebox {
+#thaipublica01 .primebox {
   margin: 20px; }
-  .primebox img {
+  #thaipublica01 .primebox img {
     float: left;
     margin-right: 15px; }
-  .primebox .fullname, .primebox .holdyear, .primebox .time {
+  #thaipublica01 .primebox .fullname, #thaipublica01 .primebox .holdyear, #thaipublica01 .primebox .time {
     font-family: 'db_brandvoice_xbold';
     font-size: 30px;
     color: #7c7256;
     margin-top: 0; }
-  .primebox .holdyear {
+  #thaipublica01 .primebox .holdyear {
     font-family: 'db_brandvoice_xbold';
     font-size: 21px; }
-  .primebox ul {
+  #thaipublica01 .primebox ul {
     clear: both;
     padding-left: 20px;
     background: url("../images/timeline.png") repeat-y 22px 0;
     padding-top: 20px; }
-    .primebox ul li {
+    #thaipublica01 .primebox ul li {
       margin-bottom: 20px;
       list-style: none; }
-  .primebox .time {
+  #thaipublica01 .primebox .time {
     background: url("../images/tl-point.png") no-repeat 0 10px;
     font-size: 23px;
     padding-left: 15px; }
-  .primebox .data-year {
+  #thaipublica01 .primebox .data-year {
     padding-left: 15px;
     color: #333; }
 
@@ -129,36 +129,36 @@ body {
 /*-------------------------
  									AccidentBox
  --------------------------*/
-.event-graph-Accident, .event-graph-Event, .accident-map {
+#thaipublica01 .event-graph-Accident, .event-graph-Event, .accident-map {
   margin: 20px;
   background: url("../images/window-accident.png") no-repeat; }
-  .event-graph-Accident ul, .event-graph-Event ul, .accident-map ul {
+  #thaipublica01 .event-graph-Accident ul, .event-graph-Event ul, .accident-map ul {
     padding-left: 20px;
     padding-top: 20px;
     margin-top: 0;
     background: url("../images/timeline-red.png") repeat-y 22px 0; }
-    .event-graph-Accident ul li, .event-graph-Event ul li, .accident-map ul li {
+    #thaipublica01 .event-graph-Accident ul li, .event-graph-Event ul li, .accident-map ul li {
       margin-bottom: 20px;
       list-style: none; }
-  .event-graph-Accident .time, .event-graph-Event .time, .accident-map .time {
+  #thaipublica01 .event-graph-Accident .time, .event-graph-Event .time, .accident-map .time {
     font-family: 'db_brandvoice_xbold';
     font-size: 21px;
     color: #c23d4d;
     background: url("../images/tl-point-red.png") no-repeat 0 10px;
     padding-left: 25px; }
-  .event-graph-Accident .incident, .event-graph-Accident .acc_desc, .event-graph-Event .incident, .event-graph-Event .acc_desc, .accident-map .incident, .accident-map .acc_desc {
+  #thaipublica01 .event-graph-Accident .incident, #thaipublica01 .event-graph-Accident .acc_desc, .event-graph-Event .incident, .event-graph-Event .acc_desc, .accident-map .incident, .accident-map .acc_desc {
     font-family: 'db_brandvoice_xbold';
     font-size: 21px;
     padding-left: 25px;
     margin-bottom: 5px;
     color: #333333;
     font-size: 22px; }
-  .event-graph-Accident .detail, .event-graph-Accident .acc_loc, .event-graph-Accident .acc_eff, .event-graph-Event .detail, .event-graph-Event .acc_loc, .event-graph-Event .acc_eff, .accident-map .detail, .accident-map .acc_loc, .accident-map .acc_eff {
+  #thaipublica01 .event-graph-Accident .detail, #thaipublica01 .event-graph-Accident .acc_loc, #thaipublica01 .event-graph-Accident .acc_eff, .event-graph-Event .detail, .event-graph-Event .acc_loc, .event-graph-Event .acc_eff, .accident-map .detail, .accident-map .acc_loc, .accident-map .acc_eff {
     padding-left: 25px;
     font-size: 14px; }
-    .event-graph-Accident .detail span, .event-graph-Accident .acc_loc span, .event-graph-Accident .acc_eff span, .event-graph-Event .detail span, .event-graph-Event .acc_loc span, .event-graph-Event .acc_eff span, .accident-map .detail span, .accident-map .acc_loc span, .accident-map .acc_eff span {
+    #thaipublica01 .event-graph-Accident .detail span, #thaipublica01 .event-graph-Accident .acc_loc span, #thaipublica01 .event-graph-Accident .acc_eff span, .event-graph-Event .detail span, .event-graph-Event .acc_loc span, .event-graph-Event .acc_eff span, .accident-map .detail span, .accident-map .acc_loc span, .accident-map .acc_eff span {
       font-weight: bold; }
-  .event-graph-Accident .incident-year, .event-graph-Event .incident-year, .accident-map .incident-year {
+  #thaipublica01 .event-graph-Accident .incident-year, .event-graph-Event .incident-year, .accident-map .incident-year {
     font-family: 'db_brandvoice_xbold';
     font-size: 21px;
     margin-left: 60px;
@@ -168,17 +168,17 @@ body {
 /*-------------------------
  									EventBox
  --------------------------*/
-.event-graph-Event {
+#thaipublica01 .event-graph-Event {
   margin: 20px;
   background: url("../images/window-event.png") no-repeat; }
-  .event-graph-Event ul {
+  #thaipublica01 .event-graph-Event ul {
     background: url("../images/timeline-blue.png") repeat-y 25px 0; }
-  .event-graph-Event .time {
+  #thaipublica01 .event-graph-Event .time {
     font-family: 'db_brandvoice_xbold';
     font-size: 21px;
     color: #1b7c94;
     background: url("../images/tl-point-blue.png") no-repeat 4px 10px; }
-  .event-graph-Event .incident-year {
+  #thaipublica01 .event-graph-Event .incident-year {
     color: #1b7c94; }
 
 #graph-wrapper {
@@ -195,24 +195,24 @@ body {
 /*-------------------------
 							Accident From Map
  --------------------------*/
-.accident-map .acc_date {
+#thaipublica01 .accident-map .acc_date {
   font-family: 'db_brandvoice_xbold';
   font-size: 21px;
   color: #c23d4d;
   margin-left: 60px;
   margin-bottom: 5px;
   font-size: 30px; }
-.accident-map .acc_desc {
+#thaipublica01 .accident-map .acc_desc {
   margin-top: 10px; }
 
 /*-------------------------
 	 									Tipsy
  --------------------------*/
-.tipsy-inner {
+#thaipublica01 .tipsy-inner {
   font-size: 13px;
   box-shadow: 1px 2px 3px 0px #333; }
 
-.tipsy-e .tipsy-arrow, .tipsy-e .tipsy-arrow-e {
+#thaipublica01 .tipsy-e .tipsy-arrow, #thaipublica01 .tipsy-e .tipsy-arrow-e {
   margin-top: -10px;
   right: -15px;
   border: 11px dashed transparent;
@@ -224,89 +224,89 @@ body {
   right: -14px;
   top: 21px; }
 
-.prime-minister-tipsy .tipsy-arrow-e {
+#thaipublica01 .prime-minister-tipsy .tipsy-arrow-e {
   border-left-color: white !important; }
-.prime-minister-tipsy .tipsy-inner {
+#thaipublica01 .prime-minister-tipsy .tipsy-inner {
   font-size: 13px;
   background-color: white !important;
   color: #333;
   box-shadow: 1px 2px 4px 1px #333; }
-.prime-minister-tipsy .tipsy-arrow-n {
+#thaipublica01 .prime-minister-tipsy .tipsy-arrow-n {
   border-bottom-color: white !important;
   width: 3px; }
-.prime-minister-tipsy .tipsy-arrow {
+#thaipublica01 .prime-minister-tipsy .tipsy-arrow {
   border-bottom-width: 6px !important;
   right: 1px !important; }
 
-.agriculture-subclass .tipsy-arrow-e {
+#thaipublica01 .agriculture-subclass .tipsy-arrow-e {
   border-left-color: #6ea22e !important; }
-.agriculture-subclass .tipsy-inner {
+#thaipublica01 .agriculture-subclass .tipsy-inner {
   background-color: #6ea22e !important; }
 
-.environment-subclass .tipsy-arrow-e {
+#thaipublica01 .environment-subclass .tipsy-arrow-e {
   border-left-color: #3e7824 !important; }
-.environment-subclass .tipsy-inner {
+#thaipublica01 .environment-subclass .tipsy-inner {
   background-color: #3e7824 !important; }
 
-.government-subclass .tipsy-arrow-e {
+#thaipublica01 .government-subclass .tipsy-arrow-e {
   border-left-color: #1e65a8 !important; }
-.government-subclass .tipsy-inner {
+#thaipublica01 .government-subclass .tipsy-inner {
   background-color: #1e65a8 !important; }
 
-.home-subclass {
+#thaipublica01 .home-subclass {
   opacity: 1 !important; }
-  .home-subclass .tipsy-arrow-e {
+  #thaipublica01 .home-subclass .tipsy-arrow-e {
     border-left-color: #f5a00c !important; }
-  .home-subclass .tipsy-inner {
+  #thaipublica01 .home-subclass .tipsy-inner {
     background-color: #f5a00c !important; }
 
-.factory-subclass {
+#thaipublica01 .factory-subclass {
   opacity: 1 !important; }
-  .factory-subclass .tipsy-arrow-e {
+  #thaipublica01 .factory-subclass .tipsy-arrow-e {
     border-left-color: #866fde !important; }
-  .factory-subclass .tipsy-inner {
+  #thaipublica01 .factory-subclass .tipsy-inner {
     background-color: #866fde !important; }
 
-.green-factory-subclass {
+#thaipublica01 .green-factory-subclass {
   opacity: 1 !important; }
-  .green-factory-subclass .tipsy-arrow-e {
+  #thaipublica01 .green-factory-subclass .tipsy-arrow-e {
     border-left-color: #463f93 !important; }
-  .green-factory-subclass .tipsy-inner {
+  #thaipublica01 .green-factory-subclass .tipsy-inner {
     background-color: #463f93 !important; }
 
-.gpp-subclass {
+#thaipublica01 .gpp-subclass {
   opacity: 1 !important; }
-  .gpp-subclass .tipsy-arrow-e {
+  #thaipublica01 .gpp-subclass .tipsy-arrow-e {
     border-left-color: #ff7a37 !important; }
-  .gpp-subclass .tipsy-inner {
+  #thaipublica01 .gpp-subclass .tipsy-inner {
     background-color: #ff7a37 !important; }
 
-.event-subclass {
+#thaipublica01 .event-subclass {
   opacity: 1 !important; }
-  .event-subclass .tipsy-arrow-e {
+  #thaipublica01 .event-subclass .tipsy-arrow-e {
     border-left-color: #5cafc5 !important; }
-  .event-subclass .tipsy-inner {
+  #thaipublica01 .event-subclass .tipsy-inner {
     background-color: #5cafc5 !important; }
 
-.accident-subclass {
+#thaipublica01 .accident-subclass {
   opacity: 1 !important; }
-  .accident-subclass .tipsy-arrow-e {
+  #thaipublica01 .accident-subclass .tipsy-arrow-e {
     border-left-color: #d63b3e !important; }
-  .accident-subclass .tipsy-inner {
+  #thaipublica01 .accident-subclass .tipsy-inner {
     background-color: #d63b3e !important; }
 
-.people-subclass {
+#thaipublica01 .people-subclass {
   opacity: 1 !important; }
-  .people-subclass .tipsy-arrow-e {
+  #thaipublica01 .people-subclass .tipsy-arrow-e {
     border-left-color: #296412 !important; }
-  .people-subclass .tipsy-inner {
+  #thaipublica01 .people-subclass .tipsy-inner {
     background-color: #296412 !important; }
 
-.peopleHide-subclass {
+#thaipublica01 .peopleHide-subclass {
   opacity: 1 !important; }
-  .peopleHide-subclass .tipsy-arrow-e {
+  #thaipublica01 .peopleHide-subclass .tipsy-arrow-e {
     border-left-color: #86a653 !important; }
-  .peopleHide-subclass .tipsy-inner {
+  #thaipublica01 .peopleHide-subclass .tipsy-inner {
     background-color: #86a653 !important; }
 
 #svgprime {
@@ -336,7 +336,7 @@ body {
   margin-left: -26px; }
 
 /* Title */
-h1 {
+#thaipublica01 h1 {
   font-family: 'db_metta_x_mediummedium';
   font-weight: normal;
   color: #8F8467;
@@ -354,11 +354,11 @@ h1 {
   font-size: 28px;
   line-height: 24px;
   z-index: 500; }
-  h1 span {
+  #thaipublica01 h1 span {
     font-size: 42px;
     color: #7a7057; }
 
-.h1-wrapper {
+#thaipublica01 .h1-wrapper {
   width: 1044px;
   margin: 0 auto;
   position: relative; }

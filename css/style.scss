@@ -59,14 +59,14 @@ body {
 /*-------------------------
  									Global
  --------------------------*/
-.content {
+#thaipublica01 .content {
 	z-index: 2;
 	width: 1044px;
 	margin: 0 auto;
 	position: relative;
 	margin-top: -70px;
 }
-#slider-wrapper {
+#thaipublica01 #slider-wrapper {
 	position: absolute;
 	top: 250px;
 }
@@ -85,7 +85,7 @@ body {
 /*-------------------------
  									PrimeBox
  --------------------------*/
-.primebox {
+#thaipublica01 .primebox {
 	margin: 20px;
 	img {
 		float: left;
@@ -170,7 +170,7 @@ body {
 /*-------------------------
  									AccidentBox
  --------------------------*/
-.event-graph-Accident, .event-graph-Event, .accident-map  {
+#thaipublica01 .event-graph-Accident, .event-graph-Event, .accident-map  {
 	margin: 20px;
 	background: url('../images/window-accident.png') no-repeat;
 	ul {
@@ -212,7 +212,7 @@ body {
 /*-------------------------
  									EventBox
  --------------------------*/
-.event-graph-Event {
+#thaipublica01 .event-graph-Event {
 	margin: 20px;
 	background: url('../images/window-event.png') no-repeat;
 	ul {
@@ -244,7 +244,7 @@ body {
 /*-------------------------
 							Accident From Map
  --------------------------*/
-.accident-map {
+#thaipublica01 .accident-map {
 	.acc_date {
 		@include time-font;
 		color: #c23d4d;
@@ -258,7 +258,7 @@ body {
 /*-------------------------
 	 									Tipsy
  --------------------------*/
-.tipsy-inner {
+#thaipublica01 .tipsy-inner {
 	font-size: 13px;
 	box-shadow: 1px 2px 3px 0px #333;
 }
@@ -272,7 +272,7 @@ body {
 // }
 
 
-.tipsy-e {
+#thaipublica01 .tipsy-e {
 	.tipsy-arrow, .tipsy-arrow-e {
 		margin-top: -10px;
 		right: -15px;
@@ -287,7 +287,7 @@ body {
 	}
 }
 
-.prime-minister-tipsy {
+#thaipublica01 .prime-minister-tipsy {
 	.tipsy-arrow-e {
 		border-left-color: white !important;
 	}
@@ -308,7 +308,7 @@ body {
 }
 
 
-.agriculture-subclass {
+#thaipublica01 .agriculture-subclass {
 	.tipsy-arrow-e {
 		border-left-color: #6ea22e !important;
 	}
@@ -317,7 +317,7 @@ body {
 	}
 }
 
-.environment-subclass {
+#thaipublica01 .environment-subclass {
 	.tipsy-arrow-e {
 		border-left-color: #3e7824 !important;
 	}
@@ -326,7 +326,7 @@ body {
 	}
 }
 
-.government-subclass {
+#thaipublica01 .government-subclass {
 	.tipsy-arrow-e {
 		border-left-color: #1e65a8 !important;
 	}
@@ -335,7 +335,7 @@ body {
 	}
 }
 
-.home-subclass {
+#thaipublica01 .home-subclass {
 	opacity: 1 !important;
 	.tipsy-arrow-e {
 		border-left-color: #f5a00c !important;
@@ -345,7 +345,7 @@ body {
 	}
 }
 
-.factory-subclass {
+#thaipublica01 .factory-subclass {
 	opacity: 1 !important;
 	.tipsy-arrow-e {
 		border-left-color: #866fde !important;
@@ -355,7 +355,7 @@ body {
 	}
 }
 
-.green-factory-subclass {
+#thaipublica01 .green-factory-subclass {
 	opacity: 1 !important;
 	.tipsy-arrow-e {
 		border-left-color: #463f93 !important;
@@ -365,7 +365,7 @@ body {
 	}
 }
 
-.gpp-subclass {
+#thaipublica01 .gpp-subclass {
 	opacity: 1 !important;
 	.tipsy-arrow-e {
 		border-left-color: #ff7a37 !important;
@@ -375,7 +375,7 @@ body {
 	}
 }
 
-.event-subclass {
+#thaipublica01 .event-subclass {
 	opacity: 1 !important;
 	.tipsy-arrow-e {
 		border-left-color: #5cafc5 !important;
@@ -385,7 +385,7 @@ body {
 	}
 }
 
-.accident-subclass {
+#thaipublica01 .accident-subclass {
 	opacity: 1 !important;
 	.tipsy-arrow-e {
 		border-left-color: #d63b3e !important;
@@ -396,7 +396,7 @@ body {
 }
 
 
-.people-subclass {
+#thaipublica01 .people-subclass {
 	opacity: 1 !important;
 	.tipsy-arrow-e {
 		border-left-color: #296412 !important;
@@ -406,7 +406,7 @@ body {
 	}
 }
 
-.peopleHide-subclass {
+#thaipublica01 .peopleHide-subclass {
 	opacity: 1 !important;
 	.tipsy-arrow-e {
 		border-left-color: #86a653 !important;
@@ -445,7 +445,7 @@ body {
 }
 
 /* Title */
-h1 {
+#thaipublica01 h1 {
 	font-family: 'db_metta_x_mediummedium';
 	font-weight: normal;
 	color: #8F8467;
@@ -470,7 +470,7 @@ h1 {
 }
 
 
-.h1-wrapper {
+#thaipublica01 .h1-wrapper {
 	width: 1044px;
 	margin: 0 auto;
 	position: relative;

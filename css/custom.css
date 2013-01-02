@@ -1,4 +1,4 @@
-.debug {
+#thaipublica01 .debug {
 	clear: both;
 }
 
@@ -184,16 +184,16 @@ h1#title {
 	left: 2px;
 }
 
-.info-wrapper{
+#thaipublica01 .info-wrapper{
 	width: 440px;
 	padding: 0 0 0 20px;
 }
 
-.info-wrapper.accident {
+#thaipublica01 .info-wrapper.accident {
 	padding: 0 0 0 45px;
 }
 
-.info-item .info-text {
+#thaipublica01 .info-item .info-text {
 	margin-bottom: 20px;
 	color: #999;
 	line-height: 18px;
@@ -201,7 +201,7 @@ h1#title {
 	font-size: 14px;
 }
 
-.info-image {
+#thaipublica01 .info-image {
 	width: 430px;
 }
 
@@ -215,7 +215,7 @@ h1#title {
 	font-size: 14px;
 }
 
-div.preloader {
+#thaipublica01 div.preloader {
 	left: 50%;
 	right: 50%;
 	position: absolute;
@@ -227,14 +227,14 @@ div#slider-wrapper {
 	display: none;
 }
 
-.ui-focus, .ui-btn:focus {
+#thaipublica01 .ui-focus, .ui-btn:focus {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none ;
 }
 
 
-body .information {
+#thaipublica01 .information {
 	background: url('../asset/unselect-btn-infomation.png') no-repeat 0 -3px;
 	left: 700px;
 	height: 28px;
