@@ -186,7 +186,7 @@ window.build_with_image = function (type, year, date) {
 
 function bind_bubbleEvent(data, bubble) {
     var bindBubble = function(v, idx) {
-        var t1, type, $opa;
+        var t1, type, $opa, parent_cached;
 
 
         $(v).mouseenter(function(e) {
@@ -208,12 +208,16 @@ function bind_bubbleEvent(data, bubble) {
 
             bubble.hide();
 
-            bubble.eq(idx).fadeIn();
+
+            // work around for move to top
+            var obj = bubble.eq(idx);
+            parent_cached = obj.parent();
+            obj.parent().parent().append(obj);
+            obj.fadeIn();
 
         })
         .click(function(e) {
             var obj = window[type + 'List'];
-
             var $parent = $(this).parent()
               , id = $parent.attr('id');
 
@@ -235,15 +239,16 @@ function bind_bubbleEvent(data, bubble) {
               , diff = t2 - t1;
             var $this = $(this);
 
-            // $this.attr({opacity: 0.5})
-            // $this.parent().attr({opacity: 0.5})
-            // $this.parent().parent().attr({opacity: 0.5})
+            var fadeOutCallback = function() {
+                parent_cached.append(bubble.eq(idx));
+            };
+
             if (diff>80) {
                 setTimeout(function delayFadeOut() {
                     if ($opa) {
                         $opa.animate({opacity: 0.5});
                     }
-                    bubble.eq(idx).fadeOut();
+                    bubble.eq(idx).fadeOut(fadeOutCallback);
                 }, 200);
             }
             else {
@@ -251,9 +256,10 @@ function bind_bubbleEvent(data, bubble) {
                     if ($opa) {
                         $opa.animate({opacity: 0.5});
                     }
-                    bubble.eq(idx).fadeOut();
+                    bubble.eq(idx).fadeOut(fadeOutCallback);
                 }, 300);
             }
+
         });
     };
 
