@@ -194,6 +194,16 @@ body {
   top: 60px; }
   #graph-control div {
     margin-bottom: 10px; }
+    
+#graph-control div#graph-Factory, 
+#graph-control div#graph-Accident,
+#graph-control div#graph-Event,
+#graph-control div#graph-GPP,
+#graph-control div#graph-people,
+#graph-control div#graph-peopleHide {
+	float: left;
+	width: 76px;
+	height: 36px; }
 
 /*-------------------------
 							Accident From Map
