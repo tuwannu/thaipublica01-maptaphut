@@ -39,3 +39,29 @@ var targetObjectSettings2 = {
 /*
  * End of configurations
  */
+
+// Lightbox Settings
+var lightboxSettings = {
+		'opacity': 0.9,
+		'width': 700,
+		'height': '70%'
+};
+
+// Colorbox Template
+var accidentLightboxTemplate = _.template("<li><div class='time'><%= date %></div>\
+		<div class='incident'> <%= incident %> </div>\
+		<div class='detail'>\
+			<span>สถานที่&nbsp;:&nbsp;</span> <%= location %><br />\
+            <span>ผลกระทบ&nbsp;:&nbsp;</span> <%= effect %>\
+</div></li>");
+
+var eventLightboxTemplate = _.template("<li><div class='time'><%= date %></div>\
+		<div class='incident'> <%= incident %> </div>\
+		<div class='detail'>\
+</div></li>");
+
+var headerLightboxTemplate = _.template("<div class='event-<%= type %>'>\
+		        <div class='incident-year'> <%= incident_year %> </div>\
+		        <ul id='incident-<%= type %>'>");
+
+var footerLightboxTemplate = _.template("</ul></div>");

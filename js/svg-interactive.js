@@ -5,14 +5,14 @@
  * ----------------
  * Function Arguments
  * ----------------
- * bindingScope: 	Scope of binding (uses DOM ID format e.g. "#myDiv")
+ * bindingScopeId: 	Scope of binding (uses DOM ID format e.g. "#myDiv")
  * hoverObjectSettings:		{ prefix, fadeInOpacity, fadeInDuration, fadeOutOpacity, fadeOutDuration }
  * targetObjectSettings:	{ prefix, fadeInOpacity, fadeInDuration, fadeOutOpacity, fadeOutDuration }
  * 
  */
 
-var bindHideShowHoverEvent = function(bindingScope, hoverObjectSettings, targetObjectSettings) {
-	var extracted = $(bindingScope);
+var bindHideShowHoverEvent = function(bindingScopeId, hoverObjectSettings, targetObjectSettings) {
+	var extracted = $(bindingScopeId);
 	
 	_.each(extracted, function(g) {
 		// Match suffix of each SVG element, then add mouse events if suffix matches.
@@ -40,31 +40,26 @@ var bindHideShowHoverEvent = function(bindingScope, hoverObjectSettings, targetO
 
 };
 
-var bindClickToShowLightboxEvent = function(bindingScope, triggerSuffix) {
-	var extracted = $(bindingScope);
 
-	_.each(extracted, function(g) {
-		// Match suffix of each SVG element, then add mouse events if suffix matches.
-		if(g.id.match("^.*" + triggerSuffix + "$")){
-			$(g).click(function(e) {
-				var template = _.template("<div class='accident-map'> \
-						<div class='acc_date'> <%= date %> </div> \
-						<div class='acc_desc'> <%= incident %> </div> \
-						<div class='acc_loc'><span>สถานที่: </span> <%= location %> </div>\
-						<div class='acc_eff'><span>ผลกระทบ: </span> <%= effect %> </div>\
-				</div>");
-
-				var data = accident_on_graph['2555'][0];
-				var html = template(data);
-
-				// bind popup-event
-				$.colorbox({
-					html        : html,
-					opacity     : 0.8,
-					width       : '560px',
-					height      : '400px'
-				});
-			});
-		}
+/*
+ * Function Name: 	bindClickToShowLightboxEvent
+ * Description: 	Binding of an SVG object to show a lightbox with given content when clicked.
+ * 					
+ * ----------------
+ * Function Arguments
+ * ----------------
+ * triggerObjectId: 	ID of the object to bind mouse click to (uses DOM ID format e.g. "#myDiv")
+ * content:				Textual content to show in light box.
+ * lightboxSettings:	{ opacity, width, height }
+ * 
+ */
+var bindClickToShowLightboxEvent = function(triggerObjectId, content, lightboxSettings) {
+	$(triggerObjectId).click(function(e) {
+		$.colorbox({
+			html        : content,
+			opacity     : lightboxSettings['opacity'],
+			width       : lightboxSettings['width'],
+			height      : lightboxSettings['height']
+		});
 	});
 }
