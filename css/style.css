@@ -200,7 +200,13 @@ body {
 #graph-control div#graph-Event,
 #graph-control div#graph-GPP,
 #graph-control div#graph-people,
-#graph-control div#graph-peopleHide {
+#graph-control div#graph-peopleHide,
+#map-control div.home,
+#map-control div.factory,
+#map-control div.agriculture,
+#map-control div.green-factory,
+#map-control div.environment,
+#map-control div.government {
 	float: left;
 	width: 76px;
 	height: 36px; }

@@ -28,13 +28,11 @@ var SVGLayerManager = function(svgSelector) {
 SVGLayerManager.prototype.setScope = function(scope) {
 	this.scope = scope;
 	this.scopedLayers = $(this.scope, $(this.svg));
-	
-	window.scopedLayers = this.scopedLayers;		// For debugging purposes
-}
+	}
 
 // Show by DOM IDs
 SVGLayerManager.prototype.showByIds = function(domId) {
-	var filtered = _.filter(scopedLayers, function(i) {
+	var filtered = _.filter(this.scopedLayers, function(i) {
 		return (i.id==domId);
 	})
 
@@ -45,7 +43,7 @@ SVGLayerManager.prototype.showByIds = function(domId) {
 
 // Hide by DOM IDs
 SVGLayerManager.prototype.hideByIds = function(domId) {
-	var filtered = _.filter(scopedLayers, function(i) {
+	var filtered = _.filter(this.scopedLayers, function(i) {
 		return (i.id==domId);
 	})
 
@@ -56,14 +54,31 @@ SVGLayerManager.prototype.hideByIds = function(domId) {
 
 // Show by prefix
 SVGLayerManager.prototype.showByPrefix = function(prefixes) {
-	
+		
+	var filtered = _.filter(this.scopedLayers, function(i) {
+		return (i.id.match("^" + prefixes + ".*$"));
+	})
+
+	_.each(filtered, function(i){
+		$(i).show();
+	});
 }
 
 // Hide by prefix
 SVGLayerManager.prototype.hideByPrefix = function(prefixes) {
 	
+	var filtered = _.filter(this.scopedLayers, function(i) {
+		return (i.id.match("^" + prefixes + ".*$"));
+	})
+
+	_.each(filtered, function(i){
+		$(i).hide();
+	});
 }
 
+SVGLayerManager.prototype.hideAll = function() {
+	this.scopedLayers.hide();
+}
 
 SVGLayerManager.prototype.groupBy = function(groupcondition) {
 	console.log("Grouping by: " + groupcondition);
