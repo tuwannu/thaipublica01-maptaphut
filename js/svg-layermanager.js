@@ -11,10 +11,11 @@
 
 // Constructor
 // Receives a DOM ID, then loads file into given DOM ID.
-var SVGLayerManager = function(svgDomId, svgFilePath, cb) {		
-	this.svgDomId = svgDomId;
+var SVGLayerManager = function(svgDomId, svgFilePath, cb) {
 	this.scopedLayers = $(svgDomId).svg();
+	this.originalScopedLayers = this.scopedLayers;
 	
+	// Once SVG is loaded, callback to the caller.
 	this.scopedLayers.load(svgFilePath, 'get', function(svg) {
 		cb();
 		return this;
@@ -22,33 +23,32 @@ var SVGLayerManager = function(svgDomId, svgFilePath, cb) {
 	
 };
 
-// Set scope for layers that will be managed.
+// Set scope of layers that will be managed.
+SVGLayerManager.prototype.setScope = function(scope) {
+	this.scopedLayers = $(scope, this.originalScopedLayers);
+}
+
+// Narrow the scope of layers that will be managed.
 SVGLayerManager.prototype.setScope = function(scope) {
 	this.scopedLayers = $(scope, this.scopedLayers);
 }
 
-// Show by DOM IDs
+// Show by DOM ID
 SVGLayerManager.prototype.showByIds = function(domId) {
 	var filtered = _.filter(this.scopedLayers, function(i) {
 		return (i.id==domId);
 	})
 
-	_.each(filtered, function(i){
-		$(i).show();
-	});
+	$(filtered).show();
 }
 
-// Hide by DOM IDs
+// Hide by DOM ID
 SVGLayerManager.prototype.hideByIds = function(domId) {
 	var filtered = _.filter(this.scopedLayers, function(i) {
 		return (i.id==domId);
 	})
 	
-	console.log(this.scopedLayers);
-
-	_.each(filtered, function(i){
-		$(i).hide();
-	});
+	$(filtered).hide();
 }
 
 // Show by prefix
@@ -58,9 +58,7 @@ SVGLayerManager.prototype.showByPrefix = function(prefixes) {
 		return (i.id.match("^" + prefixes + ".*$"));
 	})
 
-	_.each(filtered, function(i){
-		$(i).show();
-	});
+	$(filtered).show();
 }
 
 // Hide by prefix
@@ -68,49 +66,44 @@ SVGLayerManager.prototype.hideByPrefix = function(prefixes) {
 	
 	var filtered = _.filter(this.scopedLayers, function(i) {
 		return (i.id.match("^" + prefixes + ".*$"));
-	})
-
-	_.each(filtered, function(i){
-		$(i).hide();
 	});
+
+	$(filtered).hide();
 }
 
+//Show by containing
+SVGLayerManager.prototype.showByContaining = function(prefixes) {
+		
+	var filtered = _.filter(this.scopedLayers, function(i) {
+		return (i.id.match("^.*" + prefixes + ".*$"));
+	})
+
+	$(filtered).show();
+}
+
+// Hide by containing
+SVGLayerManager.prototype.hideByContaining = function(prefixes) {
+	
+	var filtered = _.filter(this.scopedLayers, function(i) {
+		return (i.id.match("^.*" + prefixes + ".*$"));
+	});
+
+	$(filtered).hide();
+}
+
+//Hide all layers within scope
 SVGLayerManager.prototype.hideAll = function() {
 	this.scopedLayers.hide();
 }
 
-SVGLayerManager.prototype.groupBy = function(groupcondition) {
-	console.log("Grouping by: " + groupcondition);
-	
-	var svglayergroups = $('svg > g', $(this.selector));
-	
-	var groupings = _.groupBy(svglayergroups, function(i) {
-		return i.id.split(groupcondition)[0] || 'other';
-	});
-
-	return groupings;
-};
-
-SVGLayerManager.prototype.show = function(year, layerArr, callback) {
-    var layer_to_show = _.union(base_layer, layerArr);
-
-    // YEAR FOR ACCIDENT & SNAPPED YEAR FOR MAP-LAYOUT
-    prefix_to_show = _.union(base_prefix, (year).toString(), fallback_prefix_fn([], year));
-
-    var items_to_show = _.filter(funcs, function(item, k) {
-        return _(alwaysShowPrefixes).contains(item.year) && _.contains(alwaysShowPrefixes, item.layer);
-    });
-
-
-    // HIDE ACTIVE LAYER
-    _.each(activeLayers, function(v) {
-        v.hide();
-    });
-
-    // SET NEW ACTIVE LAYER
-    activeLayers = items_to_show;
-
-    _.each(items_to_show, function(item) { item.show(); });
-
-    return manager;
-};
+//SVGLayerManager.prototype.groupBy = function(groupcondition) {
+//	console.log("Grouping by: " + groupcondition);
+//	
+//	var svglayergroups = $('svg > g', $(this.selector));
+//	
+//	var groupings = _.groupBy(svglayergroups, function(i) {
+//		return i.id.split(groupcondition)[0] || 'other';
+//	});
+//
+//	return groupings;
+//};

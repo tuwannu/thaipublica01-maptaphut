@@ -12,25 +12,24 @@ var map_hidden_categories = [];
 $(function() {
 
 	var load_graph = function(callback) {
-		// Create new SVGLayerManager for graph.svg. This also loads the SVG image into web page.
+		// Create SVGLayerManager and load SVG file.
 		graphManager = new SVGLayerManager('#svggraph', 'graph.svg', function() {
 			
-			// Callback to notify end of parallel operations
+			// Callback to notify end of parallel operations.
 			callback(null, "ok");			
-			
 		});
 	};
 
 	var load_map = function(callback) {
-		// Create new SVGLayerManager for map-test.svg. This also loads the SVG image into web page.	
+		// Create SVGLayerManager and load SVG file.	
 		mapManager = new SVGLayerManager('#svgload', 'map-test.svg', function() {
 			
-			// Callback to notify end of parallel operations
+			// Callback to notify end of parallel operations.
 			callback(null, "ok");
-			
 		});
 	};
 
+	// Perform parallel operations.
 	async.parallel([load_graph, load_map], function (err, results) {
 		var removePreloader = function(callback) {
 			
@@ -230,10 +229,6 @@ var onSlideListener = function(event, ui) {
 	_.each(map_hidden_categories, function(category) {
 		mapManager.hideByPrefix(currentCityPlanYear + "-" + category);
 	});
-	
-}
-
-var refreshMapDisplay = function() {
 	
 }
 
