@@ -6,8 +6,9 @@ var graphManager;
 var mapManager;
 var currentCityPlanYear = 2546;
 var currentYear = 2553;
+var cityplan_interval_years = [];
 
-var map_hidden_categories = [];
+var map_hidden_categories = [];		// Keep track of what is being hidden (for map only).
 
 $(function() {
 
@@ -31,11 +32,15 @@ $(function() {
 
 	// Perform parallel operations.
 	async.parallel([load_graph, load_map], function (err, results) {
-		var removePreloader = function(callback) {
-			
+		
+		var setLayerManagerScopes = function(callback) {
 			graphManager.setScope('svg > g');
 			mapManager.setScope('svg > g');
-
+			
+			callback(null, 'ok');
+		}
+		
+		var removePreloader = function(callback) {
 			$('div.preloader').remove();
 			$('div#slider-wrapper').show();
 			
@@ -76,13 +81,18 @@ $(function() {
 
 			callback(null, 'done');
 		}
-
-		var bindAccidentGraphEvent = function(callback) {
-			//TODO
-			callback(null, 'done');
-		}
 		
 		var bindSliderEvent = function(callback) {
+			
+    		// Matching anything with the term fallback_prefix_searchterm
+    		_.each(mapManager.scopedLayers, function(i){
+    			if(i.id.match('^(.*)-' + 'cityPlan' + '.*$')) {
+    				cityplan_interval_years.push(i.id.substring(0,4));
+    			}
+    		});
+    		
+    		cityplan_interval_years.sort().reverse();
+			
 			$( "#slider-range-max" ).slider({
 				value: currentYear,
 				min: 2520,
@@ -141,8 +151,6 @@ $(function() {
 		}
 		
 		var bindInstruction = function(callback) {
-
-
 			$('.information').
 			mouseover(function(e){
 				$(this).css({ cursor: 'pointer'});
@@ -164,10 +172,10 @@ $(function() {
 
 		if (!err) {
 			series_operations = [
-			                     removePreloader, 
+			                     setLayerManagerScopes,
+			                     removePreloader,
 			                     createFilterController,
 			                     bindMouseEvent,
-			                     bindAccidentGraphEvent,
 			                     bindSliderEvent,
 			                     bindPrimeMinisterEvent,
 			                     bindInstruction
@@ -190,11 +198,7 @@ var bindBubbleClickEvent = function(bindingScope, triggerSuffix, template, rawda
 			// Note: Logic is specific to ThaiPublica-Maptaphut project
 			var year = g.id.split('-')[0];
 			var yearlyData = rawdata[year];
-			var headerData = {
-				'incident_year': year,
-				'type': 'graph-Accident'
-			};
-
+			var headerData = {'incident_year': year, 'type': 'graph-Accident'};
 			var html = headerLightboxTemplate(headerData);
 
 			_.each(yearlyData, function(d) {
@@ -209,17 +213,16 @@ var bindBubbleClickEvent = function(bindingScope, triggerSuffix, template, rawda
 }
 
 var onSlideListener = function(event, ui) {
-	var interval_years = [2531, 2534, 2546, 2555].reverse();
 	// Put the value back for global reference
 	if(ui.value) {
 		currentYear = ui.value;
 	}
 		
-	currentCityPlanYear = _.find(interval_years, function(value) {
+	currentCityPlanYear = _.find(cityplan_interval_years, function(value) {
 		return (currentYear >= value);
 	});
 		
-	if(!currentCityPlanYear) currentCityPlanYear = _.last(interval_years);
+	if(!currentCityPlanYear) currentCityPlanYear = _.last(cityplan_interval_years);
 		
 	// If city plan does not change, no need to change the map.
 	mapManager.hideAll();
