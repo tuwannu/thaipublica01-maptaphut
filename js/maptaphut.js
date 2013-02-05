@@ -1,6 +1,13 @@
+/*
+ * Logics specific to ThaiPublica Maptaphut project
+ */
+
 var graphManager;
 var mapManager;
+var currentCityPlanYear = 2546;
 var currentYear = 2553;
+
+var map_hidden_categories = [];
 
 $(function() {
 
@@ -42,23 +49,19 @@ $(function() {
 		}
 
 		var createFilterController = function(callback) {
-
+			
 			// Prepare data for creating buttons and binding to mouse events
+			// Note: createShowHideButton = function($targetDOM, buttonId, targetSVGs, cssClass, tipsyText, tipsyGravity)
+			
 			// Graphs
-			createShowHideButton($('#graph-control'), "graph-Factory", $("#graph-Factory"), "factory", "โรงงาน", "e");
-			createShowHideButton($('#graph-control'), "graph-Accident", $("#graph-Accident"), "accident", "อุบัติเหตุ", "e");
-			createShowHideButton($('#graph-control'), "graph-Event", $("#graph-Event"), "event", "เหตุการณ์", "e");
-			createShowHideButton($('#graph-control'), "graph-GPP", $("#graph-GPP"), "gpp", "จีพีพี (ผลิตภัณฑ์มวลรวมจังหวัด)", "e");
-			createShowHideButton($('#graph-control'), "graph-people", $("#graph-people"), "people", "ประชากรท้องถิ่น", "e");
-			createShowHideButton($('#graph-control'), "graph-peopleHide", $("#graph-peopleHide"), "peopleHide", "ประชากรแฝง", "e");
+			_.each(graph_control_buttons, function(config) {
+				createShowHideButton(config.targetDOM, config.buttonId, graphManager, config.cssClass, config.tipyText, config.tipsyGravity);
+			});
 			
 			// Maps
-			createShowHideButton($('#map-control'), "อาศัย", "map-Factory", "home", "พื้นที่ที่อยู่อาศัย", "e");
-			createShowHideButton($('#map-control'), "อุตสาหกรรมคลังสินค้า", "map-Factory", "factory", "อุตสาหกรรมคลังสินค้า", "e");
-			createShowHideButton($('#map-control'), "พท-เกษตรกรรม", "map-Factory", "agriculture", "พื้นที่เกษตรกรรม", "e");
-			createShowHideButton($('#map-control'), "อุตสาหกรรมไม่ก่อมลพิษ", "map-Factory", "green-factory", "พื้นที่อุตสาหกรรมไม่ก่อมลพิษ", "e");
-			createShowHideButton($('#map-control'), "พท-อนุรักษ์", "map-Factory", "environment", "พื้นที่อนุรักษ์", "e");
-			createShowHideButton($('#map-control'), "ราชการ", "map-Factory", "government", "พื้นที่ราชการ", "e");
+			_.each(map_control_buttons, function(config) {
+				createMapButton(config.targetDOM, config.buttonId, mapManager, config.cssClass, config.tipyText, config.tipsyGravity);
+			});
 
 			callback(null, "ok");
 		}
@@ -94,10 +97,10 @@ $(function() {
 				animate: false,
 				slide: onSlideListener
 			});
-						
+			
 			// Display map according to current slider position
 			onSlideListener(null, {value: currentYear});
-									
+			
 			callback(null, 'done');
 		}
 		
@@ -129,14 +132,14 @@ $(function() {
                     var pmId = $(this).attr('id').split('-')[0],
                         information = buildPMInfo(pmId),
                         height = (information.length)/2;
-
+                    
                     height -= 55 * (Math.log(height) - 5);
 
                     $.colorbox({
                         html        : information,
                         width       :"600px",
                         opacity     : 0.82,
-                        height      :  (height > 600 ? 600 : height) + 'px'
+                        height      : (height > 600 ? 600 : height) + 'px'
                     });
                 }); // mousedown
             
@@ -190,45 +193,6 @@ $(function() {
 	});
 });
 
-var createShowHideButton = function($targetDOM, buttonId, targetSVGs, cssClass, tipsyText, tipsyGravity) {
-	button = $('<div></div>').
-	attr({
-		id: buttonId,
-		value: buttonId,
-		'class': cssClass + ' selected',
-		'title': tipsyText
-	})
-
-	// Change mouse pointer when hover.
-	button.mouseenter(function(e) {
-		$(this).css({'opacity': 1.0, 'cursor': 'pointer'});
-	});
-
-	// Add on-click event listener
-	button.click(function(e) {
-		var $this = $(this);
-		var is_selected = $this.hasClass('selected');
-		
-		// If already selected, remove tick + remove graph, and vice versa.
-		if (is_selected) {
-			$this.removeClass('selected');
-			graphManager.hideByIds(this.id);
-		} else {
-			$this.addClass('selected');
-			graphManager.showByIds(this.id);
-		}
-	});
-
-	// Initiate tipsy.
-	button.tipsy({
-		className: cssClass + '-subclass',
-		gravity: tipsyGravity
-	});
-
-	// Finally add the buttons to the document.
-	$targetDOM.append(button);
-}
-
 var bindBubbleClickEvent = function(bindingScope, triggerSuffix, template, rawdata) {
 	var extracted = $(bindingScope);
 
@@ -237,7 +201,7 @@ var bindBubbleClickEvent = function(bindingScope, triggerSuffix, template, rawda
 		if(g.id.match("^.*" + triggerSuffix + "$")){
 			
 			// Filter data for the selected year 
-			// Note: This logic is specific to ThaiPublica-Maptaphut project
+			// Note: Logic is specific to ThaiPublica-Maptaphut project
 			var year = g.id.split('-')[0];
 			var yearlyData = rawdata[year];
 			var headerData = {
@@ -265,16 +229,21 @@ var onSlideListener = function(event, ui) {
 		currentYear = ui.value;
 	}
 		
-	index = _.find(interval_years, function(value) {
+	currentCityPlanYear = _.find(interval_years, function(value) {
 		return (currentYear >= value);
 	});
 		
-	if(!index) index = _.last(interval_years);
+	if(!currentCityPlanYear) currentCityPlanYear = _.last(interval_years);
 		
 	// If city plan does not change, no need to change the map.
 	mapManager.hideAll();
-	mapManager.showByPrefix(index);
-	mapManager.showByPrefix(currentYear);	
+	mapManager.showByPrefix(currentCityPlanYear);
+	mapManager.showByPrefix(currentYear);
+	
+	_.each(map_hidden_categories, function(category) {
+		mapManager.hideByPrefix(currentCityPlanYear + "-" + category);
+	});
+	
 }
 
 var refreshMapDisplay = function() {
@@ -303,4 +272,50 @@ function buildPMInfo(year) {
     };
 
     return  template(data);
+}
+
+var createMapButton = function($targetDOM, buttonId, layerManager, cssClass, tipsyText, tipsyGravity) {
+	button = $('<div></div>').
+	attr({
+		id: buttonId,
+		value: buttonId,
+		'class': cssClass + ' selected',
+		'title': tipsyText
+	})
+
+	// Change mouse pointer when hover.
+	button.mouseenter(function(e) {
+		$(this).css({'opacity': 1.0, 'cursor': 'pointer'});
+	});
+
+	// Add on-click event listener
+	button.click(function(e) {
+		var $this = $(this);
+		var is_selected = $this.hasClass('selected');
+				
+		// If already selected, remove tick + remove graph, and vice versa.
+		if (is_selected) {
+			$this.removeClass('selected');
+			
+			map_hidden_categories.push(this.id);
+
+			layerManager.hideByPrefix(currentCityPlanYear + "-" + this.id);
+		} else {
+			$this.addClass('selected');
+			
+			map_hidden_categories = _.without(map_hidden_categories, this.id);
+
+			layerManager.showByPrefix(currentCityPlanYear + "-" + this.id);
+		}
+		
+	});
+
+	// Initiate tipsy.
+	button.tipsy({
+		className: cssClass + '-subclass',
+		gravity: tipsyGravity
+	});
+
+	// Finally add the buttons to the document.
+	$($targetDOM).append(button);
 }

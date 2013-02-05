@@ -14,7 +14,7 @@ $(function() {
                 .set_baseLayer(["road", "area", "accident", "cityPlan"])
                 .set_basePrefix(["other", "all"]);
 
-            callback(null, LayerManager);
+            callback(null, "ok");
         }); // LOAD SVG
     };
 
@@ -34,7 +34,7 @@ $(function() {
             LayerManager2.set_fallbackPrefix(function() {
                 return '';
             });
-            callback(null, LayerManager2);
+            callback(null, "ok");
         });
     };
 

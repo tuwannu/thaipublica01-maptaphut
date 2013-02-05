@@ -1,3 +1,101 @@
+
+/*
+ * Configurations for graph control buttons
+ */
+var graph_control_buttons = [
+	 {
+		 'targetDOM': '#graph-control',
+		 'buttonId': "graph-Factory",
+		 'targetSVGs': '#graph-Factory',
+		 'cssClass': "factory",
+		 'tipsyText': "โรงงาน",
+		 'tipsyGravity': "e"
+	 },{
+		 'targetDOM': '#graph-control',
+		 'buttonId': "graph-Accident",
+		 'targetSVGs': '#graph-Accident',
+		 'cssClass': "accident",
+		 'tipsyText': "อุบัติเหตุ",
+		 'tipsyGravity': "e"
+	 },{
+		 'targetDOM': '#graph-control',
+		 'buttonId': "graph-Event",
+		 'targetSVGs': '#graph-Event',
+		 'cssClass': "event",
+		 'tipsyText': "เหตุการณ์",
+		 'tipsyGravity': "e"
+	 },{
+		 'targetDOM': '#graph-control',
+		 'buttonId': "graph-GPP",
+		 'targetSVGs': '#graph-GPP',
+		 'cssClass': "gpp",
+		 'tipsyText': "จีพีพี (ผลิตภัณฑ์มวลรวมจังหวัด)",
+		 'tipsyGravity': "e"
+	 },{
+		 'targetDOM': '#graph-control',
+		 'buttonId': "graph-people",
+		 'targetSVGs': '#graph-people',
+		 'cssClass': "people",
+		 'tipsyText': "ประชากรท้องถิ่น",
+		 'tipsyGravity': "e"
+	 },{
+		 'targetDOM': '#graph-control',
+		 'buttonId': "graph-peopleHide",
+		 'targetSVGs': '#graph-peopleHide',
+		 'cssClass': "peopleHide",
+		 'tipsyText': "ประชากรแฝง",
+		 'tipsyGravity': "e"
+	 }];
+
+/*
+ * Configurations for map control buttons
+ */
+
+map_control_buttons = [
+	{
+		'targetDOM': '#map-control',
+		'buttonId': "อาศัย",
+		'targetSVGs': '#map-Factory',
+		'cssClass': "home",
+		'tipsyText': "พื้นที่ที่อยู่อาศัย",
+		'tipsyGravity': "e"
+	},{
+		'targetDOM': '#map-control',
+		'buttonId': "อุตสาหกรรมคลังสินค้า",
+		'targetSVGs': '#map-Accident',
+		'cssClass': "factory",
+		'tipsyText': "อุตสาหกรรมคลังสินค้า",
+		'tipsyGravity': "e"
+	},{
+		'targetDOM': '#map-control',
+		'buttonId': "พท-เกษตรกรรม",
+		'targetSVGs': '#map-Event',
+		'cssClass': "agriculture",
+		'tipsyText': "พื้นที่เกษตรกรรม",
+		'tipsyGravity': "e"
+	},{
+		'targetDOM': '#map-control',
+		'buttonId': "อุตสาหกรรมไม่ก่อมลพิษ",
+		'targetSVGs': '#map-GPP',
+		'cssClass': "green-factory",
+		'tipsyText': "พื้นที่อุตสาหกรรมไม่ก่อมลพิษ",
+		'tipsyGravity': "e"
+	},{
+		'targetDOM': '#map-control',
+		'buttonId': "พท-อนุรักษ์",
+		'targetSVGs': '#map-people',
+		'cssClass': "environment",
+		'tipsyText': "พื้นที่อนุรักษ์",
+		'tipsyGravity': "e"
+	},{
+		'targetDOM': '#map-control',
+		'buttonId': "ราชการ",
+		'targetSVGs': '#map-peopleHide',
+		'cssClass': "government",
+		'tipsyText': "พื้นที่ราชการ",
+		'tipsyGravity': "e"
+	}];
+
 /*
  * Configurations specific to ThaiPublica-Maptaphut
  */

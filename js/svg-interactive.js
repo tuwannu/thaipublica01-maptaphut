@@ -63,3 +63,57 @@ var bindClickToShowLightboxEvent = function(triggerObjectId, content, lightboxSe
 		});
 	});
 }
+
+
+/*
+ * Function Name: 	createShowHideButton
+ * Description: 	Create and bind button to show/hide a layer on SVG (where button ID = SVG ayer name).
+ * 					
+ * ----------------
+ * Function Arguments
+ * ----------------
+ * targetDOM: 		Target DOM to add the button to.
+ * buttonId:		ID of button (button ID needs to be the same as SVG layer name.
+ * cssClass:		Additional CSS class to apply to the button.
+ * tipsyText:		Tooltip text to show when hover.
+ * tipsyGravity:	Position of the tooltip relative to the button.
+ * 
+ */
+var createShowHideButton = function($targetDOM, buttonId, layerManager, cssClass, tipsyText, tipsyGravity) {
+	button = $('<div></div>').
+	attr({
+		id: buttonId,
+		value: buttonId,
+		'class': cssClass + ' selected',
+		'title': tipsyText
+	})
+
+	// Change mouse pointer when hover.
+	button.mouseenter(function(e) {
+		$(this).css({'opacity': 1.0, 'cursor': 'pointer'});
+	});
+
+	// Add on-click event listener
+	button.click(function(e) {
+		var $this = $(this);
+		var is_selected = $this.hasClass('selected');
+		
+		// If already selected, remove tick + remove graph, and vice versa.
+		if (is_selected) {
+			$this.removeClass('selected');
+			layerManager.hideByIds(this.id);
+		} else {
+			$this.addClass('selected');
+			layerManager.showByIds(this.id);
+		}
+	});
+
+	// Initiate tipsy.
+	button.tipsy({
+		className: cssClass + '-subclass',
+		gravity: tipsyGravity
+	});
+
+	// Finally add the buttons to the document.
+	$($targetDOM).append(button);
+}
