@@ -163,3 +163,15 @@ var headerLightboxTemplate = _.template("<div class='event-<%= type %>'>\
 		        <ul id='incident-<%= type %>'>");
 
 var footerLightboxTemplate = _.template("</ul></div>");
+
+// Instruction Text
+
+var instruction_text = '<div class="howtouse">\
+	<h3> วิธีการใช้: </h3> \
+		<ol>\
+			<li>เลื่อนกรอบเวลาสีฟ้าในแกน X เพื่อดูผังเมืองและจุดเกิดอุบัติภัยในปีต่างๆ</li>\
+			<li>คลิกสัญลักษณ์ต่างๆ ทางด้านขวามือ เพื่อ toggle ปิดหรือเปิดชุดข้อมูล</li>\
+			<li>วางเมาส์และคลิกจุดต่างๆ ในกราฟและผังเมือง เพื่อดูรายละเอียดของเหตุการณ์</li>\
+			<li>คลิกรูปนายกรัฐมนตรี เพื่ออ่านนโยบายสำคัญๆ ที่เกี่ยวข้องกับมาบตาพุด</li>\
+		</ol>\
+	</div>';

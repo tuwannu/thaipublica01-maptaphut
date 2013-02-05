@@ -1,6 +1,6 @@
 /*!
  * SVG Layer Manager
- * Allows ability to show/hide individual SVG layers within a SVG file
+ * Allows ability to show/hide SVG layers within a SVG file
  * 
  * Unnawut Leepaisalsuwanna (tuwannu@gmail.com)
  * Based on code by Nat Weerawan (nat.wrw@gmail.com)
@@ -9,26 +9,23 @@
  */
 
 
-// Constructor of SVGLayerManager
-// Receives a SVG selector as input so that it knows which SVG to manage.
-var SVGLayerManager = function(svgSelector) {
-	var alwaysShowPrefixes = [];
-	var scopeSelector = [];
-	var scopedLayers = [];
+// Constructor
+// Receives a DOM ID, then loads file into given DOM ID.
+var SVGLayerManager = function(svgDomId, svgFilePath, cb) {		
+	this.svgDomId = svgDomId;
+	this.scopedLayers = $(svgDomId).svg();
 	
-	this.svg = svgSelector;
+	this.scopedLayers.load(svgFilePath, 'get', function(svg) {
+		cb();
+		return this;
+	});
 	
-	scopedLayers = this.svg;
-	
-	console.log("SVGLayerManager for " + this.svg + " created.");
-	return this;
 };
 
 // Set scope for layers that will be managed.
 SVGLayerManager.prototype.setScope = function(scope) {
-	this.scope = scope;
-	this.scopedLayers = $(this.scope, $(this.svg));
-	}
+	this.scopedLayers = $(scope, this.scopedLayers);
+}
 
 // Show by DOM IDs
 SVGLayerManager.prototype.showByIds = function(domId) {
@@ -46,6 +43,8 @@ SVGLayerManager.prototype.hideByIds = function(domId) {
 	var filtered = _.filter(this.scopedLayers, function(i) {
 		return (i.id==domId);
 	})
+	
+	console.log(this.scopedLayers);
 
 	_.each(filtered, function(i){
 		$(i).hide();

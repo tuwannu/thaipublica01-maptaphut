@@ -11,37 +11,32 @@ var map_hidden_categories = [];
 
 $(function() {
 
-	// Load SVG graph into the document, and setup SVGLayerManager for this graph.
 	var load_graph = function(callback) {
-		var svggraph = $('#svggraph').svg();
-
-		// Load the SVG file into <div> and setup SVGLayerManager ready for manipulation.
-		svggraph.load('graph.svg', 'get', function (svg) {
-			graphManager = new SVGLayerManager('#svggraph');
-			graphManager.setScope('svg > g');		// Set scope so layer manager knows what elements to look at.
+		// Create new SVGLayerManager for graph.svg. This also loads the SVG image into web page.
+		graphManager = new SVGLayerManager('#svggraph', 'graph.svg', function() {
 			
-			callback(null, "ok");
+			// Callback to notify end of parallel operations
+			callback(null, "ok");			
+			
 		});
-		
 	};
 
-	// Load Maptaphut SVG map into the document, and setup SVGLayerManager for this map.
 	var load_map = function(callback) {
-		var svggraph = $('#svgload').svg();
-
-		// Load the SVG file into <div> and setup SVGLayerManager ready for manipulation.
-		svggraph.load('map-test.svg', 'get', function (svg) {
-			mapManager = new SVGLayerManager('#svgload');
-			mapManager.setScope('svg > g');		// Set scope so layer manager knows what elements to look at.
+		// Create new SVGLayerManager for map-test.svg. This also loads the SVG image into web page.	
+		mapManager = new SVGLayerManager('#svgload', 'map-test.svg', function() {
 			
+			// Callback to notify end of parallel operations
 			callback(null, "ok");
+			
 		});
-
 	};
 
 	async.parallel([load_graph, load_map], function (err, results) {
 		var removePreloader = function(callback) {
-			console.log("Removing preloader.");
+			
+			graphManager.setScope('svg > g');
+			mapManager.setScope('svg > g');
+
 			$('div.preloader').remove();
 			$('div#slider-wrapper').show();
 			
@@ -147,15 +142,7 @@ $(function() {
 		}
 		
 		var bindInstruction = function(callback) {
-			var text = '<div class="howtouse">\
-				<h3> วิธีการใช้: </h3> \
-					<ol>\
-						<li>เลื่อนกรอบเวลาสีฟ้าในแกน X เพื่อดูผังเมืองและจุดเกิดอุบัติภัยในปีต่างๆ</li>\
-						<li>คลิกสัญลักษณ์ต่างๆ ทางด้านขวามือ เพื่อ toggle ปิดหรือเปิดชุดข้อมูล</li>\
-						<li>วางเมาส์และคลิกจุดต่างๆ ในกราฟและผังเมือง เพื่อดูรายละเอียดของเหตุการณ์</li>\
-						<li>คลิกรูปนายกรัฐมนตรี เพื่ออ่านนโยบายสำคัญๆ ที่เกี่ยวข้องกับมาบตาพุด</li>\
-					</ol>\
-				</div>';
+
 
 			$('.information').
 			mouseover(function(e){
@@ -163,7 +150,7 @@ $(function() {
 			}).
 			mousedown(function(e) {
 				$.colorbox({
-					html        : text,
+					html        : instruction_text,
 					width       : '600px',
 					opacity     : 0.82,
 					height      : '300px'
