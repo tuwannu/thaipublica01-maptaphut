@@ -95,9 +95,9 @@ $(function() {
 			
 			$( "#slider-range-max" ).slider({
 				value: currentYear,
-				min: 2520,
-				max: 2555,
-				step: 1,
+				min: sliderConfig.min,
+				max: sliderConfig.max,
+				step: sliderConfig.step,
 				animate: false,
 				slide: onSlideListener
 			});

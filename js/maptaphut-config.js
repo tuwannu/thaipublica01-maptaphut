@@ -134,6 +134,13 @@ var targetObjectSettings2 = {
 		'fadeOutDuration': 200
 };
 
+// Slider range
+var sliderConfig = {
+	'min': 2520,
+	'max': 2555,
+	'step': 1
+};
+
 /*
  * End of configurations
  */
