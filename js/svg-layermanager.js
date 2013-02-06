@@ -29,7 +29,7 @@ SVGLayerManager.prototype.setScope = function(scope) {
 }
 
 // Narrow the scope of layers that will be managed.
-SVGLayerManager.prototype.setScope = function(scope) {
+SVGLayerManager.prototype.narrowScope = function(scope) {
 	this.scopedLayers = $(scope, this.scopedLayers);
 }
 
@@ -95,15 +95,3 @@ SVGLayerManager.prototype.hideByContaining = function(prefixes) {
 SVGLayerManager.prototype.hideAll = function() {
 	this.scopedLayers.hide();
 }
-
-//SVGLayerManager.prototype.groupBy = function(groupcondition) {
-//	console.log("Grouping by: " + groupcondition);
-//	
-//	var svglayergroups = $('svg > g', $(this.selector));
-//	
-//	var groupings = _.groupBy(svglayergroups, function(i) {
-//		return i.id.split(groupcondition)[0] || 'other';
-//	});
-//
-//	return groupings;
-//};

@@ -212,6 +212,10 @@ var bindBubbleClickEvent = function(bindingScope, triggerSuffix, template, rawda
 	});
 }
 
+/*
+ * onSlideListener
+ * Operations to perform when the slide is moved.
+ */
 var onSlideListener = function(event, ui) {
 	// Put the value back for global reference
 	if(ui.value) {
@@ -235,6 +239,10 @@ var onSlideListener = function(event, ui) {
 	
 }
 
+/*
+ * buildPMInfo
+ * Template for prime minister information
+ */
 function buildPMInfo(year) {
     var pm = pmList[year];
     var events_html = "<ul>";
@@ -259,6 +267,9 @@ function buildPMInfo(year) {
     return  template(data);
 }
 
+/*
+ * Customized function to create control button for Maptaphut Map categories.
+ */
 var createMapButton = function($targetDOM, buttonId, layerManager, cssClass, tipsyText, tipsyGravity) {
 	button = $('<div></div>').
 	attr({
